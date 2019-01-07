@@ -1,0 +1,301 @@
+{% trans_default_domain 'analytics' %}
+{% extends 'analytics/common.html.twig' %}
+
+{% block title %}{{ ('app.meta.title')|trans }}{% endblock %}
+
+{% block analytics %}
+
+    <section>
+        <div class="tab-content">
+
+            <div class="tab-pane grid-cont show active" role="tabpanel">
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-4 col-content-wrapper">
+                            <div class="card align-items-center justify-content-center flex-column">
+                                <div class="card-header d-flex justify-content-end">
+                                </div>
+                                <div class="card-body py-3 text-center">
+                                    <span class="lead-3 d-block text-center js-counter">{{ analytics.totalUsers|number_format('0', '', '') }}</span>
+                                    <span class="sub-3 d-block pb-4">{{ 'app.totalUsers.label'|trans }}</span>
+                                    {#<i class="fas fa-caret-up text-green ml-1"></i>#}
+                                    {#<span class="data-number text-green">2.925</span>#}
+                                </div>
+                                {# <div class="card-footer bg-transparent text-center">
+                                </div> #}
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-content-wrapper">
+                            <div class="card align-items-center justify-content-center flex-column">
+                                <div class="card-header d-flex justify-content-end">
+                                </div>
+                                <div class="card-body py-3 text-center">
+                                    <span class="lead-4 d-block text-center js-counter">{{ analytics.usuariosAlcanzados|number_format('0', '', '') }}</span>
+                                    <span class="sub-3 text-uppercase d-block">{{ 'app.reached.label'|trans }}</span>
+                                    <span class="extra-info d-block">
+                                        {{ 'app.reached.of'|trans }}
+                                        <span class="js-counter">{{ analytics.totalUsers|number_format('0', '', '') }}</span>
+                                        {{ 'app.reached.totals'|trans }}
+                                    </span>
+
+                                   {#  <span class="extra-info d-block">
+                                        {{ 'app.reached.of'|trans(
+                                        {'%totalUsers%':analytics.totalUsers}
+                                        ) }}
+                                    </span> #}
+                                </div>
+                                <div class="card-footer bg-transparent text-center">
+                                    <a href="{{ url('clients_db', {'sid':sid}) }}"
+                                       class="btn-with-icon input-group w-100 shadow_left">
+                                        <span class="form-control display3 bg-white">{{ 'app.reached.download'|trans }}</span>
+                                        <div class="input-group-prepend p-2 bg-primary">
+                                            <img src="/img/icons/download_white.png" alt="download button">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-content-wrapper">
+                            <div class="card align-items-center justify-content-center flex-column">
+                                <div class="card-header d-flex justify-content-end">
+                                </div>
+                                <div class="card-body py-3 text-center">
+                                    <span class="lead-4 d-block text-center js-counter">{{ analytics.usuariosCercanos|number_format('0', '', '') }}</span>
+                                    <span class="sub-3 text-uppercase d-block">{{ 'app.near.label'|trans }}</span>
+                                </div>
+                                <div class="card-footer bg-transparent text-center">
+                                    <a href="{{ url('clients_db', {'sid':sid}) }}"
+                                       class="btn-with-icon input-group w-100 shadow_left">
+                                        <span class="form-control display3 bg-white">{{ 'app.near.download'|trans }}</span>
+                                        <div class="input-group-prepend p-2 bg-primary">
+                                            <img src="/img/icons/download_white.png" alt="download button">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-4 col-content-wrapper">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="title">{{ 'app.gender.title'|trans }}</h4>
+                                    <span class="subtitle">{{ 'app.gender.subtitle'|trans }}</span>
+                                </div>
+                                <div class="card-body w-100">
+                                    <canvas id="gender-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-content-wrapper">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="title">{{ 'app.age.title'|trans }}</h4>
+                                    <span class="subtitle">{{ 'app.age.subtitle'|trans }}</span>
+                                </div>
+                                <div class="card-body w-100 pt-1">
+                                    <canvas id="age-chart">
+
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-content-wrapper">
+                            <div class="card client-profile">
+
+                                <div class="card-body">
+
+                                    <div class="column-1">
+                                        {% if analytics.perfilCliente.edad < 20 %}
+                                            {% if analytics.perfilCliente.genero|lower == 'hombre' %}
+                                                <img src="{{ asset('img/analytics/boy.png') }}" alt="client img" class="pt-1">
+                                            {% else %}
+                                                <img src="{{ asset('img/analytics/girl.png') }}" alt="client img" class="pt-1">
+                                            {% endif %}
+                                        {% elseif analytics.perfilCliente.edad > 60 %}
+                                            {% if analytics.perfilCliente.genero|lower == 'hombre' %}
+                                                <img src="{{ asset('img/analytics/oldman.png') }}" alt="client img" class="pt-1">
+                                            {% else %}
+                                                <img src="{{ asset('img/analytics/oldwoman.png') }}" alt="client img" class="pt-1">
+                                            {% endif %}
+                                        {% else %}
+                                            {% if analytics.perfilCliente.genero|lower == 'hombre' %}
+                                                <img src="{{ asset('img/analytics/man.png') }}" alt="client img" class="pt-1">
+                                            {% else %}
+                                                <img src="{{ asset('img/analytics/woman.png') }}" alt="client img" class="pt-1">
+                                            {% endif %}
+                                        {% endif %}
+                                        <span class="number line-height-normal pt-2">{#4350#}</span>
+                                        <span class="text text-uppercase letter-spacing-xs">{{ 'app.profile.users'|trans }}</span>
+                                    </div>
+                                    <div class="column-2 pl-2">
+                                        <span class="title xs">{{ 'app.profile.title'|trans }}</span>
+                                        <span class="subtitle xs text-uppercase letter-spacing-xs">{{ 'app.profile.throwApp'|trans }}</span>
+                                        <ul class="list p-0 pt-3">
+                                            <li class="pb-2">
+                                                <span class="text1">{{ 'app.profile.gender'|trans }}:</span>
+                                                <span class="text2">{{ analytics.perfilCliente.genero }}</span>
+                                            </li>
+                                            <li class="">
+                                                <span class="text1">{{ 'app.profile.age'|trans }}:</span>
+                                                <span class="text2">{{ analytics.perfilCliente.edad }} {{ 'app.profile.years'|trans }}</span>
+                                            </li>
+                                            <li class="pt-2">
+                                                <span class="text1">{{ 'app.profile.zone'|trans }}</span>
+                                                <span class="text2">{{ analytics.perfilCliente.zona }}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                                <div class="card-footer bg-transparent text-center">
+                                    <a href="{{ url('clients_db', {'sid':sid}) }}"
+                                       class="btn-with-icon input-group w-100 shadow_left">
+                                        <span class="form-control display3 bg-white">{{ 'app.profile.download'|trans }}</span>
+                                        <div class="input-group-prepend p-2 bg-primary">
+                                            <img src="/img/icons/download_white.png" alt="download button">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-4 col-content-wrapper">
+                            <div class="card align-items-center justify-content-center flex-column">
+                                <div class="card-header d-flex justify-content-end">
+                                    <div class="dropdown js-dropdown-parent">
+                                        <button class="btn dropdown-toggle js-change-text" type="button"
+                                                id="dropdownDate" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                            {{ 'common.datedInfo.today'|trans }}
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownDate">
+                                            <a class="dropdown-item" data-display-id=".ajax-display-1"
+                                               data-target="customMessages"
+                                               data-href="{{ url('analytics_app_custom_messages', {'sid':sid,'days':1}) }}"
+                                               href="#">{{ 'common.datedInfo.today'|trans }}</a>
+                                            <a class="dropdown-item" data-display-id=".ajax-display-1"
+                                               data-target="customMessages"
+                                               data-href="{{ url('analytics_app_custom_messages', {'sid':sid,'days':3}) }}"
+                                               href="#">{{ 'common.datedInfo.last3days'|trans }}</a>
+                                            <a class="dropdown-item" data-display-id=".ajax-display-1"
+                                               data-target="customMessages"
+                                               data-href="{{ url('analytics_app_custom_messages', {'sid':sid,'days':7}) }}"
+                                               href="#">{{ 'common.datedInfo.last7days'|trans }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body py-3 text-center">
+                                    <span id="customMessages"
+                                          class="lead-4 d-block text-center ajax-display-1 js-counter">{{ analytics.mensajesPersonalizadosEnviados|integer  }}</span>
+                                    <span class="sub-3 d-block pb-4">{{ 'app.messages.label'|trans }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-4 col-content-wrapper">
+                            <div class="card align-items-center justify-content-center flex-column">
+                                <div class="card-header d-flex justify-content-end">
+                                    <div class="dropdown js-dropdown-parent">
+                                        <button class="btn dropdown-toggle js-change-text" type="button"
+                                                id="dropdownDate" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                            {{ 'common.datedInfo.today'|trans }}
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownDate">
+                                            <a class="dropdown-item" data-display-id=".ajax-display-2"
+                                               data-target="profileVisits"
+                                               data-href="{{ url('analytics_app_profile_visits', {'sid':sid,'days':1}) }}"
+                                               href="#">{{ 'common.datedInfo.today'|trans }}</a>
+                                            <a class="dropdown-item" data-display-id=".ajax-display-2"
+                                               data-target="profileVisits"
+                                               data-href="{{ url('analytics_app_profile_visits', {'sid':sid,'days':3}) }}"
+                                               href="#">{{ 'common.datedInfo.last3days'|trans }}</a>
+                                            <a class="dropdown-item" data-display-id=".ajax-display-2"
+                                               data-target="profileVisits"
+                                               data-href="{{ url('analytics_app_profile_visits', {'sid':sid,'days':7}) }}"
+                                               href="#">{{ 'common.datedInfo.last7days'|trans }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body py-3 text-center">
+                                    <span id="profileVisits"
+                                          class="lead-4 d-block text-center ajax-display-2 js-ounter">{{ analytics.visitasTuPerfil|integer  }}</span>
+                                    <span class="sub-3 d-block pb-4">{{ 'app.visits.label'|trans }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-4 col-content-wrapper">
+                            <div class="card align-items-center justify-content-center flex-column">
+                                <div class="card-header d-flex justify-content-end">
+                                    <div class="dropdown js-dropdown-parent">
+                                        <button class="btn dropdown-toggle js-change-text" type="button"
+                                                id="dropdownDate" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                            {{ 'common.datedInfo.today'|trans }}
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownDate">
+                                            <a class="dropdown-item" data-display-id=".ajax-display-3"
+                                               data-target="pushNotifications"
+                                               data-href="{{ url('analytics_app_push_notifications', {'sid':sid,'days':1}) }}"
+                                               href="#">{{ 'common.datedInfo.today'|trans }}</a>
+                                            <a class="dropdown-item" data-display-id=".ajax-display-3"
+                                               data-target="pushNotifications"
+                                               data-href="{{ url('analytics_app_push_notifications', {'sid':sid,'days':3}) }}"
+                                               href="#">{{ 'common.datedInfo.last3days'|trans }}</a>
+                                            <a class="dropdown-item" data-display-id=".ajax-display-3"
+                                               data-target="pushNotifications"
+                                               data-href="{{ url('analytics_app_push_notifications', {'sid':sid,'days':7}) }}"
+                                               href="#">{{ 'common.datedInfo.last7days'|trans }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body py-3 text-center">
+                                    <span id="pushNotifications"
+                                          class="lead-4 d-block text-center ajax-display-3 js-counter">{{ analytics.notificacionesPush|integer  }}</span>
+                                    <span class="sub-3 d-block pb-4">{{ 'app.pushes.label'|trans }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- container -->
+            </div>
+        </div>
+    </section>
+
+{% endblock analytics %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        var has_age_chart = true;
+        var has_gender_chart = true;
+        var has_hour_today_chart = false;
+        var has_hour_week_chart = false;
+        var has_content_chart = false;
+
+        var gender_chart_labels = ["{{ 'app.gender.male'|trans }}", "{{ 'app.gender.female'|trans }}"];
+        var gender_chart_data = [{{ analytics.gender.male }}, {{ analytics.gender.female }}];
+        var age_chart_labels = [{{ analytics.ages|keys|join(',')|raw }}];
+        var age_chart_data = [{{ analytics.ages|join(',') }}];
+    </script>
+
+    {{ parent() }}
+{% endblock javascripts %}

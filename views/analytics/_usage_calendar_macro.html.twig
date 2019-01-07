@@ -1,0 +1,28 @@
+{% trans_default_domain 'analytics' %}
+
+{% macro calendar(id, bestDaysOfMonth, firstDayOfMonthDate) %}
+        <div class="column-1 align-items-center">
+            <span class="text1 text-uppercase">{{ ('common.days.day_'~(firstDayOfMonthDate|date('Y-m-'~bestDaysOfMonth[0])|date('N')))|trans }}</span>
+            <span class="lead-2">{{ bestDaysOfMonth[0] }}</span>
+            <span class="text3 text-uppercase">{{ ('common.months.month_'~(firstDayOfMonthDate|date('m')))|trans }}</span>
+        </div>
+        <div class="column-2 align-items-center">
+            <ul class="items-container w-100 p-0 py-3">
+                {% set firstDayOfMonthDayOfTheWeek = (firstDayOfMonthDate|date('Y-m-1')|date('N')) %}
+                {% for day in 1-firstDayOfMonthDayOfTheWeek+1..(firstDayOfMonthDate|date('t')) %}
+                    {% if day == bestDaysOfMonth[0]|default(0) %}
+                        <li class="bg-gold text-dark">{{ day }}</li>
+                    {% elseif day == bestDaysOfMonth[1]|default(0) %}
+                        <li class="bg-secondary text-secondary"></li>
+                    {% elseif day == bestDaysOfMonth[2]|default(0) %}
+                        <li class="bg-brown text-brown"></li>
+                    {% elseif day < 1 %}
+                        <li class="bg-white"></li>
+                    {% else %}
+                        <li></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+
+{% endmacro %}

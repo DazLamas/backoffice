@@ -1,0 +1,282 @@
+//security
+.is-security-section{
+  //Landing view
+  &.home {
+    .content_container {
+      .content_wrapper {
+        width: 91.8%;
+        .header {
+          width: 70%;
+          p {
+            max-width: 68%;
+          }
+        }
+      }
+      .content {
+        min-height: 740px;
+        margin-bottom: 2rem;
+        flex-direction: row;
+        justify-content: space-between;
+        .wrapper-1 {
+          width: 71%;
+          padding: 1.7rem 1.5rem;
+          header {
+            p {
+              width: 70%;
+              display: inline-block;
+            }
+          }
+        }
+        .wrapper-2 {
+          width: 26%;
+          padding: 1.7rem 1.5rem;
+        }
+        .card-deck {
+          justify-content: space-between;
+          .card {
+            max-width: 225px;
+          }
+        }
+        .card {
+          .card-header {
+            height: 60px;
+            border-radius: 0;
+            img {
+              visibility: hidden;
+            }
+          }
+          .card-body {
+            background-color: $gray-100;
+            h4 {
+              color: $gray-800;
+            }
+            p {
+              line-height: 18px;
+            }
+            ul li {
+              padding-bottom: 0.7rem;
+            }
+            .bold-text {
+              color: #2e2e2e;
+            }
+          }
+          .card-footer {
+            background-color: $gray-100;
+          }
+
+          &.active {
+            .card-header {
+              img {
+                visibility: visible;
+              }
+            }
+            .card-body,
+            .card-footer {
+              background-color: $blue;
+              * {
+                color: $white;
+              }
+              .btn-primary {
+                background-color: $gray-100;
+                color: $blue;
+              }
+            }
+          }
+        }
+        .btn-rounded {
+          font-size: 15px;
+          font-weight: 500;
+          padding: 10px 25px;
+          border: 2px solid $blue;
+          color: $primary;
+          &:hover {
+            color: $white;
+            background-color: $primary;
+          }
+        }
+        .btn-primary {
+          width: 100%;
+          height: 100%;
+          line-height: 30px; //vertical align for text
+        }
+      }
+    }
+  }
+
+  &.categories {
+    .content_container
+    .content_wrapper
+    .content {
+      min-height: 600px; //3 rows minimun
+      height: auto;
+      margin-bottom: 2rem;
+    }
+    .items-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .square-wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 120px;
+      margin-right: 20px;
+       p{
+          text-align: center;
+          margin: 5px 0 10px 0;
+          font-size: 13px;
+          letter-spacing: .15px;
+        }
+        &:nth-child(1) .square{
+          background-image:url("/img/security/categories/porn.jpg");
+        }
+        &:nth-child(2) .square{
+          background-image:url("/img/security/categories/abortion.jpg");
+        }
+        &:nth-child(3) .square{
+          background-image:url("/img/security/categories/phishing.jpg");
+        }
+        &:nth-child(4) .square{
+          background-image:url("/img/security/categories/spyware.jpg");
+        }
+        &:nth-child(5) .square{
+          background-image:url("/img/security/categories/malware.jpg");
+        }
+        &:nth-child(6) .square{
+          background-image:url("/img/security/categories/spam.jpg");
+        }
+        &:nth-child(7) .square{
+          background-image:url("/img/security/categories/alcohol.jpg");
+        }
+        &:nth-child(8) .square{
+          background-image:url("/img/security/categories/violence.jpg");
+        }
+        &:nth-child(9) .square{
+          background-image:url("/img/security/categories/auctions.jpg");
+        }
+        &:nth-child(10) .square{
+          background-image:url("/img/security/categories/dates.png");
+        }
+        &:nth-child(11) .square{
+          background-image:url("/img/security/categories/hunting.jpg");
+        }
+        &:nth-child(12) .square{
+          background-image:url("/img/security/categories/sects.jpg");
+        }
+        &:nth-child(13) .square{
+          background-image:url("/img/security/categories/games.jpg");
+        }
+        &:nth-child(14) .square{
+          background-image:url("/img/security/categories/religion.jpg");
+        }
+      .square {
+
+        text-align: right;
+        float:left;
+        width: 120px;
+        height: 120px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        &.active {
+          .tick {
+            visibility: visible;
+          }
+        }
+        &:hover {
+          cursor: pointer;
+          opacity: .8;
+        }
+        .tick {
+          visibility: hidden;
+          margin-right: 10px;
+          margin-top: 10px;
+        }
+      }
+    }
+    .btn-primary {
+      width: 144px;
+      height: 35px;
+      align-self: flex-end;
+      margin: 40px 10px 20px 0;
+    }
+  }
+
+
+
+  &.url-block {
+    .content_container
+    .content_wrapper
+    .content {
+      min-height: 600px; //3 rows minimun
+      height: auto;
+      margin-bottom: 2rem;
+    }
+    .card-columns {
+      -webkit-column-count: 2;
+      @include media-breakpoint-down(md) {
+        -webkit-column-count: 1;
+      }
+    }
+    .logo {
+      height: 20px;
+      vertical-align: baseline;
+      margin-right: 8px;
+    }
+    .card  {
+      .subtitle {
+        font-size: 20px;
+        letter-spacing: 0.80px;
+        color: $blue;
+      }
+    }
+    .table {
+      tbody td,
+      tbody th, {
+        border-bottom: none;
+        font-size: 15px;
+        @extend .letter-spacing-md;
+      }
+      th, td {
+        padding: 0.4rem 0.75rem 0.4rem 0;
+      }
+      thead th {
+        color: $gray-600;
+        font-weight: 400;
+      }
+    }
+  }
+
+  &.filter {
+    .card{
+      &:nth-child(1){
+        .subsection-icon{
+          background-image: url('/img/icons/subsections/url.png');
+        }
+      }
+      &:nth-child(2){
+        .subsection-icon{
+          background-image: url('/img/icons/subsections/categories.png');
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

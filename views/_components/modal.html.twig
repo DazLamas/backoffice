@@ -1,0 +1,30 @@
+<div id="{% block modal_default_key %}modal-default{% endblock modal_default_key %}" class="modal fade {% block modal_default_classes %} {% endblock modal_default_classes %}" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content text-center">
+
+      <div class="modal-header text-center align-items-center">
+          {% block modal_header_icon %}
+
+        {% endblock modal_header_icon %}
+        <h2 class="modal-title letter-spacing-xs text-center">
+          {% block modal_default_header %}
+          {% endblock modal_default_header %}
+        </h2>
+
+      </div>
+
+      <div class="modal-body">
+
+          <p class="display-2 font-weight-light letter-spacing-md text-gray-700">
+            {% block modal_default_body %}{% endblock modal_default_body %}
+            </p>
+      </div>
+
+      <div class="modal-footer">
+        {% block modal_default_button %}
+        {% endblock modal_default_button %}
+      </div>
+    </div>
+  </div>
+</div>
+

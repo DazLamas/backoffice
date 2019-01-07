@@ -1,0 +1,42 @@
+{% trans_default_domain 'authentication' %}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="main_container is-login-section">
+
+    <form action="{{ path('login') }}" method="post" class="form-layout">
+
+        <img src="../img/logo.png" alt="netspot logo" class="logo-layout">
+
+
+        <div class="form-group w-100">
+            <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'login.form.username.placeholder'|trans }}" class="form-control mb-3 w-100"/>
+
+            <input type="password" id="password" name="_password" placeholder="{{ 'login.form.password.placeholder'|trans }}" class="form-control mb-3 w-100" />
+
+            {% if error %}
+                <div class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg w-100 letter-spacing-xs">{{ 'login.submit'|trans }}</button>
+
+        {# <a href="#" class="display-3 font-weight-medium text-gray-800 text1">He olvidado mi contraseña</a> #}
+
+        <span class="font-weight-medium text-gray-900 letter-spacing-xs font-italic text2">{{ 'login.register.title'|trans }}</span>
+
+        <a href="https://www.netspotofficial.com/" class="btn btn-primary font-weight-medium btn-lg w-100 letter-spacing-xs">{{ 'login.register.submit'|trans }}</a>
+
+        {#
+            If you want to control the URL the user
+            is redirected to on success (more details below)
+            <input type="hidden" name="_target_path" value="/account" />
+        #}
+
+        {#<input type="hidden" name="_ns_csrf"#}
+               {#value="{{ csrf_token('authenticate') }}"#}
+        {#>#}
+
+    </form>
+</div>
+{% endblock body %}

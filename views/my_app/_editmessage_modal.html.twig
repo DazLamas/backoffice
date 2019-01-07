@@ -1,0 +1,18 @@
+{% trans_default_domain 'my_app' %}
+<div id="edit-message" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content px-4 py-3">
+            <div class="modal-header align-items-start px-0 mb-1">
+                <h2 class="modal-title letter-spacing-xs my-1">{{ 'editCustomMessage.title'|trans }}</h2>
+                <p class="display-2 leter-spacing-xs font-weight-light text-gray-700">{{ 'editCustomMessage.subtitle'|trans }}</p>
+            </div>
+            <div id="ajaxContainer">
+              <div id="ajaxContainer">
+                <div class="w-100 total-center py-8">
+                  <i class="fas fa-spinner fa-pulse fa-4x"></i>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

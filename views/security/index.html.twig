@@ -1,0 +1,191 @@
+{% set main_container_section = 'subsection-layout is-security-section home' %}
+{% trans_default_domain 'security' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('index.meta.title')|trans }}{% endblock %}
+
+{% block modals %}
+    {% embed '_components/modal.html.twig' %}
+        {% block modal_default_classes %}
+            modal-insert-url
+        {% endblock modal_default_classes %}
+        {% block modal_header_icon %}
+            <img src="{{ asset('img/icons/modal_error_icon.png') }}" alt="error icon" class="height extra-lg mb-3">
+        {% endblock modal_header_icon %}
+        {% block modal_default_header %}¿Estás seguro de que quieres desactivar la seguridad?{% endblock modal_default_header %}
+
+        {% block modal_default_body %}Tu red Wi-Fi estará más desprotegida y el contenido para usuarios totalmente libre{% endblock modal_default_body %}
+
+        {% block modal_default_button %}<a role="button" href="#" class="btn btn-outline-primary btn-standard">Desactivar</a>{% endblock modal_default_button %}
+
+    {% endembed %}
+{% endblock %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'security' %}
+        {% block breadcrumbs_outer %}{# hide breadcrumbs on index page #}{% endblock breadcrumbs_outer %}
+        {% block title %}{{ 'index.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'index.header.description'|trans }}{% endblock description %}
+        {% block actions %}
+            {#<button class="btn btn-primary btn-lg letter-spacing-xs font-weight-medium bg-white border-0 text-primary">#}
+              {#<img src="{{ asset('img/icons/new_item.png') }}" alt="new item" class="height xs align-bottom mr-2">#}
+              {#Crear custom#}
+            {#</button>#}
+        {% endblock actions %}
+    {% endembed %}
+
+    <section class="content p-0">
+
+        <div class="wrapper-1 bg-white">
+            <header class="mb-3">
+                <h3>{{ 'index.security.title'|trans }}</h3>
+                <p>{{ 'index.security.subtitle'|trans }}</p>
+            </header>
+
+            <div class="card-deck">
+
+            {% if config.secure_plan.basic == 'enabled' %}
+                <div class="card active">
+            {% else %}
+                <div class="card">
+            {% endif %}
+                    <div class="card-header bg-green-100">
+                        <img src="{{ asset('img/icons/tick_blue_solid.png') }}" alt="" class="height sm float-right">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="mb-4 mt-2">{{ 'index.security.basic.title'|trans }}</h4>
+                        <p class="display-4 letter-spacing-xs font-weight-normal mb-4">{{ 'index.security.basic.description'|trans }}</p>
+                        <ul class="pl-0 display-4 font-weight-medium">
+                            <li class="pb-2">- {{ 'index.security.basic.feature1'|trans }}</li>
+                            <li class="pb-2">- {{ 'index.security.basic.feature2'|trans }}</li>
+                            <li class="pb-2">- {{ 'index.security.basic.feature3'|trans }}</li>
+                            <li class="pb-2">- {{ 'index.security.basic.feature4'|trans }}</li>
+                            <li class="pb-2">- {{ 'index.security.basic.feature5'|trans }}</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        {% if config.secure_plan.basic == 'enabled' %}
+                            <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_update_security', {'sid':sid, 'plan':'basic', 'disable':1}) }}">
+                                {{ 'index.security.disable'|trans }}
+                            </button>
+                        {% else %}
+                            <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_update_security', {'sid':sid, 'plan':'basic'}) }}">
+                                {{ 'index.security.enable'|trans }}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            {% if config.secure_plan.normal == 'enabled' %}
+                <div class="card active">
+            {% else %}
+                <div class="card">
+            {% endif %}
+                    <div class="card-header bg-orange-200">
+                        <img src="{{ asset('img/icons/tick_blue_solid.png') }}" alt="" class="height sm float-right">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="mb-4 mt-2">{{ 'index.security.normal.title'|trans }}</h4>
+                        <p class="display-4 letter-spacing-xs font-weight-normal mb-4">{{ 'index.security.normal.description'|trans }}</p>
+                        <ul class="pl-0 display-4 font-weight-medium">
+                            <li class="pb-2">- {{ 'index.security.normal.feature1'|trans }}</li>
+                            <li class="pb-2">- {{ 'index.security.normal.feature2'|trans }}</li>
+                            <li class="pb-2">- {{ 'index.security.normal.feature3'|trans }}</li>
+                            <li class="pb-2">- {{ 'index.security.normal.feature4'|trans }}</li>
+                            <li class="pb-2">- {{ 'index.security.normal.feature5'|trans }}</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        {% if config.secure_plan.normal == 'enabled' %}
+
+                            <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_update_security', {'sid':sid, 'plan':'normal', 'disable':1}) }}">
+                                {{ 'index.security.disable'|trans }}
+                            </button>
+
+                        {% else %}
+                            <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_update_security', {'sid':sid, 'plan':'normal'}) }}">
+                                {{ 'index.security.enable'|trans }}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            {% if config.secure_plan.extra == 'enabled' %}
+                <div class="card active">
+            {% else %}
+                <div class="card">
+            {% endif %}
+                    <div class="card-header bg-red-100">
+                        <img src="{{ asset('img/icons/tick_blue_solid.png') }}" alt="" class="height sm float-right">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="mb-4 mt-2">{{ 'index.security.extra.title'|trans }}</h4>
+                        <p class="display-4 letter-spacing-xs font-weight-normal mb-4">{{ 'index.security.extra.description'|trans }}</p>
+                        <ul class="pl-0 display-4 font-weight-medium">
+                            <li class="pb-2">- {{ 'index.security.extra.feature1'|trans }}</li>
+                            <li class="pb-2">- {{ 'index.security.extra.feature2'|trans }}</li>
+                            <li class="pb-2">- {{ 'index.security.extra.feature3'|trans }}</li>
+                            <li class="pb-2">- {{ 'index.security.extra.feature4'|trans }}</li>
+                            <li class="pb-2">- {{ 'index.security.extra.feature5'|trans }}</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        {% if config.secure_plan.extra == 'enabled' %}
+                            <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_update_security', {'sid':sid, 'plan':'extra', 'disable':1}) }}">
+                                {{ 'index.security.disable'|trans }}
+                            </button>
+                        {% else %}
+                            <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_update_security', {'sid':sid, 'plan':'extra'}) }}">
+                                {{ 'index.security.enable'|trans }}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+            <div class="w-100 text-center mt-5 pt-1">
+                <a href="{{ url('security_filter') }}" class="btn btn-rounded">{{ 'index.security.filter.link'|trans }}</a>
+            </div>
+        </div>
+        <div class="wrapper-2 bg-white">
+            <header>
+                <h3>{{ 'index.adBlock.title'|trans }}</h3>
+                <p>{{ 'index.adBlock.subtitle'|trans }}</p>
+            </header>
+
+        {% if config.adblock == 'enabled' %}
+            <div class="card active">
+        {% else %}
+            <div class="card">
+        {% endif %}
+                <div class="card-header bg-blue-200">
+                    <img src="{{ asset('img/icons/tick_blue_solid.png') }}" alt="" class="height sm float-right">
+                </div>
+                <div class="card-body">
+                    <h4 class="mb-4 mt-2">{{ 'index.adBlock.plan.title'|trans }}</h4>
+                    <p class="display-4 letter-spacing-xs font-weight-normal mb-4">
+                        {{ 'index.adBlock.plan.description'|trans|raw }}
+                    </p>
+                    <ul class="pl-0 display-4 font-weight-medium">
+                        <li class="pb-2">- {{ 'index.adBlock.plan.feature1'|trans }}</li>
+                        <li class="pb-2">- {{ 'index.adBlock.plan.feature2'|trans }}</li>
+                        <li class="pb-2">- {{ 'index.adBlock.plan.feature3'|trans }}</li>
+                        <li class="pb-2">- {{ 'index.adBlock.plan.feature4'|trans }}</li>
+                        <li class="pb-2">- {{ 'index.adBlock.plan.feature5'|trans }}</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    {% if config.adblock == 'enabled' %}
+                        <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_adblock_disable', {'sid':sid}) }}">
+                            {{ 'index.adBlock.disable'|trans }}
+                        </button>
+                    {% else %}
+                        <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_adblock_enable', {'sid':sid}) }}">{{ 'index.adBlock.enable'|trans }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

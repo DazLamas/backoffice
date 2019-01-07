@@ -1,0 +1,63 @@
+/* Login */
+.is-login-section {
+  background-image: url("../img/madrid.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .form-layout {
+    padding: 1.5rem 3.4rem;
+    background-color: rgba(247, 247, 247, 0.9); //gray-100
+    width: 370px;
+    height: auto;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .logo-layout {
+      height: 60px;
+      margin-top: 15px;
+      margin-bottom: 35px;
+    }
+    .btn-lg {
+      font-size: 1rem;
+    }
+    .text1 {
+      font-size: 13px;
+      margin: 12px 0 0 0;
+      color: #4f4f4f;
+    }
+    .text2 {
+      font-size: 20px;
+      margin: 40px 0 8px 0;
+      color: #424242;
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: $gray-400;
+      font-size:12px;
+      line-height: 22px;
+      vertical-align: bottom;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+      color: $gray-400;
+      font-size:12px;
+      line-height: 22px;
+      vertical-align: bottom;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+      color: $gray-400;
+      font-size:12px;
+      line-height: 22px;
+      vertical-align: bottom;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+      color: $gray-400;
+      font-size:12px;
+      line-height: 22px;
+      vertical-align: bottom;
+    }
+  }
+}

@@ -1,0 +1,205 @@
+{% trans_default_domain 'analytics' %}
+{% extends 'analytics/common.html.twig' %}
+
+{% block title %}{{ ('usage.meta.title')|trans }}{% endblock %}
+
+{% block javascripts %}
+  <script type="text/javascript">
+
+
+    var has_age_chart         = false;
+    var has_gender_chart      = false;
+    var has_hour_today_chart  = true;
+    var has_hour_week_chart   = true;
+    var has_content_chart     = true;
+
+    //Today Best Hours
+    var hour_today_chart_labels = ["9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20","21","22"];
+    var hour_today_chart_data = [{{ analytics.betterHour|join(',') }}];
+
+    //Week Best Hours
+    var hour_week_chart_labels = ["9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20","21","22"];
+    var hour_week_chart_data = [{{ analytics.betterHour7Days|join(',') }}]
+
+    //Content
+    var content_chart_labels = [{% for contentKey,value in analytics.historial %}"{{ contentKey }}",{% endfor %}];
+    var content_chart_data = [{{ analytics.historial|join(',') }}];
+
+  </script>
+
+  {{ parent() }}
+
+{% endblock javascripts %}
+
+{% import 'analytics/_usage_calendar_macro.html.twig' as utils %}
+
+{% block analytics %}
+ <section>
+    <div class="tab-content">
+
+      <div class="tab-pane grid-cont show active" role="tabpanel">
+
+        <div class="container">
+
+          <div class="row">
+            <div class="col-6 col-content-wrapper">
+              <div class="card w-100">
+                <div class="card-header">
+                  <h4 class="title xs d-flex justify-content-between">
+                    <span>{{ 'usage.betterHour.label'|trans }}</span>
+                    <span class="text-uppercase text-primary font-weight-normal">{{ 'usage.betterHour.today'|trans }}</span>
+                  </h4>
+                </div>
+                <div class="card-body w-100">
+                  <canvas id="hour-today-chart" class="py-3">
+
+                  </canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-content-wrapper">
+              <div class="card w-100">
+                <div class="card-header">
+                  <h4 class="title xs d-flex justify-content-between">
+                    <span>{{ 'usage.betterHour7days.label'|trans }}</span>
+                    <span class="text-uppercase text-primary font-weight-normal">{{ 'usage.betterHour7days.last7days'|trans }}</span>
+                  </h4>
+                </div>
+                <div class="card-body w-100">
+                  <canvas id="hour-week-chart" class="py-3">
+
+                  </canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6 col-content-wrapper">
+              <div class="card calendar">
+                <div class="card-header d-flex justify-content-between">
+                  <h4 class="title">{{ 'usage.monthBestDay.label'|trans }}</h4>
+                  <div class="dropdown js-dropdown-parent">
+                    <button class="btn dropdown-toggle js-change-text" type="button" id="dropdownDate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ ('common.months.month_'~('now'|date('m')))|trans }}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownDate">
+                      <a class="dropdown-item" data-display-id="#calendarContainer" data-href="{{ url('analytics_usage_best_last_months_days', {'sid':sid,'month':1}) }}" href="#">{{ ('common.months.month_'~('now'|date('m')))|trans }}</a>
+                      <a class="dropdown-item" data-display-id="#calendarContainer" data-href="{{ url('analytics_usage_best_last_months_days', {'sid':sid,'month':2}) }}" href="#">{{ ('common.months.month_'~(lastMonth()|date('m')))|trans }}</a>
+                      <a class="dropdown-item" data-display-id="#calendarContainer" data-href="{{ url('analytics_usage_best_last_months_days', {'sid':sid,'month':3}) }}" href="#">{{ ('common.months.month_'~(last2Months()|date('m')))|trans }}</a>
+                    </div>
+                  </div>
+                </div>
+                <div id="calendarContainer" class="card-body align-items-center">
+                  {{ utils.calendar('', analytics.mejorDiaMes, 'now'|date('Y-m-'~analytics.mejorDiaMes[0])) }}
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-3 col-content-wrapper">
+              <div class="card align-items-center justify-content-center flex-column">
+                <div class="card-header d-flex justify-content-end">
+                  <div class="dropdown js-dropdown-parent">
+                    <button class="btn dropdown-toggle js-change-text" type="button" id="dropdownDate" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
+                        {{ ('common.months.month_'~('now'|date('m')))|trans }}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownDate">
+                      <a class="dropdown-item" data-display-id="#monthAverageTime" data-href="{{ url('analytics_usage_last_months_time_average', {'sid':sid,'month':1}) }}" href="#">{{ ('common.months.month_'~('now'|date('m')))|trans }}</a>
+                      <a class="dropdown-item" data-display-id="#monthAverageTime" data-href="{{ url('analytics_usage_last_months_time_average', {'sid':sid,'month':2}) }}" href="#">{{ ('common.months.month_'~(lastMonth()|date('m')))|trans }}</a>
+                      <a class="dropdown-item" data-display-id="#monthAverageTime" data-href="{{ url('analytics_usage_last_months_time_average', {'sid':sid,'month':3}) }}" href="#">{{ ('common.months.month_'~(last2Months()|date('m')))|trans }}</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body pt-4 text-center">
+                  <span class="lead-4 d-block text-center line-height-m mb-1 js-counter" id="monthAverageTime">{{ (analytics.averageTime/60000)|integer }}</span>
+                  <span class="lead-6 d-block text-center line-height-s">{{ 'usage.timeAverage.label'|trans }}</span>
+                  <span class="sub-3 d-block pb-0 pt-4">{{ 'usage.timeAverage.sublabel'|trans }}</span>
+                </div>
+                {#<div class="card-footer bg-transparent">#}
+                  {#<i class="fas fa-caret-down text-red ml-1"></i>#}
+                  {#<span class="data-number text-red">15</span>#}
+                {#</div>#}
+              </div>
+            </div>
+            <div class="col-3 col-content-wrapper">
+              <div class="card align-items-center justify-content-center flex-column">
+                <div class="card-header d-flex justify-content-end">
+                  <div class="dropdown js-dropdown-parent">
+                    <button class="btn dropdown-toggle js-change-text" type="button" id="dropdownDate" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
+                        {{ ('common.months.month_'~('now'|date('m')))|trans }}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownDate">
+                      <a class="dropdown-item" data-display-id="#monthAverageBandwidth" data-href="{{ url('analytics_usage_last_months_bandwidth_average', {'sid':sid,'month':1}) }}" href="#">{{ ('common.months.month_'~('now'|date('m')))|trans }}</a>
+                      <a class="dropdown-item" data-display-id="#monthAverageBandwidth" data-href="{{ url('analytics_usage_last_months_bandwidth_average', {'sid':sid,'month':2}) }}" href="#">{{ ('common.months.month_'~(lastMonth()|date('m')))|trans }}</a>
+                      <a class="dropdown-item" data-display-id="#monthAverageBandwidth" data-href="{{ url('analytics_usage_last_months_bandwidth_average', {'sid':sid,'month':3}) }}" href="#">{{ ('common.months.month_'~(last2Months()|date('m')))|trans }}</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body pt-4 text-center">
+                  <span class="lead-4 d-block text-center line-height-m mb-1 js-counter" id="monthAverageBandwidth">{{ analytics.averageBandWidth|integer }}</span>
+                  <span class="lead-6 d-block text-center line-height-s">{{ 'usage.bandwidthAverage.label'|trans }}</span>
+                  <span class="sub-3 d-block pb-0 pt-4">{{ 'usage.bandwidthAverage.sublabel'|trans }}</span>
+                </div>
+                {#<div class="card-footer bg-transparent">#}
+                    {#<i class="fas fa-caret-down text-red ml-1"></i>#}
+                    {#<span class="data-number text-red">22 {{ 'usage.bandwidthAverage.label'|trans }}</span>#}
+                {#</div>#}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6 col-content-wrapper">
+              <div class="card card-with-header">
+                <div class="card-header">
+                  <h4 class="title">{{ 'general.devices.title'|trans }}</h4>
+                  <span class="subtitle">{{ 'general.devices.subtitle'|trans }}</span>
+                </div>
+                <div class="card-body container">
+                  <ul class="row px-3 py-5">
+                    <li class="col-4 d-inline">
+                      <img src="{{ asset('img/icons/Desktop@3x.png') }}" alt="desktop icon" class="mx-auto d-block height extra-lg">
+                      <span class="lead-5 text-center  pt-3 d-block">
+                        <span class="js-counter">{{ (analytics.dispositivos.pc*100/analytics.dispositivos.total)|default(0)|round(0) }}</span>%
+                      </span>
+                    </li>
+                    <li class="col-4 d-inline">
+                      <img src="{{ asset('img/icons/Ipad@3x.png') }}" alt="tablet icon" class="mx-auto d-block height extra-lg">
+                      <span class="lead-5 text-center  pt-3 d-block">
+                        <span class="js-counter">{{ (analytics.dispositivos.android*100/analytics.dispositivos.total)|default(0)|round(0) }}</span>%
+                      </span>
+                    </li>
+                    <li class="col-4 d-inline">
+                      <img src="{{ asset('img/icons/Movil@3x.png') }}" alt="mobile icon" class="mx-auto d-block height extra-lg">
+                      <span class="lead-5 text-center pt-3  d-block">
+                        <span class="js-counter">{{ (analytics.dispositivos.iOS*100/analytics.dispositivos.total)|default(0)|round(0) }}</span>%
+                      </span>
+                    </li>
+                  </ul>
+                  <div class="w-100 d-flex justify-content-center">
+                    <a href="{{ url('dashboard_index', {'sid':sid}) }}" role="button"
+                       class="btn shadow_bottom border-0 text-primary btn-standard px-4 mb-3 display-3">{{ 'general.devices.view'|trans }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-content-wrapper">
+              <div class="card card-with-header">
+                <div class="card-header">
+                  <h4 class="title">{{ 'general.content.title'|trans }}</h4>
+                  <span class="subtitle">{{ 'general.content.subtitle'|trans }}</span>
+                </div>
+                <div class="card-body">
+                  <canvas id="content-chart" class="py-4 pie-layout">
+                  </canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- container -->
+      </div>
+    </div>
+  </section>
+
+{% endblock analytics %}

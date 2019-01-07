@@ -1,0 +1,121 @@
+{% set main_container_section = 'subsection-layout is-security-section url-block' %}
+{% trans_default_domain 'security' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('blocker.meta.title')|trans }}{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        var blockUrlSubmit = document.getElementById('blockUrlSubmit');
+        var blockUrl = document.getElementById('blockUrl');
+
+        blockUrlSubmit.onclick = function(event) {
+            if (blockUrl.value) {
+                location.href = '{{ url('security_filter_block_url', {'sid':sid}) }}&blockUrl='+encodeURI(blockUrl.value);
+            }
+        };
+    </script>
+{% endblock javascripts %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'security' %}
+        {% block breadcrumbs %}
+            <li class="breadcrumb-item"><a href="{{ url('security_index', {'sid':sid}) }}">{{ 'index.breadcrumb'|trans }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('security_filter', {'sid':sid}) }}">{{ 'filter.breadcrumb'|trans }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('security_filter_blocker', {'sid':sid}) }}">{{ 'blocker.breadcrumb'|trans }}</a></li>
+        {% endblock breadcrumbs %}
+        {% block title %}{{ 'blocker.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'blocker.header.description'|trans }}{% endblock description %}
+    {% endembed %}
+
+    <section class="content p-0">
+        <div class="card-columns">
+
+            <div class="card py-2 px-2 mb-3">
+                <div class="card-body mb-5">
+                    <h3>{{ 'blocker.urls_form.title'|trans }}</h3>
+                    <p>{{ 'blocker.urls_form.description'|trans }}</p>
+                    <div class="input-group mb-3">
+                        <input id="blockUrl" type="text" class="form-control" placeholder="{{ 'blocker.urls_form.fields.blockUrl.placeholder'|trans }}" aria-label="{{ 'blocker.urls_form.fields.blockUrl.placeholder'|trans }}">
+                        <div class="input-group-append align-items-center" id="blockUrlSubmit">
+                            <img src="{{ asset('img/icons/new_item.png') }}" alt="new item" class="pointer height xs ml-4">
+                        </div>
+                    </div>
+                    <h4 class="subtitle font-weight-normal mt-5">{{ 'blocker.blocked.title'|trans }}</h4>
+                    <p>{{ 'blocker.blocked.description'|trans }}</p>
+                    <table class="table">
+
+                        <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col text-uppercase">{{ 'blocker.blocked.url.header'|trans }}</th>
+                            {#<th scope="col" class="text-center">Fecha</th>#}
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        {% for blockedUrl in blockedUrls.blocklist %}
+                        <tr>
+                            <th scope="row" class="text-left">
+                                <a href="{{ url('security_filter_unblock_url', {'sid':sid, 'unblockUrl':blockedUrl}) }}">
+                                    <img src="{{ asset('img/icons/remove_icon.png') }}" alt="remove item" class="height xxs align-text-top pointer">
+                                </a>
+                            </th>
+                            <td>
+                                <span>{{ blockedUrl }}</span>
+                            </td>
+                            {#<td class="text-center">#}
+                                {#<span>10/02/18</span>#}
+                            {#</td>#}
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="card py-2 px-2 mb-0">
+                <div class="card-body">
+                    <header>
+                        <img src="{{ asset('img/icons/netspot_logo_picto.png') }}" alt="Netspot Logo" class="logo d-inline">
+                        <h4 class="subtitle d-inline font-weight-normal mb-3" class="text-primary d-inline">
+                            {{ 'blocker.recommended.title'|trans }}
+                        </h4>
+                    </header>
+                    <p>{{ 'blocker.recommended.description'|trans }}</p>
+                    <table class="table">
+
+                        <thead>
+                        <tr>
+                            <th scope="col text-left"></th>
+                            <th scope="col" class="text-right"></th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        {% for url in blockedUrls.recomendation %}
+                        <tr>
+                            <td>
+                                <span class="text-left">{{ url }}</span>
+                            </td>
+                            <th scope="row" class="text-right">
+                                <a href="{{ url('security_filter_block_url', {'sid':sid, 'blockUrl':url}) }}">
+                                <img src="{{ asset('img/icons/new_item.png') }}" alt="remove item" class="height xxs align-text-top pointer">
+                                </a>
+                            </th>
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

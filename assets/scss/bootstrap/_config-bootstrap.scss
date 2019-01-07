@@ -1,0 +1,7 @@
+/* config-bootstrap.scss */
+// Load Bootstrap Core and Custom variables @see: https://getbootstrap.com/docs/4.0/getting-started/theming/
+
+//Import bootstrap
+@import "bootstrap-variables-extend";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "bootstrap-components-extend";

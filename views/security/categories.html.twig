@@ -1,0 +1,48 @@
+{% set main_container_section = 'subsection-layout is-security-section categories' %}
+{% trans_default_domain 'security' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('categories.meta.title')|trans }}{% endblock %}
+
+{% block security_category_row %}
+    {{ form_widget(form) }}
+{% endblock security_category_row %}
+
+{% block security_category_widget %}
+    <div class="square-wrapper">
+        <label for="{{ form.vars.id }}" class="square bg-light toggle-class-js {{ form.vars.data ? 'active' }}" data-js-toggleclass="active">
+            <img src="{{ asset('img/icons/tick_blue_solid.png') }}" alt="checked" class="height xxs tick">
+        </label>
+        {{ form_widget(form, {'attr': {'class':'invisible'}}) }}
+        <p>{{ form.vars.label }}</p>
+    </div>
+{% endblock security_category_widget %}
+
+{% block security_category_label %}{# nothing #}{% endblock security_category_label %}
+
+{% form_theme form _self %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'security' %}
+        {% block breadcrumbs %}
+            <li class="breadcrumb-item"><a href="{{ url('security_index', {'sid':sid}) }}">{{ 'index.breadcrumb'|trans }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('security_filter', {'sid':sid}) }}">{{ 'filter.breadcrumb'|trans }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('security_filter_categories', {'sid':sid}) }}">{{ 'categories.breadcrumb'|trans }}</a></li>
+        {% endblock breadcrumbs %}
+        {% block title %}{{ 'categories.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'categories.header.description'|trans }}{% endblock description %}
+    {% endembed %}
+
+    {{ form_start(form, {'attr':{'class':'content bg-white'}}) }}
+        <header class="mb-3">
+            <h3>{{ 'categories.form.title'|trans }}</h3>
+            <p>{{ 'categories.form.description'|trans }}</p>
+        </header>
+
+        {{ form_widget(form, {'attr': {'class':'items-container w-100'}}) }}
+
+        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">{{ 'categories.form.submit'|trans }}</button>
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% trans_default_domain 'exception' %}
+
+{% extends 'base.html.twig' %}
+
+{% block extraHeaders %}
+    {{ parent() }}
+    <meta name="robots" content="noindex,nofollow" />
+{% endblock %}
+
+{% block body %}
+
+    <section class="main_container is-error-page"></section>
+
+{% endblock %}

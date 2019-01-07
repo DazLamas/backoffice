@@ -1,0 +1,74 @@
+//Promos view
+
+.is-promos-section {
+  .content_container {
+    overflow: scroll;
+    .header {
+      height: 23%;
+    }
+    .content {
+      width: 100%;
+      min-height: 800px;
+      height: 77%;
+    }
+  }
+  .coming-soon {
+    line-height: 70px;
+    font-size: 28px;
+  }
+  .card-deck {
+    width: 81%;
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+    }
+    .card {
+      width: 33%;
+      min-width: 180px;
+      height: auto;
+      justify-content: flex-start;
+      .card-header {
+        width: 100%;
+        text-align: right;
+      }
+      .card-body {
+        padding: 0 1.7rem 1rem 1.7rem;
+        .card-title {
+          font-size: 20px;
+          margin-bottom: 1rem;
+        }
+        .card-text {
+          margin-bottom: 1rem;
+        }
+        .card-propities {
+          color: $gray-800;
+          font-size: 14px;
+          line-height: 14px;
+        }
+      }
+      .btn{
+        color: $secondary;
+        background-color: transparent;
+        background-image: none;
+        border-color: $secondary;
+        opacity: 0.5;
+        cursor: initial;
+        .fa-check {
+          display: none;
+        }
+        &.active {
+          @extend .btn-primary;
+          opacity: 1;
+          .fa-check {
+            display: inline-block;
+          }
+        }
+      }
+
+      &.inactive {
+        .card-propities {
+          color: $gray-400;
+        }
+      }
+    }
+  }
+}

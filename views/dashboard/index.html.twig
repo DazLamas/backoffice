@@ -1,0 +1,145 @@
+{% set main_container_section = 'subsection-layout is-dashboard-section' %}
+{% set animation_data = 'has_list' %}
+{% trans_default_domain 'dashboard' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('index.meta.title')|trans }}{% endblock %}
+
+{% block modals %}
+    {% include 'dashboard/_push_message_modal.html.twig' %}
+     {% embed '_components/modal.html.twig' %}
+         {% trans_default_domain 'dashboard' %}
+        {% block modal_default_key %}modal-block{% endblock modal_default_key %}
+        {% block modal_default_classes %}modal-insert-url{% endblock modal_default_classes %}
+        {% block modal_header_icon %}
+            <img src="{{ asset('img/icons/modal_error_icon.png') }}" alt="error icon" class="height extra-lg mb-3">
+        {% endblock modal_header_icon %}
+        {% block modal_default_header %}{{ 'index.modals.blockUser.header'|trans }}{% endblock modal_default_header %}
+        {% block modal_default_body %}{{ 'index.modals.blockUser.body'|trans }}{% endblock modal_default_body %}
+        {% block modal_default_button %}<a role="button" href="#" class="btn btn-red btn-standard">{{ 'index.modals.blockUser.button'|trans }}</a>{% endblock modal_default_button %}
+    {% endembed %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/ajax-calls.js') }}"></script>
+{% endblock javascripts %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'dashboard' %}
+        {% block breadcrumbs_outer %}{# hide breadcrumbs on index page #}{% endblock breadcrumbs_outer %}
+        {% block title %}{{ 'index.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'index.header.description'|trans }}{% endblock description %}
+        {% block actions %}
+            <button type="button" class="btn btn-lg font-weight-medium btn-primary float-right" data-toggle="modal"
+                    data-target="#modal-push" data-href="{{ url('dashboard_send_push_ajax', {'sid':sid}) }}">
+                {{ 'index.actions.sendPush'|trans }}
+            </button>
+        {% endblock actions %}
+    {% endembed %}
+
+    <section class="content bg-white">
+        <header class="header">
+            <h6 class="text-dark">{{ 'index.connected.title'|trans }}</h6>
+        </header>
+        <div class="table-wrapper listAnimationCont {% if not currentConnections|length %} empty {% endif %} overflow-scroll">
+            {% if currentConnections|length %}
+            <table class="table">
+                <thead>
+                <tr class="listAnimationItem">
+                    <th scope="col"></th>
+                    <th scope="col">{{ 'index.connected.name.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'index.connected.country.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'index.connected.os.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'index.connected.date.header'|trans }}</th>
+                    <th scope="col">{{ 'index.connected.time.header'|trans }}</th>
+                    <th scope="col">{{ 'index.connected.bandwidth.header'|trans }}</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for connection in currentConnections %}
+                <tr class="listAnimationItem">
+                    <th class="text-left">
+                        <div style="background-image: url({{ connection.imageurl and connection.imageurl != 'NULL' ? connection.imageurl : asset('img/profile0.png') }})" class="rounded-img"></div>
+                    </th>
+                    <td class="font-weight-light">{{ connection.name }}</td>
+                    <td class="text-center">
+                        <img src="{{ asset('img/icons/countries/'~connection.country|country_code~'.svg') }}" alt="country" class="flag"></td>
+                    <td class="text-center">
+                        <img src="{{ asset('img/icons/'~connection.system|lower~'.png') }}" alt="os" class="os"></td>
+                    <td class="text-center">-</td>
+                    <td>{{ connection.timestamp_init|timestampAgo }}</td>
+                    <td class="font-weight-light"><span class="js-counter">{{ connection.bandwidth|round }}</span>mb/s</td>
+                    <td>
+                        <button data-url="{{ url('dashboard_block_user', {'sid':sid,'mac':connection.mac}) }}"
+                                class="btn btn-outline-red btn-xs" data-toggle="modal" data-target="#modal-block">{{ 'index.connected.actions.blockUser'|trans }}</button>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+            {% else %}
+                <div class="w-100 h-100">
+                    <span class="gray-400 display-3 font-weight-normal ">No hay nadie conectado a tu red Wi-fi ahora...</span>
+                </div>
+            {% endif %}
+        </div>
+
+        <header class="header mt-4">
+            <h6 class="text-dark">{{ 'index.recent.title'|trans }}</h6>
+        </header>
+        <div class="table-wrapper listAnimationCont {% if not recentConnections|length %} empty {% endif %} overflow-scroll">
+            {% if recentConnections|length %}
+            <table class="table">
+                <thead>
+                <tr class="listAnimationItem">
+                    <th scope="col"></th>
+                    <th scope="col">{{ 'index.recent.name.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'index.recent.country.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'index.recent.os.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'index.recent.date.header'|trans }}</th>
+                    <th scope="col">{{ 'index.recent.time.header'|trans }}</th>
+                    <th scope="col">{{ 'index.recent.bandwidth.header'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for connection in recentConnections|reverse %}
+                <tr class="listAnimationItem">
+                    <th class="text-left">
+                        <div style="background-image: url({{ connection.imageurl and connection.imageurl != 'NULL' ? connection.imageurl : asset('img/profile0.png') }})" class="rounded-img"></div>
+                    </th>
+                    <td class="font-weight-light">{{ connection.name }}</td>
+                    <td class="text-center">
+                        <img src="{{ asset('img/icons/countries/'~connection.country|country_code~'.svg') }}" alt="country" class="flag"></td>
+                    <td class="text-center">
+                        <img src="{{ asset('img/icons/'~connection.system|lower~'.png') }}" alt="os" class="os"></td>
+                    <td class="text-center">{{ ((connection.timestamp_init/1000)|round)|date('d/m/y') }}</td>
+                    <td>
+                        {{ (connection.timestamp_init/1000)|timestampAgo(connection.timestamp_now/1000) }}
+                    </td>
+                    <td class="font-weight-light">
+                        <span class="js-counter">{{ connection.bandwidth|round }}</span> mb/s
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <div class="w-100 h-100">
+                    <span class="gray-400 display-3 font-weight-normal ">{{ 'index.noitems'|trans }}</span>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+{% endblock content %}
+
+
+
+
+

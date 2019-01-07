@@ -1,0 +1,103 @@
+/* utilities.scss */
+
+.shadow_left {
+  -webkit-box-shadow: -2px 3.8px 3px 0.5px #ced4da;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    -2px 3.8px 3px 0.5px #ced4da;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         -2px 3.8px 3px 0.5px #ced4da;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+.shadow_right {
+  -webkit-box-shadow: 0px 2.8px 4px 1.5px #ced4da;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0px 2.8px 4px 1.5px #ced4da;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0px 2.8px 4px 1.5px #ced4da;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+.shadow_bottom {
+  -webkit-box-shadow: 0px 2px 6px 0.5px #ced4da;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0px 2px 6px 0.5px #ced4da;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0px 2px 6px 0.5px #ced4da;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+.total-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-gray-400 {
+  color: $gray-400;
+}
+.smaller {
+  font-size: 60%;
+}
+.muted {
+  opacity: 0.5;
+}
+
+.font-weight-bolder {
+  font-weight: $font-weight-bolder;
+}
+.font-weight-medium {
+  font-weight: $font-weight-medium;
+}
+
+.line-height-s {
+  line-height: 20px;
+}
+.line-height-m {
+  line-height: normal;
+}
+
+.letter-spacing-s{
+  letter-spacing: 0.3px;
+}
+.letter-spacing-xs{
+  letter-spacing: 0.15px;
+}
+.letter-spacing-md{
+  letter-spacing: 0.5px;
+}
+.letter-spacing-lg{
+  letter-spacing: 0.8px;
+}
+
+.height {
+  &.extra-xxs {
+    height: 15px;
+  }
+  &.xxs {
+    height: 20px;
+  }
+  &.xs {
+    height: 25px;
+  }
+  &.sm {
+    height: 30px;
+  }
+  &.lg {
+    height: 35px;
+  }
+  &.extra-lg {
+    height: 45px;
+  }
+}
+
+.overflow-scroll{
+  overflow-y: auto;
+}
+.pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}
+.no-pointer {
+  cursor: not-allowed;
+}
+
+.nowrap-text {
+  white-space: nowrap;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}

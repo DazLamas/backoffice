@@ -1,0 +1,10 @@
+/* Landing */
+.main_container.is-error-page {
+  background: linear-gradient(
+                     rgba(20,20,20, .8),
+                     rgba(20,20,20, .5)),
+                     url("../img/error_bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

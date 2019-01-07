@@ -1,0 +1,13 @@
+<div id="flash-modal" class="modal-default modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header text-center align-items-center">
+                <img src="{{ asset('img/icons/modal_success_icon.png') }}" alt="success icon" class="height extra-lg mb-3">
+                <h2 class="modal-title letter-spacing-xs text-center">
+                    {% block message %}{% endblock message %}
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+<script> toggleFlashMessage(); </script>

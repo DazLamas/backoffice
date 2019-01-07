@@ -1,0 +1,22 @@
+{% set main_container_section = 'is-premium-section' %}
+{% trans_default_domain 'premium' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('advantages.meta.title')|trans }}{% endblock %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'premium' %}
+        {% block breadcrumbs_outer %}{# hide breadcrumbs on index page #}{% endblock breadcrumbs_outer %}
+        {% block title %}{{ 'advantages.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'advantages.header.description'|trans }}{% endblock description %}
+    {% endembed %}
+
+
+  <section class="content w-100 bg-white d-flex justify-content-center align-items-center">
+          <h1 class="text-almost-black font-weight-normal">¿Conoces el Netspot Marketing?</h1>
+          <span class="h5 font-weight-normal text-gray-500">¡Clica para conocer tu presupuesto personalizado!</span>
+          <a class="btn btn-lg btn-primary mt-3 py-3 px-4" href="#">Pedir Presupuesto</a>
+  </section>
+
+{% endblock content %}

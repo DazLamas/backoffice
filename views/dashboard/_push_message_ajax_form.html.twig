@@ -1,0 +1,17 @@
+{% trans_default_domain 'dashboard' %}
+{{ form_start(form) }}
+{#<form name="dashboard_push_form" method="post" action="{{ url('dashboard_send_push', {'sid':sid}) }}">#}
+<div class="modal-body px-0 pt-2">
+    <div class="flex-column d-flex justify-content-center align-items-center">
+        <div class="w-100">
+            {{ form_widget(form.message, {'attr':{'class':'form-control mr-0', 'rows':5, 'placeholder':'pushNotification.modal.placeholder'|trans}}) }}
+        </div>
+    </div>
+</div>
+<div class="modal-footer justify-content-end">
+    <div class="text-danger">
+    </div>
+    <input type="submit" class="btn btn-primary btn-standard" value="{{ 'pushNotification.modal.button'|trans }}">
+</div>
+{{ form_rest(form) }}
+{{ form_end(form) }}

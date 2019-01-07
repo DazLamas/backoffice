@@ -1,0 +1,54 @@
+/* type.scss*/
+
+//Headings
+h2, h3, h4, h5, h6,
+.h2, .h3, .h4, .h5, .h6 {
+  letter-spacing: 0.80px;
+}
+
+h1, .h1 {
+  letter-spacing: 0.15px;
+  line-height: normal;
+  font-weight: $font-weight-bold;
+  margin-bottom: 0.8rem;
+}
+h3, .h3 {
+  color: $gray-800;
+}
+//Paragraphs below titles
+h1 ~ p {
+  font-size: 1rem;
+  letter-spacing: 0.15px;
+  color: $gray-700;
+  margin-bottom: 1.3rem;
+}
+h2 ~ p {
+  font-size: 0.9375rem;
+  letter-spacing: 0.15px;
+  color: $gray-500;
+  line-height: 19px;
+}
+h3 ~ p,
+h4 ~ p {
+  font-size: 15px;
+  letter-spacing: 0.15px;
+  color: $gray-700;
+  line-height: 19px;
+}
+h5 ~ p {
+  font-size: 12px;
+  letter-spacing: 0.15px;
+  color: $gray-700;
+  line-height: 19px;
+}
+
+
+
+
+
+
+
+
+
+
+

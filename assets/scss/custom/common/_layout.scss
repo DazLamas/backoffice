@@ -1,0 +1,167 @@
+/* layout.scss */
+// All sections basic layout
+
+html,body{
+  margin:0px;
+  height:100%;
+}
+
+.main_container {
+  width: 100%;
+  height:100vh;
+  background-color: $blue;
+  display: flex;
+}
+
+.navigation_container {
+  width: 17%;
+  height: 100%;
+  background-color: $white;
+  display: flex;
+  min-width: 200px;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  .navigation_wrapper {
+    height: 90%;
+    width: 100%;
+    min-width: 240px;
+    text-align: center;
+    img {
+      min-width: 100px;
+    }
+    .brand-logo {
+      width: 135px;
+      @media (min-width: 1500px) {
+        width: 165px;
+      }
+    }
+    .client-logo.rounded-img {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto;
+      @media (min-width: 1500px) {
+        width: 160px;
+        height: 160px;
+      }
+    }
+  }
+  .local-selector {
+      width: 90%;
+      margin: 0 auto;
+    .dropdown-placeholder {
+      font-size: 19px;
+      letter-spacing: 0.15px;
+      font-weight: $font-weight-normal;
+      color: $gray-800;
+      &::after {
+          margin-left: 0.2em;
+      }
+    }
+    .dropdown-menu {
+      border-top: none;
+      .dropdown-item {
+        color: $gray-700;
+      }
+    }
+  }
+}
+
+.content_container {
+
+    width: 83%;
+    height: 100%;
+    background-color: $light;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  .content_wrapper{
+
+    height: 90%;
+    width: 90%;
+
+    .header {
+      height: 15%;
+
+      > p {
+        min-width: 350px;
+        max-width: 50%;
+        display: inline-block;
+      }
+      button, .call_to_action {
+        float: right;
+      }
+    }
+    .content {
+
+      height: 82%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .card_filter .subsection-icon {
+        display: inline-flex;
+        width: 2.875rem;
+        height: 2.875rem;
+        background-size: contain;
+        background-repeat:no-repeat;
+      }
+
+    }
+  }
+}
+
+@import "_subsections";
+@import "_menus";
+@import "_custom-animations";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

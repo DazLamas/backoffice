@@ -1,0 +1,339 @@
+//Local Selector
+//Landing and Sidebar
+.dropdown.local-selector {
+  .dropdown-placeholder {
+    margin-bottom: -10px;
+  }
+  .dropdown-menu {
+    min-width: 100%;
+    border-radius: 0;
+    .dropdown-item {
+      padding: 0.8rem 1.5rem;
+      border-bottom: $border-width solid $border-color;
+      width: 90%;
+      margin: 0 auto;
+      &:last-child {
+        border-bottom: none;
+      }
+      &:hover,
+      &:focus {
+        color: $blue;
+        background-color: initial;
+      }
+    }
+  }
+}
+
+//Sidebar
+.navigation_container .navbar {
+  letter-spacing: 0.3px;
+  a { //Override Bootstrap
+    color: inherit;
+    text-decoration: none;
+    background-color: initial;
+  }
+   padding: 0;
+  .navbar-nav .show > .nav-link.active {
+    font-weight: normal;
+    color: $gray-600;
+    .nav-arrow {
+      width: .925em;
+      color: $gray-600;
+    }
+  }
+  .nav-link.active {
+    color: $blue !important;
+  }
+  .nav-item {
+    padding: 0.7rem 2rem;
+    color: $gray-800;
+    .icon_list:before {//all imgs path bellow these styles
+      margin-right: 13px;
+      vertical-align: middle;
+    }
+    &.with-submenu {
+      .icon_list:before {//all imgs path bellow these styles
+        margin-right: 10px;
+      }
+    }
+  }
+  .nav-arrow {
+    transition: .3s transform ease-in-out;
+    margin-top: 4px;
+    float:right;
+  }
+  .nav-item.collapsed .nav-arrow  {
+    transform: rotate(-90deg);
+  }
+
+  .nav-item.with-submenu {
+    background: $gray-100;
+    color: $gray-800;
+      &:hover:not(.disabled) {
+        color: rgba(0, 0, 0, 0.7);
+      }
+  }
+  .nav-item.with-submenu.collapsed  {
+    background: transparent;
+    color: $gray-800;
+      &:hover:not(.disabled) {
+        color: rgba(0, 0, 0, 0.7);
+      }
+  }
+  .with-submenu + .subsection_links{
+    background: $gray-100;
+  }
+  .nav-item.with-submenu.collapsed + .subsection_links{
+    background: transparent;
+  }
+
+  .nav-link:focus {
+    color: $gray-500;
+    &.active {
+      color: $blue;
+    }
+  }
+  .divider {
+    padding: 0.7rem 2rem;
+  }
+}
+.navbar-light .navbar-nav .show > .nav-link {
+  color: $gray-500;
+  &:hover:not(.disabled) {
+      color: rgba(0, 0, 0, 0.7);
+    }
+}
+.nav-link:not(.active) {
+  &:hover:not(.disabled) {
+    color: rgba(0, 0, 0, 0.7) !important;
+  }
+}
+.navbar-light .navbar-nav .nav-link.disabled {
+    color: inherit;
+    opacity: .5;
+    cursor: default;
+}
+
+.subsection_links {
+  background: $gray-100;
+  .nav-link {
+    font-weight: 300;
+    span {
+      margin-left: 30px;
+      color: $gray-500;
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 164px;
+      &:hover:not(.disabled) {
+        color: rgba(0, 0, 0, 0.7) !important;
+      }
+    }
+    &.active {
+      color: $gray-600;
+      font-weight: normal;
+      .nav-arrow {
+        color: $gray-600;
+      }
+    }
+  }
+  .subsection_links .nav-link span {//Security Filter Submenú
+    margin-left: 45px;
+  }
+}
+//Icons for sidebar:
+
+  .nav-item {
+    .icon_list.dashboard:before {
+        content: url('/img/icons/sidebar/black/dashboard.png');
+    }
+    .icon_list.profile:before {
+        content: url('/img/icons/sidebar/black/profile.png');
+    }
+    .icon_list.clients:before {
+        content: url('/img/icons/sidebar/black/customers.png');
+    }
+    .icon_list.myapp:before {
+        content: url('/img/icons/sidebar/black/myapp.png');
+    }
+    .icon_list.analytics:before {
+        content: url('/img/icons/sidebar/black/analytics.png');
+    }
+    .icon_list.promotions:before {
+        content: url('/img/icons/sidebar/black/promos.png');
+    }
+    .icon_list.security:before {
+        content: url('/img/icons/sidebar/black/security.png');
+    }
+    .icon_list.premium:before {
+        content: url('/img/icons/sidebar/black/premium.png');
+    }
+    .icon_list.about:before {
+        content: url('/img/icons/sidebar/black/about_us.png');
+    }
+  }
+
+  .nav-item.active {
+    .icon_list.dashboard:before {
+        content: url('/img/icons/sidebar/blue/dashboard.png');
+    }
+    .icon_list.profile:before {
+        content: url('/img/icons/sidebar/blue/profile.png');
+    }
+    .icon_list.clients:before {
+        content: url('/img/icons/sidebar/blue/customers.png');
+    }
+    .icon_list.myapp:before {
+        content: url('/img/icons/sidebar/blue/myapp.png');
+    }
+    .icon_list.analytics:before {
+        content: url('/img/icons/sidebar/blue/analytics.png');
+    }
+    .icon_list.promotions:before {
+        content: url('/img/icons/sidebar/blue/promos.png');
+    }
+    .icon_list.security:before {
+        content: url('/img/icons/sidebar/blue/security.png');
+    }
+    .icon_list.premium:before {
+        content: url('/img/icons/sidebar/blue/premium.png');
+    }
+    .icon_list.about:before {
+        content: url('/img/icons/sidebar/blue/about_us.png');
+    }
+  }
+
+//Client Menu (on top)
+.secondary_menu{
+
+  $infoContainerWidth: 250px;
+  $alertBoxDimensions: 46px;
+
+  width: $infoContainerWidth;
+  height: $alertBoxDimensions;
+  background-color: $gray-100;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  z-index: 99;
+  .alert_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $alertBoxDimensions;
+    min-width: $alertBoxDimensions;
+    background-color: $blue;
+    .icon {
+      height: 10px;
+    }
+  }
+  .client_name {
+    font-size: 16px;
+    letter-spacing: 0.13px;
+    color: $gray-500;
+    padding-left: 20px;
+    display: block;
+    &.dot_list:before {
+      content: url('/img/icons/local_icon.png');
+      margin-right: 10px;
+      vertical-align: text-top;
+    }
+  }
+  .secondary_menu_toggled {
+    position: absolute;
+    padding: 0 0;
+    z-index: 99;
+    top: $alertBoxDimensions;
+    .menu_item {
+      display: flex;
+      margin: 0 auto;
+      border-bottom: solid 1px $gray-200;
+      width: 98%;
+      color: $dark;
+      background-color: $white;
+    }
+    .dot_list:before{
+      margin-right: 7px;
+      width: 10px;
+      height: 10px;
+      background-color: $dark;
+    }
+    &.client_menu_version{
+      width: $infoContainerWidth;
+      left: 0;
+      .client-logo.rounded-img {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto;
+      }
+      .store-name {
+        font-size: 16px;
+        letter-spacing: .15px;
+        font-weight: 500;
+        color: $white;
+        text-transform: capitalize;
+        line-height: 18px;
+        margin-top: 5px;
+      }
+      .store-subtext {
+        font-size: 12px;
+        letter-spacing: .15px;
+        font-weight: normal;
+        font-style: italic;
+        color: $white;
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+      .itemlist-format{
+        font-size: 12px;
+        letter-spacing: .15px;
+        font-weight: normal;
+        color: $gray-900;
+        width: 100%;
+        &.dot_list:before{
+          background-color: $gray-900;
+        }
+        &:hover {
+          cursor: pointer;
+          color: $primary;
+          &.dot_list:before{
+            background-color: $primary;
+          }
+        }
+      }
+    }
+    &.alerts_menu_version{
+
+      width: 235px;
+      right: ($infoContainerWidth - $alertBoxDimensions) + 0.4; //due to .menu_items margins created with margin 0 auto;
+      .menu_item {
+        color: $almost_black;
+        letter-spacing: .08px;
+        .title-format {
+          font-size: 12px;
+          font-weight: 500;
+          &::first-letter {
+            text-transform: uppercase;
+          }
+        }
+        .text-format {
+          font-size: 9px;
+          letter-spacing: .08px;
+          font-weight: normal;
+        }
+        &:hover:not(:first-child) {
+          cursor: pointer;
+          color: $white;
+          background-color: $red;
+          .dot_list:before{
+            background-color: $white;
+          }
+        }
+      }
+    }
+  }
+}

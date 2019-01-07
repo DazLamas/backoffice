@@ -1,0 +1,91 @@
+{% set main_container_section = 'subsection-layout is-customers-section history' %}
+{% set animation_data = 'has_list' %}
+{% trans_default_domain 'clients' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('history.meta.title')|trans }}{% endblock %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'clients' %}
+        {% block breadcrumbs %}
+            <li class="breadcrumb-item"><a href="{{ url('clients_index', {'sid':sid}) }}">{{ 'index.breadcrumb'|trans }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('clients_history', {'sid':sid}) }}">{{ 'history.breadcrumb'|trans }}</a></li>
+        {% endblock breadcrumbs %}
+        {% block title %}{{ 'history.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'history.header.description'|trans }}{% endblock description %}
+        {% block actions %}
+            <a href="{{ url('clients_db') }}" class="btn btn-lg font-weight-medium btn-primary float-right">
+                Descargar base de datos
+            </a>
+        {% endblock actions %}
+    {% endembed %}
+
+
+    <section class="content p-0 bg-white">
+
+        <nav class="pr-4 mt-4 mb-3">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a href="{{ url('clients_history_today', {'sid':sid}) }}" class="nav-item nav-link text-almost-black display-4 {{ selectedTab=='today'?'active':'' }}">Hoy</a>
+                <a href="{{ url('clients_history_last_week', {'sid':sid}) }}" class="nav-item nav-link text-almost-black display-4 {{ selectedTab=='lastWeek'?'active':'' }}">7 Días</a>
+                <a href="{{ url('clients_history_last_month', {'sid':sid}) }}" class="nav-item nav-link text-almost-black display-4 {{ selectedTab=='lastMonth'?'active':'' }}">30 Días</a>
+            </div>
+        </nav>
+
+        <div class="tab-content pl-3 pr-4" id="nav-tabContent">
+
+            <div class="tab-pane table-wrapper listAnimationCont {% if not connections|length %} empty {% endif %} overflow-scroll show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                {% if connections|length %}
+                <table class="table">
+                    <thead>
+                    <tr class="listAnimationItem">
+
+                        <th scope="col"></th>
+                        <th scope="col">{{ 'history.name.header'|trans }}</th>
+                        <th scope="col" class="text-center">{{ 'history.country.header'|trans }}</th>
+                        <th scope="col" class="text-center">{{ 'history.os.header'|trans }}</th>
+                        <th scope="col" class="text-center">{{ 'history.connectionDate.header'|trans }}</th>
+                        <th scope="col">{{ 'history.connectionTime.header'|trans }}</th>
+                        <th scope="col" class="text-center">{{ 'history.from.header'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for connection in connections %}
+                        <tr class="listAnimationItem">
+
+                            <th class="text-right">
+                                <div style="background-image: url({{ connection.imageurl and connection.imageurl != 'NULL' ? connection.imageurl : asset('img/profile0.png') }})" class="rounded-img">
+                                </div>
+                            </th>
+                            <td class="font-weight-light">{{ connection.name }}</td>
+                            <td class="text-center">
+                                <img src="{{ asset('img/icons/countries/'~connection.country|country_code~'.svg') }}" alt="country" class="flag"></td>
+                            <td class="text-center">
+                                <img src="{{ asset('img/icons/'~connection.system|lower~'.png') }}" alt="os" class="os"></td>
+                            <td class="text-center">{{ ((connection.timestamp_init/1000)|round)|date('d/m/y') }}</td>
+                            <td>{{ connection.timestamp_init|timestampAgo(connection.timestamp_now) }}</td>
+                            <td class="text-center">
+                                {% if connection.origin == 'app' %}
+                                    <img src="{{ asset('img/icons/netspot_logo_picto.png') }}" alt="os" class=" height xs">
+                                {% elseif connection.origin == 'fb' %}
+                                    <img src="{{ asset('img/icons/facebook.png') }}" alt="os" class=" height sm">
+                                {% elseif connection.origin == 'google' %}
+                                    <img src="{{ asset('img/icons/google.png') }}" alt="os" class=" height sm">
+                                {% else %}
+                                    <img src="{{ asset('img/icons/other.png') }}" alt="os" class=" height xs">
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <div class="w-100 h-100">
+                    <span class="gray-400 display-3 font-weight-normal ">{{ 'history.noitems'|trans }}</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </section>
+{% endblock content %}

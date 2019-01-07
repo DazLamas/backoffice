@@ -1,0 +1,23 @@
+{
+  "name": "netspot-backoffice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://SarahDiazLamas@bitbucket.org/softspring-netspot/netspot-backoffice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0"
+  }
+}

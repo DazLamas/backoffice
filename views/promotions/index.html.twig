@@ -1,0 +1,74 @@
+{% set main_container_section = 'is-promos-section' %}
+{% trans_default_domain 'promotions' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('index.meta.title')|trans }}{% endblock %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'promotions' %}
+        {% block breadcrumbs_outer %}{# hide breadcrumbs on index page #}{% endblock breadcrumbs_outer %}
+        {% block title %}{{ 'index.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'index.header.description'|trans }}{% endblock description %}
+        {% block actions %}
+            {% trans_default_domain 'common' %}
+            <div class="float-right d-inline">
+                <a href="https://www.netspotofficial.com" class="call-to-action btn-with-icon input-group shadow_left">
+                    <p class="legend form-control font-weight-normal letter-spacing-xs">{{ 'call_to_action.legend2'|trans }}</p>
+                    <div class="button input-group-prepend py-2 px-3">
+                        <span class="font-weight-medium letter-spacing-xs">{{ 'call_to_action.button'|trans }}</span>
+                    </div>
+                </a>
+            </div>
+        {% endblock actions %}
+    {% endembed %}
+
+    <div class="content">
+        {% for promotionsBlock in promotions|batch(3) %}
+            <div class="card-deck card_filter mb-5">
+                {% for promoId, promo in promotionsBlock %}
+                    <div class="card disabled-hover {{promo.state}}">
+                        <div class="card-header">
+                            {% if promo.state == 'active' %}
+                                <div class="btn btn-sm active">
+                                    <span class="change-text-js">  {{ 'index.promotions.enabled'|trans }}</span>
+                                    <i class="fas fa-check fa-xs ml-1"></i>
+                                </div>
+                            {% else %}
+                                <div class="btn btn-sm">
+                                    <span class="change-text-js">  {{ 'index.promotions.disabled'|trans }}</span>
+                                    <i class="fas fa-check fa-xs ml-1"></i>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <img src="{{ asset('img/icons/promos/'~promoId~'.png') }}" alt="icon custom msg" class="height lg mt-3 mb-2">
+                            <h2 class="card-title">{{ ('index.promotions.'~promoId~'.name')|trans }}</h2>
+                            <p class="card-text">{{ promo.description }}</p>
+                            <p class="card-propities d-flex justify-content-between display-3 font-weight-normal letter-spacing-xs mb-2">
+                                <span class="display-3 font-weight-normal">{{ 'index.promotions.reach'|trans }}</span>
+
+                                <span {% if promo.state == 'active' %} class="font-weight-medium text-green"> <span class="js-counter">{{ promo.reach }}</span>%</span>
+                                    {% else %} > - </span> {% endif %}
+                            </p>
+                            <p class="card-propities d-flex justify-content-between letter-spacing-xs font-weight-normal mb-2">
+                                <span class="display-3 font-weight-normal ">{{ 'index.promotions.conversion'|trans }}</span>
+
+                                 <span {% if promo.state == 'active' %} class="font-weight-medium text-green"> <span class="js-counter">{{ promo.conversion }}</span>%</span>
+                                    {% else %} > - </span> {% endif %}
+
+                            </p>
+                            <p class="card-propities d-flex justify-content-between letter-spacing-xs font-weight-normal mb-2">
+                                <span class="display-3 font-weight-normal ">{{ 'index.promotions.success'|trans }}</span>
+
+                                <span {% if promo.state == 'active' %} class="display-4 font-weight-bold text-primary"> <span class="js-counter">{{ promo.success }} </span>%</span>
+                                    {% else %} > - </span>
+                                    {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

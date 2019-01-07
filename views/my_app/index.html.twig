@@ -1,0 +1,56 @@
+{% set main_container_section = 'is-myapp-section grid-layout' %}
+{% trans_default_domain 'my_app' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('index.meta.title')|trans }}{% endblock %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'my_app' %}
+        {% block breadcrumbs_outer %}{# hide breadcrumbs on index page #}{% endblock breadcrumbs_outer %}
+        {% block title %}{{ 'index.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'index.header.description'|trans }}{% endblock description %}
+    {% endembed %}
+
+    <section class="content">
+        <div class="set-position">
+            <div class="card-deck card_filter">
+                <a class="card large" href="{{ url('myapp_profile', {'sid':sid}) }}">
+                    <div class="card-body">
+                        <div class="subsection-icon"></div>
+                        <h2 class="card-title">{{ 'index.profile.title'|trans }}</h2>
+                        <p class="card-text">{{ 'index.profile.description'|trans }}</p>
+                    </div>
+                </a>
+                <a class="card large" href="{{ url('myapp_custom_message', {'sid':sid}) }}">
+                    <div class="card-body">
+                        <img src="{{ asset('img/icons/star.svg') }}" alt="highlight section" class="star_highlight"><div class="subsection-icon"></div>
+                        <h2 class="card-title">{{ 'index.custom_message.title'|trans }}</h2>
+                        <p class="card-text">{{ 'index.custom_message.description'|trans }}</p>
+                    </div>
+                </a>
+                <a class="card large" href="{{ url('myapp_stats', {'sid':sid}) }}">
+                    <div class="card-body">
+                        <div class="subsection-icon"></div>
+                        <h2 class="card-title">{{ 'index.stats.title'|trans }}</h2>
+                        <p class="card-text">{{ 'index.stats.description'|trans }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="set-position">
+            {% trans_default_domain 'common' %}
+            <a href="https://www.netspotofficial.com" class="call-to-action big btn-with-icon input-group w-100 shadow_left">
+                <p class="legend big form-control font-weight-normal letter-spacing-xs">{{ 'call_to_action.legend1'|trans }}</p>
+                <div class="button input-group-prepend py-2 px-3">
+                    <span class="big font-weight-medium letter-spacing-xs">{{ 'call_to_action.button'|trans }}</span>
+                </div>
+            </a>
+        </div>
+    </section>
+{% endblock content %}
+
+
+
+
+

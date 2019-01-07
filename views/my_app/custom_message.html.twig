@@ -1,0 +1,210 @@
+{% set main_container_section = 'subsection-layout is-myapp-section customessage' %}
+{% set animation_data = 'has_list' %}
+{% trans_default_domain 'my_app' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('custom_message.meta.title')|trans }}{% endblock %}
+
+{% block modals %}
+    {% include 'my_app/_newmessage_modal.html.twig' %}
+    {% include 'my_app/_editmessage_modal.html.twig' %}
+    {% embed '_components/modal.html.twig' %}
+         {% trans_default_domain 'my_app' %}
+        {% block modal_default_key %}modal-delete{% endblock modal_default_key %}
+        {% block modal_default_classes %}modal-insert-url{% endblock modal_default_classes %}
+        {% block modal_header_icon %}
+            <img src="{{ asset('img/icons/modal_error_icon.png') }}" alt="error icon" class="height extra-lg mb-3">
+        {% endblock modal_header_icon %}
+        {% block modal_default_header %}{{ 'custom_message.modals.delete.header'|trans }}{% endblock modal_default_header %}
+        {% block modal_default_body %}{{ 'custom_message.modals.delete.body'|trans }}{% endblock modal_default_body %}
+        {% block modal_default_button %}<a role="button" href="#" class="btn btn-red btn-standard">{{ 'custom_message.modals.delete.button'|trans }}</a>{% endblock modal_default_button %}
+    {% endembed %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/ajax-calls.js') }}"></script>
+{% endblock javascripts %}
+
+{% macro message(type, index, message) %}
+    <tr class="listAnimationItem">
+        <th scope="row" class="text-right">
+            {% if message.enable %}
+                <a class="circle_info pointer m-0 active" href="{{ url('myapp_custom_message_disable', {'sid':sid,'type':type,'message':index}) }}">
+                    <span class="inner_text"><i class="fas fa-check fa-xs"></i></span>
+                </a>
+            {% else %}
+
+                <a class="circle_info pointer m-0" href="{{ url('myapp_custom_message_enable', {'sid':sid,'type':type,'message':index}) }}">
+                    <span class="inner_text"><i class="fas fa-check fa-xs"></i></span>
+                </a>
+            {% endif %}
+        </th>
+        <td class="font-weight-normal message-column">
+            <p class="m-0">{{ message.message }}</p>
+        </td>
+        <td class="text-center">
+            {% if message.gender == 'male' %}
+                <img src="{{ asset('img/icons/man.png') }}" alt="gender" class="height sm" />
+            {% elseif message.gender == 'female' %}
+                <img src="{{ asset('img/icons/woman.png') }}" alt="gender" class="height sm" />
+            {% else %}
+                <img src="{{ asset('img/icons/woman.png') }}" alt="gender" class="height sm" />
+                <img src="{{ asset('img/icons/man.png') }}" alt="gender" class="height sm" />
+            {% endif %}
+        </td>
+        <td class="text-center font-weight-medium text-nowrap">
+            <span>
+                {% if message.agemin == 'NULL' %}<{% endif %}
+                {% if message.agemax == 'NULL' %}>{% endif %}
+
+                {% if message.agemin!='NULL' %}<span class="js-counter">{% endif %}
+                {{ message.agemin!='NULL' ? message.agemin : '' }}
+                {% if message.agemin!='NULL' %}</span>{% endif %}
+
+
+                {% if message.agemin!='NULL' and message.agemax!='NULL' %}
+                    -
+                {% endif %}
+                {% if message.agemax!='NULL' %}<span class="js-counter">{% endif %}
+                {{ message.agemax!='NULL' ? message.agemax : '' }}
+                {% if message.agemax!='NULL' %}</span>{% endif %}
+            </span>
+        </td>
+        <td class="text-center font-weight-medium text-uppercase">
+            {% if 'alta' in message.conversion or 'NULL' in message.conversion %}
+                {% set conversion_color_class = 'text-green' %}
+            {% elseif 'baja' in message.conversion %}
+                {% set conversion_color_class = 'text-red' %}
+            {% else %}
+                {% set conversion_color_class = 'text-orange' %}
+            {% endif %}
+            <span class="{{ conversion_color_class }} text-nowrap">{{ message.conversion != 'NULL' ? message.conversion : '-'  }}</span>
+        </td>
+        <td class="text-center text-primary font-weight-regular text-nowrap">
+            <span class="js-counter">{{ message.reachmin }}</span>
+            <span>-</span>
+            <span class="js-counter">{{ message.reachmax }}</span>
+        </td>
+        <td class="pr-0">
+            <img src="{{ asset('img/icons/edit.png') }}" alt="edit" class="pointer height extra-xxs" data-toggle="modal"
+                 data-target="#edit-message"
+                 data-href="{{ url('myapp_custom_message_edit_ajax', {'sid':sid,'type':type,'message':index}) }}"
+            />
+        </td>
+        <td class="text-left">
+            <button type="button" data-url="{{ url('myapp_custom_message_delete', {'sid':sid,'type':type,'message':index}) }}" data-toggle="modal" data-target="#modal-delete" class="btn bg-transparent">
+                <img src="{{ asset('img/icons/bin_delete.png') }}" alt="delete" class="pointer height extra-xxs">
+            </button>
+        </td>
+    </tr>
+{% endmacro message %}
+
+{% import _self as utils %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'my_app' %}
+        {% block breadcrumbs %}
+            <li class="breadcrumb-item"><a href="{{ url('myapp_index', {'sid':sid}) }}">{{ 'index.breadcrumb'|trans }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('myapp_custom_message', {'sid':sid}) }}">{{ 'custom_message.breadcrumb'|trans }}</a></li>
+        {% endblock breadcrumbs %}
+        {% block title %}{{ 'custom_message.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'custom_message.header.description'|trans }}{% endblock description %}
+        {% block actions %}
+            <button type="button" class="btn btn-primary btn-lg letter-spacing-xs font-weight-medium bg-white border-0 text-primary" data-toggle="modal"
+                    data-target="#new-message" data-href="{{ url('myapp_custom_message_new_ajax', {'sid':sid}) }}">
+              <img src="{{ asset('img/icons/new_item.png') }}" alt="new item" class="height xs align-bottom mr-2">
+              {{ 'custom_message.create'|trans }}
+            </button>
+        {% endblock actions %}
+    {% endembed %}
+
+    <section class="content bg-white mb-5">
+        <header>
+            <h4 class="text-gray-800">{{ 'custom_message.messages.title'|trans }}</h4>
+            <p class="mt-2 mb-4">{{ 'custom_message.messages.subtitle'|trans }}</p>
+        </header>
+
+        <div class="table-header mt-2">
+
+            <div class="table-header-wrapper-1">
+                <img src="{{ asset('img/icons/sun.png') }}" alt="daily message" class="height lg mr-3">
+                <h2>{{ 'custom_message.messages.morning'|trans }}</h2>
+            </div>
+
+            <div class="table-header-wrapper-2">
+                <div class="legend-container d-none">
+                    <div>{{ 'custom_message.messages.segmentation'|trans }}</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="table-wrapper listAnimationCont {% if not messages.morning|default([])|length %} empty {% endif %} overflow-scroll mb-4 pl-4">
+            {% if messages.morning|default([])|length %}
+            <table class="table">
+                <thead class="letter-spacing-xs">
+                <tr class="listAnimationItem">
+                    <th scope="col"></th>
+                    <th scope="col">{{ 'custom_message.messages.message.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'custom_message.messages.gender.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'custom_message.messages.age.header'|trans }}</th>
+                    <th scope="col" class="text-center text-gray-700 font-weigth-medium">{{ 'custom_message.messages.conversion.header'|trans }}</th>
+                    <th scope="col" class="text-center text-gray-700 font-weigth-medium">{{ 'custom_message.messages.reach.header'|trans }}</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for i,message in messages.morning|default([]) %}
+                    {{ utils.message('morning', i, message) }}
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div class="w-100 h-100 p-3 pl-5 ml-2">
+                <span class="gray-400 display-3 font-weight-normal">¡Puedes tener hasta 10 mensajes personalizados guardados!</span>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="table-header mt-2">
+
+            <div class="table-header-wrapper-1">
+                <img src="{{ asset('img/icons/moon.png') }}" alt="evening message" class="height lg mr-3">
+                <h2>{{ 'custom_message.messages.evening'|trans }}</h2>
+            </div>
+
+        </div>
+        <div class="table-wrapper overflow-scroll pl-4 listAnimationCont {% if not messages.evening|default([])|length %} empty {% endif %} ">
+            {% if messages.evening|default([])|length %}
+            <table class="table">
+                <thead class="letter-spacing-xs">
+                <tr class="listAnimationItem">
+                    <th scope="col"></th>
+                    <th scope="col">{{ 'custom_message.messages.message.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'custom_message.messages.gender.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'custom_message.messages.age.header'|trans }}</th>
+                    <th scope="col" class="text-center text-gray-700 font-weigth-medium">{{ 'custom_message.messages.conversion.header'|trans }}</th>
+                    <th scope="col" class="text-center text-gray-700 font-weigth-medium">{{ 'custom_message.messages.reach.header'|trans }}</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i,message in messages.evening|default([]) %}
+                    {{ utils.message('evening', i, message) }}
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div class="w-100 h-100 p-3 pl-4 ml-2">
+                <span class="gray-400 display-3 font-weight-normal">¡Puedes tener hasta 10 mensajes personalizados guardados!</span>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+{% endblock content %}

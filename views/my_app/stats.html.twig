@@ -1,0 +1,147 @@
+{% set main_container_section = 'subsection-layout is-myapp-section statistics' %}
+{% set animation_data = 'has_list' %}
+{% trans_default_domain 'my_app' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('stats.meta.title')|trans }}{% endblock %}
+
+{% macro message(message, top3Index) %}
+    <tr class="listAnimationItem">
+        {% if top3Index %}
+            <th scope="row" class="text-right">
+                <div class="circle_info {{ ['','bg-yellow','bg-gray-300','bg-brown'][top3Index] }}">
+                    <div class="inner_text">{{ top3Index }}</div>
+                </div>
+            </th>
+        {% else %}
+            <th scope="row" class="text-right">
+                <img src="{{ asset('img/icons/tick_solid.png') }}" alt="checked" class="height xxs mr-3 d-inline">
+            </th>
+        {% endif %}
+
+        <td class="font-weight-normal">
+            <p class="m-0">{{ message.message }}</p>
+        </td>
+        <td class="text-center">
+            {% if message.gender == 'male' %}
+                <img src="{{ asset('img/icons/man.png') }}" alt="gender" class="height sm" />
+            {% elseif message.gender == 'female' %}
+                <img src="{{ asset('img/icons/woman.png') }}" alt="gender" class="height sm" />
+            {% else %}
+                <img src="{{ asset('img/icons/woman.png') }}" alt="gender" class="height sm" />
+                <img src="{{ asset('img/icons/man.png') }}" alt="gender" class="height sm" />
+            {% endif %}
+        </td>
+        <td class="text-center font-weight-medium text-nowrap">
+            <span><span class="js-counter">{{ message.agemin }}</span>-<span class="js-counter">{{ message.agemax }}</span></span>
+        </td>
+        <td class="text-center">
+            <img src="{{ asset('img/icons/'~message.momentIcon~'.png') }}" alt="day" class="height xs">
+        </td>
+        <td class="text-center font-weight-medium text-uppercase">
+            {% if 'alta' in message.conversion or 'NULL' in message.conversion %}
+                {% set conversion_color_class = 'text-green' %}
+            {% elseif 'baja' in message.conversion %}
+                {% set conversion_color_class = 'text-red' %}
+            {% else %}
+                {% set conversion_color_class = 'text-orange' %}
+            {% endif %}
+            <span class="{{ conversion_color_class }} text-nowrap">{{ message.conversion != 'NULL' ? message.conversion : '-'  }}</span>
+        </td>
+        <td class="text-center text-primary font-weight-regular text-nowrap">
+            <span class="js-counter">{{ message.reachmin }}</span>
+            <span>-</span>
+            <span class="js-counter">{{ message.reachmax }}</span>
+        </td>
+        <td class="text-center font-weight-medium">
+            <span class="text-red">
+                {% if message.success != 'NULL' %}
+                    {{ message.success }}%
+                {% else %}
+                    -
+                {% endif %}
+            </span>
+        </td>
+    </tr>
+{% endmacro message %}
+
+{% import _self as utils %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'my_app' %}
+        {% block breadcrumbs %}
+            <li class="breadcrumb-item"><a href="{{ url('myapp_index', {'sid':sid}) }}">{{ 'index.breadcrumb'|trans }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('myapp_stats', {'sid':sid}) }}">{{ 'stats.breadcrumb'|trans }}</a></li>
+        {% endblock breadcrumbs %}
+        {% block title %}{{ 'stats.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'stats.header.description'|trans }}{% endblock description %}
+        {% block actions %}
+            {% trans_default_domain 'common' %}
+            <div class="float-right d-inline">
+                <a href="https://www.netspotofficial.com" class="call-to-action btn-with-icon input-group shadow_left">
+                    <p class="legend form-control font-weight-normal letter-spacing-xs">{{ 'call_to_action.legend3'|trans }}</p>
+                    <div class="button input-group-prepend py-2 px-3">
+                        <span class="font-weight-medium letter-spacing-xs">{{ 'call_to_action.button'|trans }}</span>
+                    </div>
+                </a>
+            </div>
+        {% endblock actions %}
+    {% endembed %}
+
+    <section class="content bg-white mb-5">
+        <header>
+            <img src="{{ asset('img/icons/tick_solid.png') }}" alt="checked" class="height xs mr-3 d-inline">
+            <h4 class="text-dark d-inline align-middle">{{ 'stats.active.title'|trans }}</h4>
+            <p class="ml-4 mt-2 d-block">{{ 'stats.active.subtitle'|trans }}</p>
+        </header>
+        <div class="table-wrapper listAnimationCont overflow-scroll mb-5">
+            <table class="table">
+                <thead class="letter-spacing-xs">
+                <tr class="listAnimationItem">
+                    <th scope="col"></th>
+                    <th scope="col">{{ 'stats.table.message.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'stats.table.gender.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'stats.table.age.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'stats.table.when.header'|trans }}</th>
+                    <th scope="col" class="text-center text-gray-700 font-weigth-medium">{{ 'stats.table.conversion.header'|trans }}</th>
+                    <th scope="col" class="text-center text-gray-700 font-weigth-medium">{{ 'stats.table.reach.header'|trans }}</th>
+                    <th scope="col" class="text-center text-gray-700 font-weigth-medium">{{ 'stats.table.success.header'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for message in enabled %}
+                    {{ utils.message(message) }}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <header>
+            <img src="{{ asset('img/icons/top3.png') }}" alt="checked" class="height sm mr-3 d-inline align-baseline">
+            <h4 class="text-dark d-inline">{{ 'stats.top3.title'|trans }}</h4>
+            <p class="ml-4 mt-2 d-block">{{ 'stats.top3.subtitle'|trans }}</p>
+        </header>
+        <div class="table-wrapper listAnimationCont overflow-scroll">
+            <table class="table">
+                <thead class="letter-spacing-xs">
+                <tr class="listAnimationItem">
+                    <th scope="col"></th>
+                    <th scope="col">{{ 'stats.table.message.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'stats.table.gender.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'stats.table.age.header'|trans }}</th>
+                    <th scope="col" class="text-center">{{ 'stats.table.when.header'|trans }}</th>
+                    <th scope="col" class="text-center text-gray-700 font-weigth-medium">{{ 'stats.table.conversion.header'|trans }}</th>
+                    <th scope="col" class="text-center text-gray-700 font-weigth-medium">{{ 'stats.table.reach.header'|trans }}</th>
+                    <th scope="col" class="text-center text-gray-700 font-weigth-medium">{{ 'stats.table.success.header'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for message in top3 %}
+                    {{ utils.message(message, loop.index) }}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock content %}

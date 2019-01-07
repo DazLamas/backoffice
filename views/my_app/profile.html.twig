@@ -1,0 +1,330 @@
+{% set main_container_section = 'is-myapp-section subsection-layout my-profile' %}
+{% trans_default_domain 'my_app' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('profile.meta.title')|trans }}{% endblock %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'my_app' %}
+        {% block breadcrumbs %}
+            <li class="breadcrumb-item"><a href="{{ url('myapp_index', {'sid':sid}) }}">{{ 'index.breadcrumb'|trans }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('myapp_profile', {'sid':sid}) }}">{{ 'profile.breadcrumb'|trans }}</a></li>
+        {% endblock breadcrumbs %}
+        {% block title %}{{ 'profile.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'profile.header.description'|trans }}{% endblock description %}
+    {% endembed %}
+
+    <section class="content bg-white">
+        {{ form_start(form) }}
+        <header class="header">
+            <h3>{{ 'profile.form.title'|trans }}</h3>
+            <p>{{ 'profile.form.description'|trans }}</p>
+            <button type="submit" class="btn btn-primary btn-standard">{{ 'profile.form.submit'|trans }}</button>
+        </header>
+        <div class="content flex-row  mb-0 pb-0">
+            <div class="column">
+
+                <div class="form">
+
+                    <div class="form-group col-9">
+                        {{ form_widget(form.name, {'attr': {
+                            'class' : 'form-control js-watch-value input-name',
+                            'data-js-related' : 'name',
+                            'maxlength' : '27',
+                            'placeholder': 'profile.form.fields.name.placeholder'
+                        }}) }}
+                    </div>
+
+                    <div class="form-group col-9">
+                        {{ form_widget(form.type, {'attr': {
+                            'class' : 'form-control custom-select js-watch-value input-type',
+                            'data-js-related' : 'type',
+                            'maxlength' : '27',
+                        }}) }}
+                    </div>
+
+                    <div class="form-group col-9">
+                        {{ form_widget(form.bio, {'attr': {
+                            'class' : 'form-control js-watch-value',
+                            'data-js-related' : 'bio',
+                            'maxlength' : '80',
+                            'rows' : '4',
+                            'placeholder': 'profile.form.fields.bio.placeholder'
+                        }}) }}
+                    </div>
+
+                    <div class="form-group col-9 image-picker-wrapper">
+                        <div class="image-picker bg-light js-set-image total-center"  style="background-image: url('{{ imageUrl }}')">
+                            <label class="circle bg-white total-center shadow_left shadow_bottom pointer">
+                                <i class="fas fa-camera fa-2x text-primary"></i>
+                                {{ form_widget(form.image, {'attr':{
+                                    'class':'d-none js-watch-value-file',
+                                    'data-js-related' : 'image',
+                                }}) }}
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-9">
+                        {{ form_widget(form.address, {'attr': {
+                            'class' : 'form-control js-watch-value',
+                            'data-js-related' : 'address',
+                            'maxlength' : '50',
+                            'placeholder': 'profile.form.fields.address.placeholder'
+                        }}) }}
+                    </div>
+
+                    <div class="form-group col-9">
+                        {{ form_widget(form.web, {'attr': {
+                            'class' : 'form-control',
+                            'placeholder': 'profile.form.fields.web.placeholder'
+                        }}) }}
+                    </div>
+
+                    <div class="form-group col-9">
+                        {{ form_widget(form.phone, {'attr': {
+                            'class' : 'form-control js-watch-value',
+                            'data-js-related' : 'phone',
+                            'maxlength' : '25',
+                            'placeholder': 'profile.form.fields.phone.placeholder'
+                        }}) }}
+                    </div>
+
+                    <div class="form-group col-9">
+                        {{ form_widget(form.google, {'attr': {
+                            'class' : 'form-control mb-5',
+                            'placeholder': 'profile.form.fields.google.placeholder'
+                        }}) }}
+                    </div>
+
+                    <span class="form-title">{{ 'profile.form.socialNetworks.title'|trans }}</span>
+
+                    <div class="form-inline col-9 mt-3">
+                        <div class="input-group w-100">
+                             <div class="input-group-prepend mr-4">
+                                <div class="input-group-text bg-transparent p-0">
+                                    <img src="{{ asset('/img/icons/rrss/facebook.png') }}" alt="check" class="height sm">
+                                </div>
+                            </div>
+                            {{ form_widget(form.fb, {'attr': {
+                                'class' : 'form-control',
+                                'placeholder': 'profile.form.fields.fb.placeholder'
+                            }}) }}
+
+                            {# this checks has not functionality #}
+                            {#<div class="input-group-prepend ml-2 p-1">#}
+                                {#<label for="" class="circle_info not-halt pointer toggle-class-js m-0" data-js-totoggle-class"active"="" data-js-toggleclass="active">#}
+                                    {#<div class="inner_text">#}
+                                        {#<i class="fas fa-check fa-sm"></i>#}
+                                    {#</div>#}
+                                {#</label>#}
+                            {#</div>#}
+                        </div>
+                    </div>
+
+                    <div class="form-inline col-9 mt-3">
+                        <div class="input-group w-100">
+                             <div class="input-group-prepend mr-4">
+                                <div class="input-group-text bg-transparent p-0">
+                                    <img src="{{ asset('/img/icons/rrss/instagram.png') }}" alt="check" class="height sm">
+                                </div>
+                            </div>
+                            {{ form_widget(form.instagram, {'attr': {
+                                'class' : 'form-control',
+                                'placeholder': 'profile.form.fields.instagram.placeholder'
+                            }}) }}
+
+                            {# this checks has not functionality #}
+                             {#<div class="input-group-prepend ml-2 p-1">#}
+                                {#<label for="" class="circle_info not-halt pointer toggle-class-js m-0" data-js-totoggle-class"active"="" data-js-toggleclass="active">#}
+                                    {#<div class="inner_text">#}
+                                        {#<i class="fas fa-check fa-sm"></i>#}
+                                    {#</div>#}
+                                {#</label>#}
+                            {#</div>#}
+                        </div>
+                    </div>
+
+                    <div class="schedule-container">
+                        <ul class="header">
+                            <li><span>{{ 'profile.form.fields.schedule.title'|trans }}</span></li>
+                        </ul>
+                        <div class="schedule-wrapper">
+
+                            <div class="form-group align-items-center mb-3">
+                                <label for="monday" class="form-label-col m-0">{{ 'profile.form.fields.schedule.mon.label'|trans }}</label>
+
+                                {{ form_widget(form.mondayMorningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.mondayMorningTo, {'attr': {'class' : 'form-control'}}) }}
+
+                                <span class="form-text px-sm-3 bigger">&</span>
+
+                                {{ form_widget(form.mondayEveningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.mondayEveningTo, {'attr': {'class' : 'form-control'}}) }}
+                            </div>
+
+                            <div class="form-group align-items-center mb-3">
+                                <label for="tuesday" class="form-label-col m-0">{{ 'profile.form.fields.schedule.tue.label'|trans }}</label>
+
+                                {{ form_widget(form.tuesdayMorningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.tuesdayMorningTo, {'attr': {'class' : 'form-control'}}) }}
+
+                                <span class="form-text px-sm-3 bigger">&</span>
+
+                                {{ form_widget(form.tuesdayEveningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.tuesdayEveningTo, {'attr': {'class' : 'form-control'}}) }}
+                            </div>
+
+
+                            <div class="form-group align-items-center mb-3">
+                                <label for="wednesday" class="form-label-col m-0">{{ 'profile.form.fields.schedule.wed.label'|trans }}</label>
+
+                                {{ form_widget(form.wednesdayMorningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.wednesdayMorningTo, {'attr': {'class' : 'form-control'}}) }}
+
+                                <span class="form-text px-sm-3 bigger">&</span>
+
+                                {{ form_widget(form.wednesdayEveningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.wednesdayEveningTo, {'attr': {'class' : 'form-control'}}) }}
+
+                            </div>
+
+                            <div class="form-group align-items-center mb-3">
+                                <label for="thursday" class="form-label-col m-0">{{ 'profile.form.fields.schedule.thu.label'|trans }}</label>
+
+                                {{ form_widget(form.thursdayMorningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.thursdayMorningTo, {'attr': {'class' : 'form-control'}}) }}
+
+                                <span class="form-text px-sm-3 bigger">&</span>
+
+                                {{ form_widget(form.thursdayEveningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.thursdayEveningTo, {'attr': {'class' : 'form-control'}}) }}
+                            </div>
+
+                            <div class="form-group align-items-center mb-3">
+                                <label for="friday" class="form-label-col m-0">{{ 'profile.form.fields.schedule.fri.label'|trans }}</label>
+
+                                {{ form_widget(form.fridayMorningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.fridayMorningTo, {'attr': {'class' : 'form-control'}}) }}
+
+                                <span class="form-text px-sm-3 bigger">&</span>
+
+                                {{ form_widget(form.fridayEveningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.fridayEveningTo, {'attr': {'class' : 'form-control'}}) }}
+                            </div>
+
+                            <div class="form-group align-items-center mb-3">
+                                <label for="saturday" class="form-label-col m-0">{{ 'profile.form.fields.schedule.sat.label'|trans }}</label>
+
+                                {{ form_widget(form.saturdayMorningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.saturdayMorningTo, {'attr': {'class' : 'form-control'}}) }}
+
+                                <span class="form-text px-sm-3 bigger">&</span>
+
+                                {{ form_widget(form.saturdayEveningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.saturdayEveningTo, {'attr': {'class' : 'form-control'}}) }}
+                            </div>
+
+                            <div class="form-group align-items-center mb-3">
+                                <label for="sunday" class="form-label-col m-0">{{ 'profile.form.fields.schedule.sun.label'|trans }}</label>
+
+                                {{ form_widget(form.sundayMorningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.sundayMorningTo, {'attr': {'class' : 'form-control'}}) }}
+
+                                <span class="form-text px-sm-3 bigger">&</span>
+
+                                {{ form_widget(form.sundayEveningFrom, {'attr': {'class' : 'form-control'}}) }}
+                                <span class="form-text px-sm-2">-</span>
+                                {{ form_widget(form.sundayEveningTo, {'attr': {'class' : 'form-control'}}) }}
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="column info">
+                <div class="wrapper">
+
+                    <span class="display-4 mb-2 title">{{ 'profile.previews.profile.title'|trans }}</span>
+
+                    <div class="local-img-layer js-set-image" style="background-image: url('{{ imageUrl }}')"></div>
+                    <div class="screen-layer-wrapper">
+                        <img src="{{ asset('/img/mobile-myapp-1.png') }}" alt="Register Screenshot" class="screen-layer-img">
+                    </div>
+                    <div class="text-layer-wrapper">
+                        <ul class="text-container p-0">
+                            <li class="info">
+                              <span class="type js-update-text">{{ form.type.vars.value }}</span>
+                              <span class="name text-uppercase js-update-text">{{ form.name.vars.value }}</span>
+                              <p class="bio js-update-text">{{ form.bio.vars.value }}</p>
+                            </li>
+                            <li class="address js-update-text">{{ form.address.vars.value }}</li>
+                            <li class="schedule">{{ 'profile.previews.profile.schedule'|trans }}</li>
+                            <li class="phone js-update-text">{{ form.phone.vars.value }}</li>
+                            <li class="reviews font-weight-medium">{{ 'profile.previews.profile.reviews'|trans }}</li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="column map">
+                <div class="wrapper">
+
+                    <span class="display-4 mb-2 title">{{ form.name.vars.value }}</span>
+                    <div class="screen-layer-wrapper">
+                        <img src="{{ asset('/img/mobile-myapp-2.png') }}" alt="User Screenshot" class="screen-layer-img">
+                    </div>
+                    <div class="text-layer-wrapper">
+                        <div class="wrapper map-pointer flex-column m-0 pr-4 pb-4">
+                            <span class="js-update-text position-name text-uppercase">{{ form.name.vars.value }}</span>
+                            <span class="google-icon">
+                                <img src="{{ asset('/img/icons/local_icon.png') }}" alt="" class="height extra-xxs icon">
+                            </span>
+                        </div>
+                        <div class="wrapper info text-left flex-row">
+                            <ul class="text-container p-0">
+                                <li class="name text-uppercase js-update-text">{{ form.name.vars.value }}</li>
+                                <li class="address js-update-text">{{ form.address.vars.value }}</li>
+                                <li class="reviews font-weight-medium"><span class="mr-2">5.0</span>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </li>
+                                <li class="info-wifi">{{ 'profile.previews.profile.wifiinfo'|trans }}</li>
+                                <li class="schedule">Hoy 09:00 - 21:00</li>
+                            </ul>
+                            <div class="img js-set-image" style="background-image: url('{{ imageUrl }}')"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+    </section>
+{% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/update-content.js') }}"></script>
+{% endblock javascripts %}

@@ -1,0 +1,65 @@
+{% set main_container_section = 'is-customers-section promos' %}
+{% trans_default_domain 'clients' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('advanced_promotions.meta.title')|trans }}{% endblock %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'clients' %}
+        {% block breadcrumbs %}
+            <li class="breadcrumb-item"><a href="{{ url('clients_index', {'sid':sid}) }}">{{ 'index.breadcrumb'|trans }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('clients_advanced_promotions', {'sid':sid}) }}">{{ 'advanced_promotions.breadcrumb'|trans }}</a></li>
+        {% endblock breadcrumbs %}
+        {% block title %}{{ 'advanced_promotions.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'advanced_promotions.header.description'|trans }}{% endblock description %}
+    {% endembed %}
+
+  <form id="" action="" class="content">
+          <div class="card-deck card_filter">
+            <div class="card large pb-4">
+              <div class="card-header">
+                <label for="promo-a-1" class="btn btn-sm btn-primary active">
+                <span>Activa</span>
+                  <i class="fas fa-check fa-xs ml-1"></i>
+                </label>
+                <input type="checkbox" class="form-check-input invisible" id="promo-a-1" checked>
+              </div>
+              <div class="card-body">
+                <div class="circle"></div>
+                <h2 class="card-title">CumpleaÃ±os</h2>
+                <p class="card-text">Establece la pÃ¡gina web donde llegarÃ¡n tus clientes al conectarse a tu red Wi-Fi</p>
+              </div>
+            </div>
+            <div class="card large pb-4">
+              <div class="card-header">
+                <label for="promo-a-2" class="btn btn-sm btn-primary">
+                <span>Activa</span>
+                  <i class="fas fa-check fa-xs ml-1"></i>
+                </label>
+                <input type="checkbox" class="form-check-input invisible" id="promo-a-2">
+              </div>
+              <div class="card-body">
+                <div class="circle"></div>
+                <h2 class="card-title">Fiestas</h2>
+                <p class="card-text">Establece la pÃ¡gina web donde llegarÃ¡n tus clientes al conectarse a tu red Wi-Fi</p>
+              </div>
+            </div>
+            <div class="card large pb-4">
+              <div class="card-header">
+                <label for="promo-a-3" class="btn btn-sm btn-primary">
+                <span>Activa</span>
+                  <i class="fas fa-check fa-xs ml-1"></i>
+                </label>
+                <input type="checkbox" class="form-check-input invisible" id="promo-a-3">
+              </div>
+              <div class="card-body">
+                <div class="circle"></div>
+                <h2 class="card-title">Novedades</h2>
+                <p class="card-text">Establece la pÃ¡gina web donde llegarÃ¡n tus clientes al conectarse a tu red Wi-Fi</p>
+              </div>
+            </div>
+          </div>
+          </form>
+
+{% endblock content %}

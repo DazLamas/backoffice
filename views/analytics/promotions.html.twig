@@ -1,0 +1,295 @@
+{% trans_default_domain 'analytics' %}
+{% extends 'analytics/common.html.twig' %}
+
+{% block title %}{{ ('promotions.meta.title')|trans }}{% endblock %}
+
+{% block javascripts %}
+  <script type="text/javascript">
+
+    var has_age_chart         = false;
+    var has_gender_chart      = false;
+    var has_hour_today_chart  = false;
+    var has_hour_week_chart   = false;
+    var has_content_chart     = false;
+
+  </script>
+
+  {{ parent() }}
+
+{% endblock javascripts %}
+
+{% block analytics %}
+
+<section>
+  <div class="tab-content">
+
+    <div class="tab-pane grid-cont show active" role="tabpanel">
+
+      <div class="container">
+
+         <div class="row p-0 px-4">
+            <div class="col-12 col-content-wrapper px-0 py-4 justify-content-between">
+              <div class="d-flex align-items-end">
+                <h2 class="sub-3 m-0 pr-3">{{ ('promotions.noUsersTitle')|trans }}</h2>
+              </div>
+            </div>
+          </div>
+
+        <div  class="row">
+
+          <div class="col-6 col-content-wrapper px-4">
+            <div class="card align-items-center justify-content-center flex-column">
+              <div class="card-header d-flex justify-content-end">
+                <br/>
+                <div class="dropdown js-dropdown-parent">
+                  <button class="btn dropdown-toggle js-change-text" type="button" id="dropdownDate" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                      {{ 'common.datedInfo.today'|trans }}
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownDate">
+                    <a class="dropdown-item" data-href="{{ url('analytics_general_near_your_local', {'sid':sid,'days':1}) }}" data-display-id="#ajax-display-1" href="#">{{ 'common.datedInfo.today'|trans }}</a>
+                    <a class="dropdown-item" data-href="{{ url('analytics_general_near_your_local', {'sid':sid,'days':3}) }}" data-display-id="#ajax-display-1" href="#">{{ 'common.datedInfo.last3days'|trans }}</a>
+                    <a class="dropdown-item" data-href="{{ url('analytics_general_near_your_local', {'sid':sid,'days':7}) }}" data-display-id="#ajax-display-1" href="#">{{ 'common.datedInfo.last7days'|trans }}</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-body py-3 text-center">
+                <span id="ajax-display-1" class="lead-2 d-block text-center">{{ analytics.usersNear|integer }}</span>
+                <span class="sub-3 d-block pb-4">{{ 'promotions.nearyourlocal.leyend'|trans }}</span>
+                {#<i class="fas fa-caret-up text-green ml-1"></i>#}
+                  {#<span class="data-number text-green">265.925</span>#}
+              </div>
+              <div class="card-footer bg-transparent text-center">
+                  <div class="w-100 d-flex justify-content-center">
+                    <a href="{{ url('analytics_general', {'sid':sid}) }}" role="button"
+                       class="btn shadow_bottom border-0 text-primary btn-standard px-4 mb-3 display-3">{{ 'promotions.nearyourlocal.view'|trans }}</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-3 col-content-wrapper px-1">
+            <div class="card align-items-center justify-content-center flex-column">
+              <div class="card-header d-flex justify-content-end">
+                <br/>
+                <div class="dropdown js-dropdown-parent">
+                  <button class="btn dropdown-toggle js-change-text" type="button" id="dropdownDate" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                      {{ 'common.datedInfo.today'|trans }}
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownDate">
+                    <a class="dropdown-item" data-href="{{ url('analytics_promotions_landing_impacts', {'sid':sid,'days':1}) }}" data-display-id="#landingImpacts" href="#">{{ 'common.datedInfo.today'|trans }}</a>
+                    <a class="dropdown-item" data-href="{{ url('analytics_promotions_landing_impacts', {'sid':sid,'days':7}) }}" data-display-id="#landingImpacts" href="#">{{ 'common.datedInfo.last7days'|trans }}</a>
+                    <a class="dropdown-item" data-href="{{ url('analytics_promotions_landing_impacts', {'sid':sid,'days':30}) }}" data-display-id="#landingImpacts" href="#">{{ 'common.datedInfo.last30days'|trans }}</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body py-3 text-center">
+                <span id="landingImpacts" class="lead-2 d-block text-center">{{ analytics.impactosLanding|integer }}</span>
+                <span class="sub-3 d-block pb-4">{{ 'promotions.landingImpacts.label'|trans }}</span>
+                {#<i class="fas fa-caret-up text-green ml-1"></i>#}
+                  {#<span class="data-number text-green">425</span>#}
+              </div>
+              <div class="card-footer bg-transparent text-center">
+                <div class="w-100 d-flex justify-content-center">
+                    <a href="{{ url('profile_landing', {'sid':sid}) }}" role="button"
+                       class="btn shadow_bottom border-0 text-primary btn-standard px-4 mb-3 display-3">{{ 'promotions.landingImpacts.view'|trans }}</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-3 col-content-wrapper justify-content-center">
+            <div class="d-flex flex-column justify-content-between">
+
+              <div class="card align-items-center justify-content-center flex-column">
+                <div class="card-header d-flex justify-content-center sub-3">
+                  {{ 'promotions.bestMoment.label'|trans }}
+                </div>
+                <div class="card-body py-3 d-flex flex-row align-items-center">
+                  <img src="{{ asset('img/icons/sun.png') }}" alt="daily hour" class="height lg mr-4">
+                  <span class="text-primary">{{ analytics.betterMoment }}</span>
+                </div>
+              </div>
+
+              <div class="card align-items-center justify-content-center">
+                <div class="card-header d-flex justify-content-center flex-column align-items-center">
+                  <span class="sub-3">{{ 'promotions.coverage.label'|trans }}</span>
+                  <span class="sub-3">{{ 'promotions.coverage.sublabel'|trans }}</span>
+                </div>
+                <div class="card-body pb-2 text-center">
+                  <span class="lead-7 d-block text-center">{{ analytics.alcanceTotal|integer }}</span>
+                </div>
+                  <div class="w-100 d-flex justify-content-center">
+                    <a href="https://www.netspotofficial.com/" role="button"
+                       class="btn btn-primary btn-xs px-3 display-3">{{ 'promotions.coverage.button'|trans }}</a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          {# JAVI: Usuarios con la app desde aquí: #}
+
+          <div class="row p-0 px-4">
+            <div class="col-12 col-content-wrapper px-0 py-4 border-top">
+              <h2 class="sub-3 m-0">{{ ('promotions.usersTitle.part1')|trans }}<span class="text-primary font-weight-medium"> {{ ('promotions.usersTitle.part2')|trans }}</span></h2>
+            </div>
+          </div>
+
+          <div class="row pt-0">
+            <div class="col-12 col-content-wrapper px-4">
+
+              <div class="card w-100">
+                <div class="card-header">
+                  <h4 class="d-flex justify-content-between">
+                    <span class="title">{{ 'promotions.bestMessage.label'|trans }}</span>
+                    {#<span class="font-weight-normal title xs">(<span class="text-primary">23.450 </span> {{ 'promotions.bestMessage.usersCoverage'|trans }} )</span>#}
+                  </h4>
+                </div>
+                <div class="card-body w-100">
+                  <div class="table-wrapper">
+                    <table class="table">
+                      <thead class="letter-spacing-xs">
+                        <tr>
+                          <th scope="col">{{ 'promotions.bestMessage.table.message'|trans }}</th>
+                          <th scope="col" class="text-center">{{ 'promotions.bestMessage.table.gender'|trans }}</th>
+                          <th scope="col" class="text-center">{{ 'promotions.bestMessage.table.age'|trans }}</th>
+                          <th scope="col" class="text-center">{{ 'promotions.bestMessage.table.moment'|trans }}</th>
+                          <th scope="col" class="text-center text-gray-700 font-weigth-medium">{{ 'promotions.bestMessage.table.conversion'|trans }}</th>
+                          <th scope="col" class="text-center text-gray-700 font-weigth-medium">{{ 'promotions.bestMessage.table.coverage'|trans }}</th>
+                          <th scope="col" class="text-center text-gray-700 font-weigth-medium">{{ 'promotions.bestMessage.table.success'|trans }}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="font-weight-normal border-0">
+                            <p class="m-0 font-italic">{{ analytics.mejorMensajePersonalizado.message }}</p>
+                          </td>
+                          <td class="text-center border-0">
+                              {% if analytics.mejorMensajePersonalizado.gender == 'male' %}
+                                <img src="{{ asset('img/icons/man.png') }}" alt="gender" class="height sm" />
+                              {% elseif analytics.mejorMensajePersonalizado.gender == 'female' %}
+                                <img src="{{ asset('img/icons/woman.png') }}" alt="gender" class="height sm" />
+                              {% else %}
+                                <img src="{{ asset('img/icons/woman.png') }}" alt="gender" class="height sm" />
+                                <img src="{{ asset('img/icons/man.png') }}" alt="gender" class="height sm" />
+                              {% endif %}
+                          </td>
+                          <td class="text-center font-weight-medium text-nowrap border-0">
+                            <span>{{ analytics.mejorMensajePersonalizado.agemin }}-{{ analytics.mejorMensajePersonalizado.agemax }}</span>
+                          </td>
+                          <td class="text-center border-0">
+                            <img src="../img/icons/sun.png" alt="day" class="height xs">
+                          </td>
+                          <td class="text-center font-weight-medium text-uppercase border-0">
+                              {% if 'alta' in analytics.mejorMensajePersonalizado.conversion %}
+                                  {% set conversion_color_class = 'text-green' %}
+                              {% elseif 'baja' in analytics.mejorMensajePersonalizado.conversion %}
+                                  {% set conversion_color_class = 'text-red' %}
+                              {% else %}
+                                  {% set conversion_color_class = 'text-orange' %}
+                              {% endif %}
+                            <span class="{{ conversion_color_class }} text-nowrap">{{ analytics.mejorMensajePersonalizado.conversion }}</span>
+                          </td>
+                          <td class="text-center text-primary font-weight-regular text-nowrap border-0">
+                            <span>{{ analytics.mejorMensajePersonalizado.reachmin|number_format }}</span>
+                            <span>-</span>
+                            <span>{{ analytics.mejorMensajePersonalizado.reachmax|number_format }}</span>
+                          </td>
+                          <td class="text-center font-weight-medium border-0">
+                            <span class="text-red">{{ analytics.mejorMensajePersonalizado.success }}%</span>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="card-footer bg-transparent w-100">
+                  <div class="w-100 d-flex justify-content-end">
+                    <a href="{{ url('myapp_custom_message', {'sid':sid}) }}" role="button"
+                       class="btn shadow_bottom border-0 text-primary btn-standard px-4 display-3">{{ 'promotions.bestMessage.view'|trans }}</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-start">
+
+          <div class="col-4 col-content-wrapper px-4">
+            <div class="card align-items-center justify-content-center flex-column">
+              <div class="card-header d-flex justify-content-end">
+                <div class="dropdown js-dropdown-parent">
+                  <button class="btn dropdown-toggle js-change-text" type="button" id="dropdownDate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{ 'common.datedInfo.today'|trans }}
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownDate">
+                    <a class="dropdown-item" data-display-id="#pushNotifications" data-href="{{ url('analytics_app_push_notifications', {'sid':sid,'days':1}) }}" href="">{{ 'common.datedInfo.today'|trans }}</a>
+                    <a class="dropdown-item" data-display-id="#pushNotifications" data-href="{{ url('analytics_app_push_notifications', {'sid':sid,'days':3}) }}" href="">{{ 'common.datedInfo.last3days'|trans }}</a>
+                    <a class="dropdown-item" data-display-id="#pushNotifications" data-href="{{ url('analytics_app_push_notifications', {'sid':sid,'days':7}) }}" href="">{{ 'common.datedInfo.last7days'|trans }}</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body pt-3 text-center">
+                <span id="pushNotifications" class="lead-2 d-block text-center">
+                  {{ analytics.mensajesPush|integer }}
+                </span>
+                <span class="sub-3 d-block pb-4">{{ 'promotions.pushMessage.label'|trans }}</span>
+              </div>
+              <div class="card-footer bg-transparent text-center">
+                <div class="w-100 d-flex justify-content-center">
+                  <a href="{{ url('dashboard_index', {'sid':sid}) }}" role="button"
+                     class="btn shadow_bottom border-0 text-primary btn-standard px-4 mb-2 display-3">{{ 'promotions.pushMessage.view'|trans }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-3 col-content-wrapper">
+            <div class="d-flex flex-column justify-content-between">
+
+              <div class="card align-items-center justify-content-center flex-column p-3">
+                <div class="card-header d-flex justify-content-center sub-3">
+                  {{ 'promotions.conversionCard.label'|trans }}
+                </div>
+                <div class="card-body pt-2 d-flex flex-row align-items-center">
+                    {% if 'alta' in analytics.conversionMedia|lower %}
+                        {% set conversion_color_class = 'text-green' %}
+                    {% elseif 'baja' in analytics.conversionMedia|lower %}
+                        {% set conversion_color_class = 'text-red' %}
+                    {% else %}
+                        {% set conversion_color_class = 'text-orange' %}
+                    {% endif %}
+                  <span class="{{ conversion_color_class }} lead-6 text-uppercase">{{ analytics.conversionMedia|lower }}</span>
+                </div>
+              </div>
+
+              <div class="card align-items-center justify-content-center flex-column p-3">
+                <div class="card-header d-flex justify-content-center sub-3">
+                  {{ 'promotions.successCard.label'|trans }}
+                </div>
+                <div class="card-body pt-2 d-flex flex-row align-items-center">
+                  <span class="lead-6 text-uppercase text-red">{{ analytics.exitoMedio|replace({'%':''}) }}%</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        </div>
+
+      </div><!-- container -->
+    </div>
+  </div>
+</section>
+
+{% endblock analytics %}

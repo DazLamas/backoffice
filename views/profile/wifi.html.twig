@@ -1,0 +1,114 @@
+{% set main_container_section = 'subsection-layout is-profile-section mywifi' %}
+{% trans_default_domain 'profile' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('wifi.meta.title')|trans }}{% endblock %}
+
+{% block modals %}
+    {% include 'profile/_blockedusers_modal.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'profile' %}
+        {% block breadcrumbs %}
+            <li class="breadcrumb-item"><a href="{{ url('profile_index', {'sid':sid}) }}">{{ 'index.breadcrumb'|trans }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('profile_landing', {'sid':sid}) }}">{{ 'wifi.breadcrumb'|trans }}</a></li>
+        {% endblock breadcrumbs %}
+        {% block title %}{{ 'wifi.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'wifi.header.description'|trans }}{% endblock description %}
+    {% endembed %}
+
+    <section class="content p-0">
+        <div class="card-columns">
+            <div class="card py-2 px-2 mb-3">
+                <div class="card-body">
+                    <h3>{{ 'wifi.info.title'|trans }}</h3>
+                    <p>{{ 'wifi.info.description'|trans }}</p>
+                    <p class="d-flex justify-content-between letter-spacing-xs font-weight-medium pl-2">
+                        <span class="display-2 text-gray-800">{{ 'wifi.info.bandwidth'|trans }}</span>
+                        <span class="lead font-weight-medium text-primary"><span class="js-counter">{{ mywifi.general.bandwidth|round|number_format }}</span> mb/s</span>
+                    </p>
+                    <p class="d-flex justify-content-between letter-spacing-xs font-weight-medium pl-2">
+                        <span class="display-2 text-gray-800">{{ 'wifi.info.connections'|trans }}</span>
+                        <span class="lead font-weight-medium text-green js-counter">{{ mywifi.general.connections|number_format }}</span>
+                    </p>
+                    <footer class="text-center">
+                        <a href="{{ url('dashboard_index', {'sid':sid}) }}" class="btn b-0 text-primary mt-2">{{ 'wifi.info.view_connected_people'|trans }}</a>
+                    </footer>
+                </div>
+            </div>
+
+            <div class="card py-2 px-2 mb-3">
+                <div class="card-body">
+                    <h3>{{ 'wifi.summary.title'|trans }}</h3>
+                    <p>{{ 'wifi.summary.description'|trans }}</p>
+                    <ul class="d-flex flex-row align-items-center justify-content-between w-100 p-0 bg-light boxes-grid p-2">
+                        <li class="box d-flex flex-column text-center" class="d-flex flex-column">
+                            <span class="h1 mb-0 font-weight-medium text-primary js-counter">{{ mywifi.resume.duration|number_format('0', '', '') }}</span>
+                            <span class="h2 font-weight-normal text-gray-400">min</span>
+                        </li>
+                        <li class="box d-flex flex-column text-center border-right border-left">
+                            <span class="h1 mb-0 font-weight-medium text-primary js-counter">{{ mywifi.resume.connections|number_format|number_format('0', '', '') }}</span>
+                            <span class="h2 font-weight-normal text-gray-400">{{ 'wifi.summary.connections'|trans }}</span>
+                        </li>
+                        <li class="box d-flex flex-column text-center">
+                            <span class="h1 mb-0 font-weight-medium text-primary js-counter">{{ mywifi.resume.bandwidth|number_format|number_format('0', '', '') }}</span>
+                            <span class="h2 font-weight-normal text-gray-400">mb/s</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card my-3 text-center bg-transparent">
+                <button type="button" data-toggle="modal" data-target="#blocked-users" class="btn btn-rounded shadow_bottom">{{ 'wifi.blockedUsers.button'|trans }}</button>
+            </div>
+
+            <div class="card py-2 px-2 mb-3">
+                <div class="card-body">
+                    <h3>{{ 'wifi.limits.title'|trans }}</h3>
+                    <p>{{ 'wifi.limits.description'|trans }}</p>
+                    <p class="lead font-weight-normal letter-spacing-md border-bottom w-100 pb-2 pl-2">{{ 'wifi.limits.timelimit.label'|trans }}</p>
+                    <form action="">
+                        <ul class="d-flex flex-row align-items-center justify-content-center w-100 p-0 boxes-grid-splitted py-2 px-4 h-100">
+
+                            {% for limit in [30,60,90,-1] %}
+                            <li class="m-2">
+                                <a href="{{ url('profile_wifi_limit', {'sid':sid, 'limit': limit}) }}" class="{{ mywifi.limits.time==(limit == -1 ? -1 : limit*60*1000)?'active':'' }} box total-center pointer d-flex flex-column">
+                                    <span class="h1 font-weight-medium m-0">{{ limit == -1 ? '∞' : limit }}</span>
+                                    <span class="lead font-weight-normal">{{ 'wifi.limits.min'|trans }}</span>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card py-2 px-2 mb-0">
+                <div class="card-body">
+                    <header>
+                        <img src="{{ asset('img/icons/netspot_logo_picto.png') }}" alt="Netspot Logo" class="logo d-inline">
+                        <h3 class="text-primary d-inline">{{ 'wifi.recommended.title'|trans }}</h3>
+                    </header>
+                    <p>{{ 'wifi.recommended.description'|trans }}</p>
+                    <ul class="d-flex flex-row align-items-center justify-content-between w-100 p-0 bg-light boxes-grid p-2">
+                        <li class="box d-flex flex-column text-center" class="d-flex flex-column">
+                            <span class="display-1 text-primary">{{ mywifi.recomendation.time }}</span>
+                            <span class="h2 font-weight-normal text-gray-400">{{ 'wifi.recommended.min'|trans }}</span>
+                        </li>
+                        <li class="box d-flex flex-column text-center border-right border-left">
+                            <span class="display-1 text-primary">{{ mywifi.recomendation.connections }}</span>
+                            <span class="h2 font-weight-normal text-gray-400">{{ 'wifi.recommended.connections'|trans }}</span>
+                        </li>
+                        <li class="box d-flex flex-column text-center">
+                            <span class="display-1 text-primary">{{ mywifi.recomendation.bandwidth }}</span>
+                            <span class="h2 font-weight-normal text-gray-400">{{ 'wifi.recommended.mbs'|trans }}</span>
+                        </li>
+                    </ul>
+                    <a href="{{ url('profile_wifi_enable_recommended', {'sid':sid}) }}"
+                       class="btn btn-primary btn-standard float-right my-3">{{ 'wifi.recommended.enable'|trans }}</a>
+                </div>
+            </div>
+    </section>
+{% endblock content %}

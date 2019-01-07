@@ -1,0 +1,14 @@
+<header class="header">
+    {% block breadcrumbs_outer %}
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb text-uppercase">
+                {% block breadcrumbs %}{% endblock breadcrumbs %}
+            </ol>
+        </nav>
+    {% endblock breadcrumbs_outer %}
+
+    <h1>{% block title %}{% endblock title %}</h1>
+    <p>{% block description %}{% endblock description %}</p>
+
+    {% block actions %}{% endblock actions %}
+</header>

@@ -1,0 +1,36 @@
+{% set main_container_section = 'is-security-section filter' %}
+{% trans_default_domain 'security' %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ ('filter.meta.title')|trans }}{% endblock %}
+
+{% block content %}
+    {% embed '_components/page_header.html.twig' %}
+        {% trans_default_domain 'security' %}
+        {% block breadcrumbs %}
+            <li class="breadcrumb-item"><a href="{{ url('security_index', {'sid':sid}) }}">{{ 'index.breadcrumb'|trans }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('security_filter', {'sid':sid}) }}">{{ 'filter.breadcrumb'|trans }}</a></li>
+        {% endblock breadcrumbs %}
+        {% block title %}{{ 'filter.header.title'|trans }}{% endblock title %}
+        {% block description %}{{ 'filter.header.description'|trans }}{% endblock description %}
+    {% endembed %}
+
+    <section class="content">
+        <div class="card-deck card_filter">
+            <a class="card slim" href="{{ url('security_filter_blocker', {'sid':sid}) }}">
+                <div class="card-body">
+                    <div class="subsection-icon"></div>
+                    <h2 class="card-title">{{ 'filter.blockUrl.title'|trans }}</h2>
+                    <p class="card-text">{{ 'filter.blockUrl.description'|trans }}</p>
+                </div>
+            </a>
+            <a class="card slim" href="{{ url('security_filter_categories', {'sid':sid}) }}">
+                <div class="card-body">
+                    <div class="subsection-icon"></div>
+                    <h2 class="card-title">{{ 'filter.categories.title'|trans }}</h2>
+                    <p class="card-text">{{ 'filter.categories.description'|trans }}</p>
+                </div>
+            </a>
+        </div>
+    </section>
+{% endblock content %}

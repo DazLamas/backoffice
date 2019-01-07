@@ -1,0 +1,17 @@
+//Dashboard
+.is-dashboard-section{
+
+  .table-wrapper {
+    max-height: 400px;
+    min-height: 300px;
+    &.empty {
+      background: linear-gradient(
+                     rgba(255,255,255, .1),
+                     rgba(255,255,255, .9)),
+                     url("../img/no_items_dashboard.png");
+      background-position: center;
+      background-size: auto 200px;
+      background-repeat: no-repeat;
+    }
+  }
+}

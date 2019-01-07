@@ -1,0 +1,141 @@
+//Profile
+
+.is-aboutus-section {
+
+  .content_container {
+    .content_wrapper {
+      .content {
+        min-height: 824px;
+      }
+    }
+  }
+
+  .card {
+    padding: 1.7rem 1.5rem;
+    border-radius: 0;
+    .title {
+      font-size: 20px;
+      color: $blue;
+    }
+    .image-bg {
+      height: 185px;
+      width: 240px;
+      background: url("/img/about_us/plazamayor.jpeg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    &.card-img {
+      padding: 0 0;
+      .btn-custom {
+        background-color: $white;
+        padding: 9px 14px;
+        font-size: 14px;
+        color: $blue;
+        letter-spacing: .3px;
+        font-weight: $font-weight-medium;
+      }
+
+    }
+    &.column-1 {
+      flex-grow: 2;
+      .smaller-text {
+        font-size: 12px;
+      }
+      .grid-cont {
+        flex-wrap: wrap;
+        .grid-cell {
+          width: 25%;
+          height: 75px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 20px;
+          img {
+            max-height: 100%;
+            max-width: 100%;
+            padding: 3px;
+            &[src*="amazon"] {
+              max-width: 70%;
+            }
+            &[src*="ibm"] {
+              max-width: 70%;
+            }
+            &[src*="foton"] {
+              max-width: 70%;
+            }
+          }
+        }
+      }
+    }
+    &.column-2 {
+      flex-grow: 1.5;
+      .card.child-1 {
+        padding: 1.7rem 1.5rem;
+        max-height: 120px;
+        ul {
+          flex-direction: row;
+          justify-content: space-around;
+          li {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+        @include media-breakpoint-down(lg) {
+          max-height: 220px;
+          ul {
+            flex-direction: column;
+            // justify-content: space-around;
+            li {
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+      .m-custom {
+        margin-bottom: 4rem;
+      }
+      .carousel-item {
+        &:nth-child(1) {
+          .carousel-img {
+            background-image: url("/img/about_us/carousel/cope.jpg");
+          }
+        }
+        &:nth-child(2) {
+          .carousel-img {
+            background-image: url("/img/about_us/carousel/elpais.png");
+          }
+        }
+        &:nth-child(3) {
+          .carousel-img {
+            background-image: url("/img/about_us/carousel/expansion.jpg");
+          }
+        }
+        &:nth-child(4) {
+          .carousel-img {
+            background-image: url("/img/about_us/carousel/cadenaser.png");
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

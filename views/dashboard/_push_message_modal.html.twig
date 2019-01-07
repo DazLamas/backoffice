@@ -1,0 +1,17 @@
+{% trans_default_domain 'dashboard' %}
+<div id="modal-push" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content px-4 py-4">
+            <div class="modal-header align-items-start px-0 mb-1">
+                <h2 class="modal-title letter-spacing-xs my-1">{{ 'pushNotification.modal.title'|trans }}</h2>
+                <p class="display-2 leter-spacing-xs font-weight-light text-gray-700">{{ 'pushNotification.modal.text'|trans }}</p>
+            </div>
+
+            <div id="ajaxContainer">
+                <div class="w-100 total-center py-8">
+                    <i class="fas fa-spinner fa-pulse fa-4x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

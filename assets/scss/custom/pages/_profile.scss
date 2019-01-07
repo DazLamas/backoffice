@@ -1,0 +1,292 @@
+//Profile
+.is-profile-home {
+  .card{
+    &:nth-child(1){
+      .subsection-icon{
+        background: url('/img/icons/subsections/mylanding.png');
+      }
+    }
+    &:nth-child(2){
+      .subsection-icon{
+        background: url('/img/icons/subsections/reviews.png');
+      }
+    }
+    &:nth-child(3){
+      .subsection-icon{
+        background: url('/img/icons/subsections/mywifi.png');
+      }
+    }
+  }
+}
+.is-profile-section{
+
+/*
+ * Landing Subsection
+ */
+
+    &.landing {
+
+    .content_container
+    .content_wrapper
+    .content {
+      height: auto;
+      min-height: auto;
+      .content {
+        height: 590px;
+      }
+    }
+
+      .column {
+        width: 30%;
+        height: inherit;
+        &.mobile {
+          width: 35%;
+        }
+      .image-picker-wrapper {
+        height: 341px;
+        width: 253px;
+        .image-picker {
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          border: 0.5px solid $light;
+        }
+      }
+      p{
+        max-width: 45ex;
+        margin-bottom: 1.7rem;
+      }
+      $imgWidth: 326px;
+      .center-with-img,
+      .wrapper {
+        width: $imgWidth;
+        text-align: center;
+        display: block;
+        &.title{
+          transform: translateY(-430px);
+        }
+      }
+      .local-name {
+        position: relative;
+        z-index: 3;
+        color: white;
+        transform: translateY(112px);
+        -webkit-transform: translateY(112px);
+        -o-transform: translateY(112px);
+        -moz-box-transform: translateY(112px);
+        font-size: 13px;
+        &.lower {
+          transform: translateY(125px);
+          -webkit-transform: translateY(125px);
+          -o-transform: translateY(125px);
+          -moz-box-transform: translateY(125px);
+          font-size: 13px;
+        }
+      }
+      .local-img-layer {
+        width: 206px;
+        height: 390px;
+        margin: 0 auto;
+        background-size: cover;
+        background-position: center center;
+        position: relative;
+        z-index: 1;
+      }
+      .screen-layer-wrapper {
+          height: 475px;
+          width: $imgWidth;
+          position: relative;
+          z-index: 2;
+          transform: translateY(-425px);
+          -webkit-transform: translateY(-425px);
+          -o-transform: translateY(-425px);
+          -moz-box-transform: translateY(-425px);
+          .screen-layer-img {
+            height: 475px;
+            width: $imgWidth;
+          }
+        }
+    }
+  }
+
+/*
+ * Reviews Subsection
+ */
+
+  &.reviews {
+    .content_container
+      .content_wrapper
+        .content {
+          min-height: 450px;
+    }
+    .content-header {
+      padding: 1.5rem 1.5rem 0 1.5rem;
+    }
+
+    .wrapper {
+      max-height: 500px;
+      min-height: 400px;
+      overflow-y: scroll;
+      &.empty{
+        background: linear-gradient(
+                       rgba(255,255,255, .1),
+                       rgba(255,255,255, .9)),
+                       url("../img/no_items_reviews.png");
+        background-position: 50% 85%;
+        background-size: auto 350px;
+        background-repeat: no-repeat;
+      }
+    }
+    .reviews-container {
+      $avatarDimensions: 25px;
+      $avatarMargin: 8px;
+      background: $white;
+      .review-header {
+        display: flex;
+        align-items: center;
+        .profile.rounded-img {
+          height: $avatarDimensions;
+          width: $avatarDimensions;
+        }
+        .icons {
+          height: 16px;
+        }
+        .fa-star {
+          height: 11px;
+          margin-right: 0.5px;
+        }
+      }
+
+      li:not(:last-child) {
+        border-bottom: $border-width solid $gray-200;
+      }
+
+      p {
+        margin-left: $avatarDimensions + $avatarMargin;
+        letter-spacing: 0.3px;
+      }
+      .review-footer {
+        margin-left: $avatarDimensions + $avatarMargin;
+        margin-right: 5px;
+        font-size: 13px;
+        img {
+          height: 27px;
+        }
+      }
+    }
+  }
+
+/*
+ * My Wifi Subsection
+ */
+
+  &.mywifi {
+    .card-columns {
+      -webkit-column-count: 2;
+      @include media-breakpoint-down(md) {
+        -webkit-column-count: 1;
+      }
+    }
+    .logo {
+      height: 20px;
+      vertical-align: baseline;
+      margin-right: 8px;
+    }
+    .boxes-grid {
+      height: 120px;
+      .box {
+        line-height: 10px;
+        flex-grow: 1;
+        flex-basis: 0;
+        padding: 0 10px;
+      }
+    }
+    .boxes-grid-splitted {
+      .box {
+        height: 100px;
+        width: 90px;
+        line-height: 10px;
+        background-color: $light;
+        color: $blue;
+        .lead {
+          color: $gray-400;
+        }
+        &.active {
+          background-color: $blue;
+          .h1,
+          .lead{
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+ * Landing - Modal
+ */
+
+div[id^="modal-screens"] {
+  .screens-layout{
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateX(-95px);
+    -webkit-transform:  translate(-95px);
+    -o-transform:  translate(-95px);
+    &.computer {
+      transform: translateX(-160px);
+      -webkit-transform:  translate(-160px);
+      -o-transform:  translate(-160px);
+    }
+  }
+  .header-wrapper {
+    width: 400px;
+  }
+  .local-name {
+    position: relative;
+    z-index: 3;
+    color: white;
+
+    transform:  translate(132px, -142px);
+    -webkit-transform:  translate(132px, -142px);
+    -o-transform:  translate(132px, -142px);
+
+    font-size: 13px;
+    width: 100%;
+    white-space: nowrap;
+
+    &.computer {
+      transform: translate(245px, -142px);
+      -webkit-transform: translate(245px, -142px);
+      -o-transform: translate(245px, -142px);
+    }
+    &.position-3 {
+      transform: translate(132px, -130px);
+      -webkit-transform: translate(132px, -130px);
+      -o-transform: translate(132px, -130px);
+    }
+    &.position-4 {
+      transform: translate(236px, -132px);
+      -webkit-transform: translate(236px, -132px);
+      -o-transform: translate(236px, -132px);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
