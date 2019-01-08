@@ -219,58 +219,170 @@
                         </tbody>
                     </table>
 
-                        <!-- <div class="w-100 h-100">
-                            <span class="gray-400 display-3 font-weight-normal ">No hay nadie conectado a tu red Wi-fi ahora...</span>
-                        </div>
+                    <!-- <div class="w-100 h-100">
+                        <span class="gray-400 display-3 font-weight-normal ">No hay nadie conectado a tu red Wi-fi ahora...</span>
+                    </div> -->
 
                 </div>
 
                 <header class="header mt-4">
-                    <h6 class="text-dark">{{ 'index.recent.title'|trans }}</h6>
+                    <h6 class="text-dark">Conexiones Anteriores</h6>
                 </header>
-                <div class="table-wrapper listAnimationCont {% if not recentConnections|length %} empty {% endif %} overflow-scroll">
-                    {% if recentConnections|length %}
-                    <table class="table">
-                        <thead>
-                        <tr class="listAnimationItem">
-                            <th scope="col"></th>
-                            <th scope="col">{{ 'index.recent.name.header'|trans }}</th>
-                            <th scope="col" class="text-center">{{ 'index.recent.country.header'|trans }}</th>
-                            <th scope="col" class="text-center">{{ 'index.recent.os.header'|trans }}</th>
-                            <th scope="col" class="text-center">{{ 'index.recent.date.header'|trans }}</th>
-                            <th scope="col">{{ 'index.recent.time.header'|trans }}</th>
-                            <th scope="col">{{ 'index.recent.bandwidth.header'|trans }}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                <div class="table-wrapper listAnimationCont overflow-scroll">
 
-                        {% for connection in recentConnections|reverse %}
-                        <tr class="listAnimationItem">
-                            <th class="text-left">
-                                <div style="background-image: url({{ connection.imageurl and connection.imageurl != 'NULL' ? connection.imageurl : asset('img/profile0.png') }})" class="rounded-img"></div>
-                            </th>
-                            <td class="font-weight-light">{{ connection.name }}</td>
-                            <td class="text-center">
-                                <img src="../assets/img/icons/countries/es.svg') }}" alt="country" class="flag"></td>
-                            <td class="text-center">
-                                <img src="../assets/img/icons/'~connection.system|lower~'.png') }}" alt="os" class="os"></td>
-                            <td class="text-center">{{ ((connection.timestamp_init/1000)|round)|date('d/m/y') }}</td>
-                            <td>
-                                {{ (connection.timestamp_init/1000)|timestampAgo(connection.timestamp_now/1000) }}
-                            </td>
-                            <td class="font-weight-light">
-                                <span class="js-counter">{{ connection.bandwidth|round }}</span> mb/s
-                            </td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                    {% else %}
-                        <div class="w-100 h-100">
-                            <span class="gray-400 display-3 font-weight-normal ">{{ 'index.noitems'|trans }}</span>
-                        </div>
-                    {% endif %}
-                </div> -->
+                  <table class="table">
+                      <thead>
+                      <tr class="listAnimationItem">
+                          <th scope="col"></th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col" class="text-center">País</th>
+                          <th scope="col" class="text-center">Sistema Operativo</th>
+                          <th scope="col" class="text-center">Fecha conex.</th>
+                          <th scope="col">Tiempo conectado</th>
+                          <th scope="col">Gasto</th>
+                          <th scope="col"></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+
+
+                      <tr class="listAnimationItem">
+                          <th class="text-left">
+                              <div style="background-image: url('../assets/img/profile2.png')" class="rounded-img"></div>
+                          </th>
+                          <td class="font-weight-light">Marta Negro</td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/countries/pt.svg" alt="country" class="flag"></td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/android.png" alt="os" class="os"></td>
+                          <td class="text-center">04/01/2019</td>
+                          <td>1h37min</td>
+                          <td class="font-weight-light"><span class="js-counter">32</span>mb/s</td>
+                          <td>
+                              <button data-url=""
+                                      class="btn btn-outline-red btn-xs" data-toggle="modal" data-target="#modal-block">Bloquear</button>
+                          </td>
+                      </tr>
+
+                      <tr class="listAnimationItem">
+                          <th class="text-left">
+                              <div style="background-image: url('../assets/img/profile0.png')" class="rounded-img"></div>
+                          </th>
+                          <td class="font-weight-light">Marta Negro</td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/countries/es.svg" alt="country" class="flag"></td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/android.png" alt="os" class="os"></td>
+                          <td class="text-center">04/01/2019</td>
+                          <td>1h37min</td>
+                          <td class="font-weight-light"><span class="js-counter">32</span>mb/s</td>
+                          <td>
+                              <button data-url=""
+                                      class="btn btn-outline-red btn-xs" data-toggle="modal" data-target="#modal-block">Bloquear</button>
+                          </td>
+                      </tr>
+
+
+                      <tr class="listAnimationItem">
+                          <th class="text-left">
+                              <div style="background-image: url('../assets/img/profile0.png')" class="rounded-img"></div>
+                          </th>
+                          <td class="font-weight-light">Marta Negro</td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/countries/es.svg" alt="country" class="flag"></td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/ios.png" alt="os" class="os"></td>
+                          <td class="text-center">04/01/2019</td>
+                          <td>1h37min</td>
+                          <td class="font-weight-light"><span class="js-counter">32</span>mb/s</td>
+                          <td>
+                              <button data-url=""
+                                      class="btn btn-outline-red btn-xs" data-toggle="modal" data-target="#modal-block">Bloquear</button>
+                          </td>
+                      </tr>
+
+
+                      <tr class="listAnimationItem">
+                          <th class="text-left">
+                              <div style="background-image: url('../assets/img/profile2.png')" class="rounded-img"></div>
+                          </th>
+                          <td class="font-weight-light">Marta Negro</td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/countries/es.svg" alt="country" class="flag"></td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/ios.png" alt="os" class="os"></td>
+                          <td class="text-center">04/01/2019</td>
+                          <td>1h37min</td>
+                          <td class="font-weight-light"><span class="js-counter">32</span>mb/s</td>
+                          <td>
+                              <button data-url=""
+                                      class="btn btn-outline-red btn-xs" data-toggle="modal" data-target="#modal-block">Bloquear</button>
+                          </td>
+                      </tr>
+
+                      <tr class="listAnimationItem">
+                          <th class="text-left">
+                              <div style="background-image: url('../assets/img/profile2.png')" class="rounded-img"></div>
+                          </th>
+                          <td class="font-weight-light">Marta Negro</td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/countries/es.svg" alt="country" class="flag"></td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/ios.png" alt="os" class="os"></td>
+                          <td class="text-center">04/01/2019</td>
+                          <td>1h37min</td>
+                          <td class="font-weight-light"><span class="js-counter">32</span>mb/s</td>
+                          <td>
+                              <button data-url=""
+                                      class="btn btn-outline-red btn-xs" data-toggle="modal" data-target="#modal-block">Bloquear</button>
+                          </td>
+                      </tr>
+
+                      <tr class="listAnimationItem">
+                          <th class="text-left">
+                              <div style="background-image: url('../assets/img/profile2.png')" class="rounded-img"></div>
+                          </th>
+                          <td class="font-weight-light">Marta Negro</td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/countries/es.svg" alt="country" class="flag"></td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/ios.png" alt="os" class="os"></td>
+                          <td class="text-center">04/01/2019</td>
+                          <td>1h37min</td>
+                          <td class="font-weight-light"><span class="js-counter">32</span>mb/s</td>
+                          <td>
+                              <button data-url=""
+                                      class="btn btn-outline-red btn-xs" data-toggle="modal" data-target="#modal-block">Bloquear</button>
+                          </td>
+                      </tr>
+
+                      <tr class="listAnimationItem">
+                          <th class="text-left">
+                              <div style="background-image: url('../assets/img/profile2.png')" class="rounded-img"></div>
+                          </th>
+                          <td class="font-weight-light">Marta Negro</td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/countries/es.svg" alt="country" class="flag"></td>
+                          <td class="text-center">
+                              <img src="../assets/img/icons/ios.png" alt="os" class="os"></td>
+                          <td class="text-center">04/01/2019</td>
+                          <td>1h37min</td>
+                          <td class="font-weight-light"><span class="js-counter">32</span>mb/s</td>
+                          <td>
+                              <button data-url=""
+                                      class="btn btn-outline-red btn-xs" data-toggle="modal" data-target="#modal-block">Bloquear</button>
+                          </td>
+                      </tr>
+
+
+                      </tbody>
+                  </table>
+
+                    <!-- <div class="w-100 h-100">
+                        <span class="gray-400 display-3 font-weight-normal ">{{ 'index.noitems'|trans }}</span>
+                    </div>
+                 -->
+                </div>
             </section>
 
           </div>
