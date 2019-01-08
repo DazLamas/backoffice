@@ -47,8 +47,6 @@
         <!-- Client Menu --------------------------------------------------------------------->
         <div class="secondary_menu js_menu_container">
 
-            <!-- {% set notifications = notifications() %} -->
-
             <div class="alert_box {% if notifications|length %}bg-red{% endif %} pointer js_submenu_trigger" href="#collapseAlertsMenu" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" id="alertsSecondaryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="far fa-bell text-white"></i>
             </div>
@@ -61,8 +59,7 @@
                     <header>Notificaciones</header>
                 </li>
 
-            <!-- {% if notifications|length %}
-                {% for key, notification in notifications %} -->
+
                     <li class="menu_item flex-column">
                         <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
                             <h7 class="dot_list sx_margin">
@@ -87,20 +84,18 @@
                             <p class="text-format m-0">Tienes nuevas visitas en tu perfil Netspot, ¡descubre quién es!</p> <!--{{ notification.content }}-->
                         </a>
                     </li>
-                <!-- {% endfor %} -->
 
-            <!-- {% else %} -->
                     <!-- <li class="menu_item flex-column">
                         <span class="p-2 small text-gray-400 bg-white">{{ 'user_info.notifications.empty'|trans }}</span>
                     </li> -->
-            <!-- {% endif %} -->
+
             </ul>
 
             <ul id="collapseClientMenu" class="secondary_menu_toggled bg-white client_menu_version collapse shadow_left js_submenu">
                 <li class="menu_item text-center bg-primary d-flex justify-content-center align-items-center flex-column text-white py-3 w-100">
                     <div alt="Client Logo" class="client-logo mb-1 rounded-img" style="background-image: url('../assets/img/logo_picto_client.png');"></div>
-                    <h7 class="store-name ellipsis">Con Tres Fogones</h7> <!--{{ currentStore.name }} -->
-                    <span class="store-subtext ellipsis">Usuario: mercgarc1</span> <!-- {{ 'user_info.user.title'|trans }}: {{ app.user.username }} -->
+                    <h7 class="store-name ellipsis">Con Tres Fogones</h7>
+                    <span class="store-subtext ellipsis">Usuario: mercgarc1</span>
                 </li>
                 <li class="menu_item  p-2  sx_marginborder-0">
                     <a href="{{ url('logout') }}" class="dot_list itemlist-format">
@@ -109,9 +104,174 @@
                 </li>
             </ul>
         </div>
-        <!-- Client Menu ----------------------------------------------------------end-------->
 
+        <!-- Header ------------------------------------------------------------->
           <div class="content_wrapper">
+            <header class="header">
+
+                <h1>Dashboard</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+
+                <button type="button" class="btn btn-lg font-weight-medium btn-primary float-right" data-toggle="modal"
+                        data-target="#modal-push" data-href="">
+                    Enviar Notificación Push
+                </button>
+
+            </header>
+
+            <section class="content bg-white">
+                <header class="header">
+                    <h6 class="text-dark">Conectados Ahora</h6>
+                </header>
+                <div class="table-wrapper listAnimationCont overflow-scroll"> <!-- empty class to skip animation and load bgimg -->
+
+                    <table class="table">
+                        <thead>
+                        <tr class="listAnimationItem">
+                            <th scope="col"></th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col" class="text-center">País</th>
+                            <th scope="col" class="text-center">Sistema Operativo</th>
+                            <th scope="col" class="text-center">Fecha conex.</th>
+                            <th scope="col">Tiempo conectado</th>
+                            <th scope="col">Gasto</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                        <tr class="listAnimationItem">
+                            <th class="text-left">
+                                <div style="background-image: url('../assets/img/profile3.png')" class="rounded-img"></div>
+                            </th>
+                            <td class="font-weight-light">Marta Negro</td>
+                            <td class="text-center">
+                                <img src="../assets/img/icons/countries/ca.svg" alt="country" class="flag"></td>
+                            <td class="text-center">
+                                <img src="../assets/img/icons/android.png" alt="os" class="os"></td>
+                            <td class="text-center">-</td>
+                            <td>1h37min</td>
+                            <td class="font-weight-light"><span class="js-counter">32</span>mb/s</td>
+                            <td>
+                                <button data-url=""
+                                        class="btn btn-outline-red btn-xs" data-toggle="modal" data-target="#modal-block">Bloquear</button>
+                            </td>
+                        </tr>
+
+                        <tr class="listAnimationItem">
+                            <th class="text-left">
+                                <div style="background-image: url('../assets/img/profile0.png')" class="rounded-img"></div>
+                            </th>
+                            <td class="font-weight-light">Marta Negro</td>
+                            <td class="text-center">
+                                <img src="../assets/img/icons/countries/es.svg" alt="country" class="flag"></td>
+                            <td class="text-center">
+                                <img src="../assets/img/icons/android.png" alt="os" class="os"></td>
+                            <td class="text-center">-</td>
+                            <td>1h37min</td>
+                            <td class="font-weight-light"><span class="js-counter">32</span>mb/s</td>
+                            <td>
+                                <button data-url=""
+                                        class="btn btn-outline-red btn-xs" data-toggle="modal" data-target="#modal-block">Bloquear</button>
+                            </td>
+                        </tr>
+
+
+                        <tr class="listAnimationItem">
+                            <th class="text-left">
+                                <div style="background-image: url('../assets/img/profile1.png')" class="rounded-img"></div>
+                            </th>
+                            <td class="font-weight-light">Marta Negro</td>
+                            <td class="text-center">
+                                <img src="../assets/img/icons/countries/br.svg" alt="country" class="flag"></td>
+                            <td class="text-center">
+                                <img src="../assets/img/icons/windows.png" alt="os" class="os"></td>
+                            <td class="text-center">-</td>
+                            <td>1h37min</td>
+                            <td class="font-weight-light"><span class="js-counter">32</span>mb/s</td>
+                            <td>
+                                <button data-url=""
+                                        class="btn btn-outline-red btn-xs" data-toggle="modal" data-target="#modal-block">Bloquear</button>
+                            </td>
+                        </tr>
+
+
+                        <tr class="listAnimationItem">
+                            <th class="text-left">
+                                <div style="background-image: url('../assets/img/profile2.png')" class="rounded-img"></div>
+                            </th>
+                            <td class="font-weight-light">Marta Negro</td>
+                            <td class="text-center">
+                                <img src="../assets/img/icons/countries/es.svg" alt="country" class="flag"></td>
+                            <td class="text-center">
+                                <img src="../assets/img/icons/ios.png" alt="os" class="os"></td>
+                            <td class="text-center">-</td>
+                            <td>1h37min</td>
+                            <td class="font-weight-light"><span class="js-counter">32</span>mb/s</td>
+                            <td>
+                                <button data-url=""
+                                        class="btn btn-outline-red btn-xs" data-toggle="modal" data-target="#modal-block">Bloquear</button>
+                            </td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+
+                        <!-- <div class="w-100 h-100">
+                            <span class="gray-400 display-3 font-weight-normal ">No hay nadie conectado a tu red Wi-fi ahora...</span>
+                        </div>
+
+                </div>
+
+                <header class="header mt-4">
+                    <h6 class="text-dark">{{ 'index.recent.title'|trans }}</h6>
+                </header>
+                <div class="table-wrapper listAnimationCont {% if not recentConnections|length %} empty {% endif %} overflow-scroll">
+                    {% if recentConnections|length %}
+                    <table class="table">
+                        <thead>
+                        <tr class="listAnimationItem">
+                            <th scope="col"></th>
+                            <th scope="col">{{ 'index.recent.name.header'|trans }}</th>
+                            <th scope="col" class="text-center">{{ 'index.recent.country.header'|trans }}</th>
+                            <th scope="col" class="text-center">{{ 'index.recent.os.header'|trans }}</th>
+                            <th scope="col" class="text-center">{{ 'index.recent.date.header'|trans }}</th>
+                            <th scope="col">{{ 'index.recent.time.header'|trans }}</th>
+                            <th scope="col">{{ 'index.recent.bandwidth.header'|trans }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for connection in recentConnections|reverse %}
+                        <tr class="listAnimationItem">
+                            <th class="text-left">
+                                <div style="background-image: url({{ connection.imageurl and connection.imageurl != 'NULL' ? connection.imageurl : asset('img/profile0.png') }})" class="rounded-img"></div>
+                            </th>
+                            <td class="font-weight-light">{{ connection.name }}</td>
+                            <td class="text-center">
+                                <img src="../assets/img/icons/countries/es.svg') }}" alt="country" class="flag"></td>
+                            <td class="text-center">
+                                <img src="../assets/img/icons/'~connection.system|lower~'.png') }}" alt="os" class="os"></td>
+                            <td class="text-center">{{ ((connection.timestamp_init/1000)|round)|date('d/m/y') }}</td>
+                            <td>
+                                {{ (connection.timestamp_init/1000)|timestampAgo(connection.timestamp_now/1000) }}
+                            </td>
+                            <td class="font-weight-light">
+                                <span class="js-counter">{{ connection.bandwidth|round }}</span> mb/s
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                        <div class="w-100 h-100">
+                            <span class="gray-400 display-3 font-weight-normal ">{{ 'index.noitems'|trans }}</span>
+                        </div>
+                    {% endif %}
+                </div> -->
+            </section>
 
           </div>
       </article>
@@ -122,7 +282,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content text-center">
               <div class="modal-header text-center align-items-center">
-                  <img src="{{ asset('img/icons/modal_error_icon.png') }}" alt="error icon" class="height extra-lg mb-3">
+                  <img src="../assets/img/icons/modal_error_icon.png') }}" alt="error icon" class="height extra-lg mb-3">
                   <h2 class="modal-title letter-spacing-xs text-center">
                       <!-- {% block message %}{% endblock message %} -->
                   </h2>
@@ -135,7 +295,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content text-center">
               <div class="modal-header text-center align-items-center">
-                  <img src="{{ asset('img/icons/modal_success_icon.png') }}" alt="success icon" class="height extra-lg mb-3">
+                  <img src="../assets/img/icons/modal_success_icon.png') }}" alt="success icon" class="height extra-lg mb-3">
                   <h2 class="modal-title letter-spacing-xs text-center">
                       <!-- {% block message %}{% endblock message %} -->
                   </h2>
@@ -143,7 +303,6 @@
           </div>
       </div>
   </div>
-<!-- Flash MSGs ----------------------------------------------------------end-------->
 
 <!-- Modal -------------------------------------------------------------------------->
 
@@ -177,14 +336,14 @@
   </div>
 </div>
 
-<!-- Modal ----------------------------------------------------------end-------->
+<!-- Modal -------->
 
   <script src="../assets/js/vendor/jquery-3.2.1.min.js"></script>
   <script src="../assets/js/vendor/popper.min.js"></script>
   <script src="../assets/js/vendor/bootstrap.min.js"></script>
   <script src="../assets/js/animations.js"></script>
   <script src="../assets/js/menu.js"></script>
-  <script src="{{ asset('js/ajax-calls.js') }}"></script>
+  <script src="../assets/js/ajax-calls.js"></script>
 
 </body>
 </html>
