@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://SarahDiazLamas@bitbucket.org/softspring-netspot/netspot-backoffice.git"
+    "url": "https://github.com/DazLamas/dashboard"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +18,6 @@
     "gulp-sass": "^4.0.0"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0"
+    "bootstrap": ">=4.1.2"
   }
 }
