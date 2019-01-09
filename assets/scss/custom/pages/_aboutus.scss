@@ -20,7 +20,7 @@
     .image-bg {
       height: 185px;
       width: 240px;
-      background: url("/img/about_us/plazamayor.jpeg");
+      background: url("../img/about_us/plazamayor.jpeg");
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -98,44 +98,25 @@
       .carousel-item {
         &:nth-child(1) {
           .carousel-img {
-            background-image: url("/img/about_us/carousel/cope.jpg");
+            background-image: url("../img/about_us/carousel/elpais.png");
           }
         }
         &:nth-child(2) {
           .carousel-img {
-            background-image: url("/img/about_us/carousel/elpais.png");
+            background-image: url("../img/about_us/carousel/cope.jpg");
           }
         }
         &:nth-child(3) {
           .carousel-img {
-            background-image: url("/img/about_us/carousel/expansion.jpg");
+            background-image: url("../img/about_us/carousel/expansion.jpg");
           }
         }
         &:nth-child(4) {
           .carousel-img {
-            background-image: url("/img/about_us/carousel/cadenaser.png");
+            background-image: url("../img/about_us/carousel/cadenaser.png");
           }
         }
       }
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
