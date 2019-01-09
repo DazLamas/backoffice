@@ -9813,8 +9813,9 @@ html, body {
 
 .content_container .content_wrapper .content .card_filter .subsection-icon {
   display: inline-flex;
-  width: 2.875rem;
-  height: 2.875rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 15px;
   background-size: contain;
   background-repeat: no-repeat; }
 
@@ -10844,13 +10845,13 @@ div[id^="modal-screens"] .local-name.position-4 {
   -o-transform: translate(236px, -132px); }
 
 .is-customers-home .card:nth-child(1) .subsection-icon {
-  background: url("/img/icons/subsections/history.png"); }
+  background: url("../img/icons/subsections/history.png"); }
 
 .is-customers-home .card:nth-child(2) .subsection-icon {
-  background: url("/img/icons/subsections/database.png"); }
+  background: url("../img/icons/subsections/database.png"); }
 
 .is-customers-home .card:nth-child(3) .subsection-icon {
-  background: url("/img/icons/subsections/promos.png"); }
+  background: url("../img/icons/subsections/promos.png"); }
 
 .is-customers-section {
   /*

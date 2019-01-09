@@ -3,17 +3,17 @@
   .card{
     &:nth-child(1){
       .subsection-icon{
-        background: url('/img/icons/subsections/history.png');
+        background: url('../img/icons/subsections/history.png');
       }
     }
     &:nth-child(2){
       .subsection-icon{
-        background: url('/img/icons/subsections/database.png');
+        background: url('../img/icons/subsections/database.png');
       }
     }
     &:nth-child(3){
       .subsection-icon{
-        background: url('/img/icons/subsections/promos.png');
+        background: url('../img/icons/subsections/promos.png');
       }
     }
   }
