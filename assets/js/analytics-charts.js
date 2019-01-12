@@ -193,12 +193,19 @@ $(function(){
     $current_dropdown.find('.js-change-text').text($trigger.text());
     //Spinner
     $display_data.height($display_data.height()).html(spinner);
+
+    $display_data.text($trigger.data('href'));
+
+    if($display_data.hasClass('js-counter')) {//Show numbers with animation
+      displayNumberAsCounter($display_data);
+    };
+
     //AJAX call
-    $display_data.load($trigger.data('href'), function() {
-      if($display_data.hasClass('js-counter')) {//Show numbers with animation
-        displayNumberAsCounter($display_data);
-      }
-    });
+    // $display_data.load($trigger.data('href'), function() {
+    //   if($display_data.hasClass('js-counter')) {//Show numbers with animation
+    //     displayNumberAsCounter($display_data);
+    //   }
+    // });
 
   });
 
