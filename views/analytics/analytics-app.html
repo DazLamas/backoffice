@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Netspot</title>
+
+    <link rel="icon" type="image/png" href="../../assets/img/favicon.png" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+</head>
+
+<body>
+  <div class="main_container subsection-layout is-analytics-section" data-animation="">
+      <div class="navigation_container">
+          <div class="navigation_wrapper">
+
+            <img src="../../assets/img/logo.png" alt="Netspot Logo" class="brand-logo mb-4 menuItemsAnimation">
+
+            <div class="client-logo rounded-img mb-3 shadow-sm menuItemsAnimation" style="background-image: url('../../assets/img/logo_picto_client.png');"></div>
+
+            <div class="dropdown local-selector mb-4 menuItemsAnimation">
+                <button class="btn dropdown-placeholder mb-3 bg-transparent border-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Con Tres Fogones
+                </button>
+                <div class="dropdown-menu dropdown-menu-center p-0 mt-3" aria-labelledby="dropdownMenuButton">
+                  <a href="" class="dropdown-item">Con Tres Fogones</a>
+                </div>
+            </div>
+
+            <nav class="navbar navbar-light">
+                <div class="navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav text-left">
+
+
+                    </div>
+                </div>
+            </nav>
+          </div>
+      </div>
+
+      <article class="content_container overflow-scroll">
+
+        <!-- Client Menu --------------------------------------------------------------------->
+        <div class="secondary_menu js_menu_container">
+
+            <!-- {% set notifications = notifications() %} -->
+
+            <div class="alert_box {% if notifications|length %}bg-red{% endif %} pointer js_submenu_trigger" href="#collapseAlertsMenu" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" id="alertsSecondaryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="far fa-bell text-white"></i>
+            </div>
+
+            <div class="client_name ellipsis dot_list sx_margin px-3 pointer js_submenu_trigger" href="#collapseClientMenu" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" id="clientSecondaryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Con Tres Fogones</div>
+
+
+            <ul  id="collapseAlertsMenu" class="secondary_menu_toggled bg-white alerts_menu_version collapse shadow_right js_submenu">
+                <li class="menu_item text-primary p-2 font-weight-bold">
+                    <header>Notificaciones</header>
+                </li>
+
+            <!-- {% if notifications|length %}
+                {% for key, notification in notifications %} -->
+                    <li class="menu_item flex-column">
+                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                            <h7 class="dot_list sx_margin">
+                                <span class="title-format">Nuevas reseñas en tu perfil!</span> <!--{{ notification.title }}-->
+                            </h7>
+                            <p class="text-format m-0">Tienes una nueva reseña en tu perfil, échale un vistazo para saber qué dicen de tu local</p> <!--{{ notification.content }}-->
+                        </a>
+                    </li>
+                    <li class="menu_item flex-column">
+                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                            <h7 class="dot_list sx_margin">
+                                <span class="title-format">Mejora tu actividad</span> <!--{{ notification.title }}-->
+                            </h7>
+                            <p class="text-format m-0">Mejora tus resultados interactuando con tus clientes de manera más cercana</p> <!--{{ notification.content }}-->
+                        </a>
+                    </li>
+                    <li class="menu_item flex-column">
+                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                            <h7 class="dot_list sx_margin">
+                                <span class="title-format">Nuevas visitas a tu perfil</span> <!--{{ notification.title }}-->
+                            </h7>
+                            <p class="text-format m-0">Tienes nuevas visitas en tu perfil Netspot, ¡descubre quién es!</p> <!--{{ notification.content }}-->
+                        </a>
+                    </li>
+                <!-- {% endfor %} -->
+
+            <!-- {% else %} -->
+                    <!-- <li class="menu_item flex-column">
+                        <span class="p-2 small text-gray-400 bg-white">{{ 'user_info.notifications.empty'|trans }}</span>
+                    </li> -->
+            <!-- {% endif %} -->
+            </ul>
+
+            <ul id="collapseClientMenu" class="secondary_menu_toggled bg-white client_menu_version collapse shadow_left js_submenu">
+                <li class="menu_item text-center bg-primary d-flex justify-content-center align-items-center flex-column text-white py-3 w-100">
+                    <div alt="Client Logo" class="client-logo mb-1 rounded-img" style="background-image: url('../assets/img/logo_picto_client.png');"></div>
+                    <h7 class="store-name ellipsis">Con Tres Fogones</h7> <!--{{ currentStore.name }} -->
+                    <span class="store-subtext ellipsis">Usuario: mercgarc1</span> <!-- {{ 'user_info.user.title'|trans }}: {{ app.user.username }} -->
+                </li>
+                <li class="menu_item  p-2  sx_marginborder-0">
+                    <a href="{{ url('logout') }}" class="dot_list itemlist-format">
+                        Cerrar Sesión
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Header ------------------------------------------------------------------>
+          <div class="content_wrapper">
+            <header class="header">
+                <h1>Analytics</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            </header>
+
+            <section class="content p-0 mb-5">
+
+                    <nav class="mt-1">
+
+                      <div class="nav nav-tabs" role="tablist">
+                        <a class="nav-item nav-link display-4 position-relative py-4"
+                           href="analytics-general.html">
+                        <span>General</span>
+                        </a>
+                        <a class="nav-item nav-link display-4 position-relative py-4 active"
+                           href="analytics-app.html">
+                            <span>App</span>
+                        </a>
+                        <a class="nav-item nav-link display-4 position-relative py-4"
+                           href="analytics-usage.html">
+                            <span>Uso</span>
+                        </a>
+                        <a class="nav-item nav-link display-4 position-relative py-4"
+                           href="analytics-promos.html">
+                            <span>Promociones</span>
+                        </a>
+                      </div>
+                    </nav>
+
+
+                    <div class="tab-content">
+
+                        <div class="tab-pane grid-cont show active" role="tabpanel">
+
+                            <div class="container">
+
+                                <div class="row">
+
+                                    <div class="col-4 col-content-wrapper">
+                                        <div class="card align-items-center justify-content-center flex-column">
+                                            <div class="card-header d-flex justify-content-end">
+                                            </div>
+                                            <div class="card-body py-3 text-center">
+                                                <span class="lead-3 d-block text-center js-counter">234210</span>
+                                                <span class="sub-3 d-block pb-4">TOTAL USUARIOS DE LA APP</span>
+                                                <i class="fas fa-caret-up text-green ml-1"></i>
+                                                <span class="data-number text-green">2.925</span>
+                                            </div>
+                                            <div class="card-footer bg-transparent text-center"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4 col-content-wrapper">
+                                        <div class="card align-items-center justify-content-center flex-column">
+                                            <div class="card-header d-flex justify-content-end">
+                                            </div>
+                                            <div class="card-body py-3 text-center">
+                                                <span class="lead-4 d-block text-center js-counter">3360</span>
+                                                <span class="sub-3 text-uppercase d-block">usuarios alcanzados</span>
+                                                <span class="extra-info d-block">
+                                                    De los
+                                                    <span class="js-counter">234.210</span>
+                                                    totales
+                                                </span>
+                                            </div>
+                                            <div class="card-footer bg-transparent text-center">
+                                                <a href="#" class="btn-with-icon input-group w-100 shadow_left">
+                                                    <span class="form-control display3 bg-white">Descargar base de datos</span>
+                                                    <div class="input-group-prepend p-2 bg-primary">
+                                                        <img src="../../assets/img/icons/download_white.png" alt="download button">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4 col-content-wrapper">
+                                        <div class="card align-items-center justify-content-center flex-column">
+                                            <div class="card-header d-flex justify-content-end">
+                                            </div>
+                                            <div class="card-body py-3 text-center">
+                                                <span class="lead-4 d-block text-center js-counter">2340</span>
+                                                <span class="sub-3 text-uppercase d-block">usuarios cercanos</span>
+                                            </div>
+                                            <div class="card-footer bg-transparent text-center">
+                                                <a href="#"
+                                                   class="btn-with-icon input-group w-100 shadow_left">
+                                                    <span class="form-control display3 bg-white">Descargar base de datos</span>
+                                                    <div class="input-group-prepend p-2 bg-primary">
+                                                        <img src="../../assets/img/icons/download_white.png" alt="download button">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-4 col-content-wrapper">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="title">Género</h4>
+                                                <span class="subtitle">Proporción de mujeres y hombres que te visitan</span>
+                                            </div>
+                                            <div class="card-body w-100">
+                                                <canvas id="gender-chart"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4 col-content-wrapper">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="title">Edad</h4>
+                                                <span class="subtitle">Edad media de tus usuarios</span>
+                                            </div>
+                                            <div class="card-body w-100 pt-1">
+                                                <canvas id="age-chart">
+
+                                                </canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4 col-content-wrapper">
+                                        <div class="card client-profile">
+
+                                            <div class="card-body">
+
+                                                <div class="column-1">
+                                                  <!-- <img src="{{ asset('img/analytics/boy.png') }}" alt="client img" class="pt-1"> -->
+                                                  <!-- <img src="{{ asset('img/analytics/girl.png') }}" alt="client img" class="pt-1"> -->
+                                                  <!-- <img src="{{ asset('img/analytics/oldman.png') }}" alt="client img" class="pt-1"> -->
+                                                  <!-- <img src="{{ asset('img/analytics/oldwoman.png') }}" alt="client img" class="pt-1"> -->
+                                                  <!-- <img src="{{ asset('img/analytics/man.png') }}" alt="client img" class="pt-1"> -->
+                                                  <img src="../../assets/img/analytics/woman.png" alt="client img" class="pt-1">
+                                                  <span class="number line-height-normal pt-2">4350</span>
+                                                  <span class="text text-uppercase letter-spacing-xs">usuarios</span>
+                                                </div>
+                                                <div class="column-2 pl-2">
+                                                    <span class="title xs">Perfil de tu cliente</span>
+                                                    <span class="subtitle xs text-uppercase letter-spacing-xs">a través de la App</span>
+                                                    <ul class="list p-0 pt-3">
+                                                        <li class="pb-2">
+                                                            <span class="text1">Género</span>
+                                                            <span class="text2">Mujer</span>
+                                                        </li>
+                                                        <li class="">
+                                                            <span class="text1">Edad:</span>
+                                                            <span class="text2">16 - 21</span>
+                                                        </li>
+                                                        <li class="pt-2">
+                                                            <span class="text1">Zona</span>
+                                                            <span class="text2">Moratalaz</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                            <div class="card-footer bg-transparent text-center">
+                                                <a href="{{ url('clients_db', {'sid':sid}) }}"
+                                                   class="btn-with-icon input-group w-100 shadow_left">
+                                                    <span class="form-control display3 bg-white">Descargar base de datos</span>
+                                                    <div class="input-group-prepend p-2 bg-primary">
+                                                        <img src="../../assets/img/icons/download_white.png" alt="download button">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-4 col-content-wrapper">
+                                        <div class="card align-items-center justify-content-center flex-column">
+                                            <div class="card-header d-flex justify-content-end">
+                                                <div class="dropdown js-dropdown-parent">
+                                                    <button class="btn dropdown-toggle js-change-text" type="button"
+                                                            id="dropdownDate" data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false">
+                                                        Hoy
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownDate">
+                                                        <a class="dropdown-item" data-display-id=".ajax-display-1"
+                                                           data-target="customMessages"
+                                                           data-href="2543"
+                                                           href="#">Hoy</a>
+                                                        <a class="dropdown-item" data-display-id=".ajax-display-1"
+                                                           data-target="customMessages"
+                                                           data-href="5609"
+                                                           href="#">Últimos tres días</a>
+                                                        <a class="dropdown-item" data-display-id=".ajax-display-1"
+                                                           data-target="customMessages"
+                                                           data-href="1356"
+                                                           href="#">Última semana</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body py-3 text-center">
+                                                <span id="customMessages"
+                                                      class="lead-4 d-block text-center ajax-display-1 js-counter">2543</span>
+                                                <span class="sub-3 d-block pb-4">Mensajes personalizados enviados</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-4 col-content-wrapper">
+                                        <div class="card align-items-center justify-content-center flex-column">
+                                            <div class="card-header d-flex justify-content-end">
+                                                <div class="dropdown js-dropdown-parent">
+                                                    <button class="btn dropdown-toggle js-change-text" type="button"
+                                                            id="dropdownDate" data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false">
+                                                        Hoy
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownDate">
+                                                        <a class="dropdown-item" data-display-id=".ajax-display-2"
+                                                           data-target="profileVisits"
+                                                           data-href="2089"
+                                                           href="#">Hoy</a>
+                                                        <a class="dropdown-item" data-display-id=".ajax-display-2"
+                                                           data-target="profileVisits"
+                                                           data-href="5089"
+                                                           href="#">Últimos 3 días</a>
+                                                        <a class="dropdown-item" data-display-id=".ajax-display-2"
+                                                           data-target="profileVisits"
+                                                           data-href="7502"
+                                                           href="#">Última semana</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body py-3 text-center">
+                                                <span id="profileVisits"
+                                                      class="lead-4 d-block text-center ajax-display-2 js-counter">2089</span>
+                                                <span class="sub-3 d-block pb-4">Visitas a tu perfil</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-4 col-content-wrapper">
+                                        <div class="card align-items-center justify-content-center flex-column">
+                                            <div class="card-header d-flex justify-content-end">
+                                                <div class="dropdown js-dropdown-parent">
+                                                    <button class="btn dropdown-toggle js-change-text" type="button"
+                                                            id="dropdownDate" data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false">
+                                                        Hoy
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownDate">
+                                                        <a class="dropdown-item" data-display-id=".ajax-display-3"
+                                                           data-target="pushNotifications"
+                                                           data-href="1403"
+                                                           href="#">Hoy</a>
+                                                        <a class="dropdown-item" data-display-id=".ajax-display-3"
+                                                           data-target="pushNotifications"
+                                                           data-href="3403"
+                                                           href="#">Últimos tres días</a>
+                                                        <a class="dropdown-item" data-display-id=".ajax-display-3"
+                                                           data-target="pushNotifications"
+                                                           data-href="5403"
+                                                           href="#">Última semana</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body py-3 text-center">
+                                                <span id="pushNotifications"
+                                                      class="lead-4 d-block text-center ajax-display-3 js-counter">1403</span>
+                                                <span class="sub-3 d-block pb-4">notificaciones push enviadas</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><!-- container -->
+                        </div>
+                    </div>
+                </section>
+
+          </div>
+      </article>
+  </div>
+  <!-- Flash MSGs --------------------------------------------------------------------->
+  <div id="flash-modal" class="modal-default modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content text-center">
+              <div class="modal-header text-center align-items-center">
+                  <img src="../../assets/img/icons/modal_error_icon.png" alt="error icon" class="height extra-lg mb-3">
+                  <h2 class="modal-title letter-spacing-xs text-center">
+                      <!-- {% block message %}{% endblock message %} -->
+                  </h2>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div id="flash-modal" class="modal-default modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content text-center">
+              <div class="modal-header text-center align-items-center">
+                  <img src="../../assets/img/icons/modal_success_icon.png" alt="success icon" class="height extra-lg mb-3">
+                  <h2 class="modal-title letter-spacing-xs text-center">
+                      <!-- {% block message %}{% endblock message %} -->
+                  </h2>
+              </div>
+          </div>
+      </div>
+  </div>
+<!-- Flash MSGs ----------------------------------------------------------------->
+
+<!-- Modal -------------------------------------------------------------------------->
+
+<div id="{% block modal_default_key %}modal-default{% endblock modal_default_key %}" class="modal fade {% block modal_default_classes %} {% endblock modal_default_classes %}" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content text-center">
+
+      <div class="modal-header text-center align-items-center">
+          <!-- {% block modal_header_icon %}
+
+        {% endblock modal_header_icon %} -->
+        <h2 class="modal-title letter-spacing-xs text-center">
+          <!-- {% block modal_default_header %}
+          {% endblock modal_default_header %} -->
+        </h2>
+
+      </div>
+
+      <div class="modal-body">
+
+          <p class="display-2 font-weight-light letter-spacing-md text-gray-700">
+            <!-- {% block modal_default_body %}{% endblock modal_default_body %} -->
+            </p>
+      </div>
+
+      <div class="modal-footer">
+        <!-- {% block modal_default_button %}
+        {% endblock modal_default_button %} -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="../../assets/js/vendor/jquery-3.2.1.min.js"></script>
+  <script src="../../assets/js/vendor/popper.min.js"></script>
+  <script src="../../assets/js/vendor/bootstrap.min.js"></script>
+  <script src="../../assets/js/animations.js"></script>
+  <script src="../../assets/js/menu.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+
+  <script type="text/javascript">
+
+    var has_age_chart         = true;
+    var has_gender_chart      = true;
+    var has_hour_today_chart  = false;
+    var has_hour_week_chart   = false;
+    var has_content_chart     = false;
+
+    var gender_chart_labels = ["hombres", "mujeres"];
+    var gender_chart_data = [45, 55];
+
+    var age_chart_labels = ["16 - 21", "22 - 30", "31 - 40", "40 - 55", "+55"];
+    var age_chart_data = [10, 9, 8, 6, 5];
+
+  </script>
+
+  <script src="../../assets/js/analytics-charts.js"></script>
+
+</body>
+</html>
