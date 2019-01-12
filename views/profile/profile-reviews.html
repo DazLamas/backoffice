@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Netspot</title>
+
+    <link rel="icon" type="image/png" href="../../assets/img/favicon.png" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+</head>
+
+<body>
+  <div class="main_container subsection-layout is-profile-section reviews" data-animation="has_list">
+      <div class="navigation_container">
+          <div class="navigation_wrapper">
+
+            <img src="../../assets/img/logo.png" alt="Netspot Logo" class="brand-logo mb-4 menuItemsAnimation">
+
+            <div class="client-logo rounded-img mb-3 shadow-sm menuItemsAnimation" style="background-image: url('../assets/img/logo_picto_client.png');"></div>
+
+            <div class="dropdown local-selector mb-4 menuItemsAnimation">
+                <button class="btn dropdown-placeholder mb-3 bg-transparent border-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Con Tres Fogones
+                </button>
+                <div class="dropdown-menu dropdown-menu-center p-0 mt-3" aria-labelledby="dropdownMenuButton">
+                  <a href="" class="dropdown-item">Con Tres Fogones</a>
+                </div>
+            </div>
+
+            <nav class="navbar navbar-light">
+                <div class="navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav text-left">
+
+
+                    </div>
+                </div>
+            </nav>
+          </div>
+      </div>
+
+      <article class="content_container overflow-scroll">
+
+        <!-- Client Menu --------------------------------------------------------------------->
+        <div class="secondary_menu js_menu_container">
+
+            <!-- {% set notifications = notifications() %} -->
+
+            <div class="alert_box {% if notifications|length %}bg-red{% endif %} pointer js_submenu_trigger" href="#collapseAlertsMenu" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" id="alertsSecondaryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="far fa-bell text-white"></i>
+            </div>
+
+            <div class="client_name ellipsis dot_list sx_margin px-3 pointer js_submenu_trigger" href="#collapseClientMenu" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" id="clientSecondaryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Con Tres Fogones</div>
+
+
+            <ul  id="collapseAlertsMenu" class="secondary_menu_toggled bg-white alerts_menu_version collapse shadow_right js_submenu">
+                <li class="menu_item text-primary p-2 font-weight-bold">
+                    <header>Notificaciones</header>
+                </li>
+
+            <!-- {% if notifications|length %}
+                {% for key, notification in notifications %} -->
+                    <li class="menu_item flex-column">
+                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                            <h7 class="dot_list sx_margin">
+                                <span class="title-format">Nuevas reseñas en tu perfil!</span> <!--{{ notification.title }}-->
+                            </h7>
+                            <p class="text-format m-0">Tienes una nueva reseña en tu perfil, échale un vistazo para saber qué dicen de tu local</p> <!--{{ notification.content }}-->
+                        </a>
+                    </li>
+                    <li class="menu_item flex-column">
+                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                            <h7 class="dot_list sx_margin">
+                                <span class="title-format">Mejora tu actividad</span> <!--{{ notification.title }}-->
+                            </h7>
+                            <p class="text-format m-0">Mejora tus resultados interactuando con tus clientes de manera más cercana</p> <!--{{ notification.content }}-->
+                        </a>
+                    </li>
+                    <li class="menu_item flex-column">
+                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                            <h7 class="dot_list sx_margin">
+                                <span class="title-format">Nuevas visitas a tu perfil</span> <!--{{ notification.title }}-->
+                            </h7>
+                            <p class="text-format m-0">Tienes nuevas visitas en tu perfil Netspot, ¡descubre quién es!</p> <!--{{ notification.content }}-->
+                        </a>
+                    </li>
+                <!-- {% endfor %} -->
+
+            <!-- {% else %} -->
+                    <!-- <li class="menu_item flex-column">
+                        <span class="p-2 small text-gray-400 bg-white">{{ 'user_info.notifications.empty'|trans }}</span>
+                    </li> -->
+            <!-- {% endif %} -->
+            </ul>
+
+            <ul id="collapseClientMenu" class="secondary_menu_toggled bg-white client_menu_version collapse shadow_left js_submenu">
+                <li class="menu_item text-center bg-primary d-flex justify-content-center align-items-center flex-column text-white py-3 w-100">
+                    <div alt="Client Logo" class="client-logo mb-1 rounded-img" style="background-image: url('../assets/img/logo_picto_client.png');"></div>
+                    <h7 class="store-name ellipsis">Con Tres Fogones</h7> <!--{{ currentStore.name }} -->
+                    <span class="store-subtext ellipsis">Usuario: mercgarc1</span> <!-- {{ 'user_info.user.title'|trans }}: {{ app.user.username }} -->
+                </li>
+                <li class="menu_item  p-2  sx_marginborder-0">
+                    <a href="{{ url('logout" class="dot_list itemlist-format">
+                        Cerrar Sesión
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Header ------------------------------------------------------------------>
+          <div class="content_wrapper">
+            <header class="header">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb text-uppercase">
+                        <li class="breadcrumb-item"><a href="#">Perfil</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Tus Reseñas</li>
+                    </ol>
+                </nav>
+
+                <h1>Reseñas</h1>
+                <p>Descripción: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+                <a href="https://www.netspotofficial.com/" class="btn btn-lg font-weight-medium btn-primary float-right">
+                    Mejorar mis reseñas
+                </a>
+            </header>
+
+            <section class="content bg-white">
+                <!-- {{ form_start(form) }} -->
+
+                <section class="content p-0 bg-white">
+
+                    <header class="content-header">
+                        <h3>Reseñas</h3>
+                        <p>Selecciona la imagen que deseas poner en el fondo de tu landing page, estas son las vistas previas de cómo quedará en los distintos dispositivos</p>
+                    </header>
+
+                    <nav class="pr-4 mt-1">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active text-almost-black display-4 position-relative" id="nav-first-tab" data-toggle="tab" href="#nav-first" role="tab" aria-controls="nav-first" aria-selected="true">
+                                <img src="../../assets/img/icons/google.png" alt="google icon">
+                                <span>Google</span>
+                            </a>
+                            <a class="muted disabled nav-item nav-link text-almost-black display-4 position-relative" id="nav-second-tab" data-toggle="tab" href="#nav-second" role="tab" aria-controls="nav-second" aria-selected="false">
+                                <img src="../../assets/img/icons/tripadvisor.png" alt="google icon">
+                                <span class="text-gray-500">
+                                    TripAdvisor
+                              </span>
+                            </a>
+                            <a class="nav-item nav-link text-almost-black display-4 position-relative" id="nav-third-tab" data-toggle="tab" href="#nav-third" role="tab" aria-controls="nav-third" aria-selected="false">
+                                <img src="../../assets/img/icons/netspot_logo_picto.png" alt="netspot icon">
+                                Netspot</a>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content wrapper listAnimationCont pr-4" id="nav-tabContent">
+                        <div class="tab-pane show active" id="nav-first" role="tabpanel" aria-labelledby="nav-first-tab">
+
+                            <ul class="reviews-container pt-3">
+
+                                    <li class="py-3 listAnimationItem">
+                                        <header class="review-header">
+
+                                             <div style="background-image: url('../../assets/img/profile3.png')" class="profile rounded-img mr-2">
+                                            </div>
+
+                                            <span class="display-2 text-dark letter-spacing mr-4">Ricardo Pérez de Correa</span>
+                                            <span class="display-3 gray-700 font-weight-light mr-2">3</span>
+
+                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+
+                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
+                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
+                                              <img src="../../assets/img/icons/flag1.png" alt="report" class="icons mr-2">
+                                              <img src="../../assets/img/icons/share.png" alt="share" class="icons mr-2">
+
+                                        </header>
+                                        <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
+                                            Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección! Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección!
+                                        </p>
+                                        <div class="review-footer mt-2">
+                                            <img src="../../assets/img/icons/like.png" alt="like" class="like mr-2">
+                                            <span class="text-gray-300 font-weight-normal align-bottom height extra-xxs">Me gusta</span>
+                                        </div>
+                                    </li>
+
+                                    <li class="py-3 listAnimationItem">
+                                        <header class="review-header">
+
+                                             <div style="background-image: url('../../assets/img/profile2.png')" class="profile rounded-img mr-2">
+                                            </div>
+
+                                            <span class="display-2 text-dark letter-spacing mr-4">Ricardo Pérez de Correa</span>
+                                            <span class="display-3 gray-700 font-weight-light mr-2">3</span>
+
+                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+
+                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
+                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
+                                              <img src="../../assets/img/icons/flag1.png" alt="report" class="icons mr-2">
+                                              <img src="../../assets/img/icons/share.png" alt="share" class="icons mr-2">
+
+                                        </header>
+                                        <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
+                                            Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección! Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección!
+                                        </p>
+                                        <div class="review-footer mt-2">
+                                            <img src="../../assets/img/icons/like.png" alt="like" class="like mr-2">
+                                            <span class="text-gray-300 font-weight-normal align-bottom height extra-xxs">Me gusta</span>
+                                        </div>
+                                    </li>
+
+                                    <li class="py-3 listAnimationItem">
+                                        <header class="review-header">
+
+                                             <div style="background-image: url('../../assets/img/profile1.png')" class="profile rounded-img mr-2">
+                                            </div>
+
+                                            <span class="display-2 text-dark letter-spacing mr-4">Ricardo Pérez de Correa</span>
+                                            <span class="display-3 gray-700 font-weight-light mr-2">3</span>
+
+                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+
+                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
+                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
+                                              <img src="../../assets/img/icons/flag1.png" alt="report" class="icons mr-2">
+                                              <img src="../../assets/img/icons/share.png" alt="share" class="icons mr-2">
+
+                                        </header>
+                                        <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
+                                            Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección! Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección!
+                                        </p>
+                                        <div class="review-footer mt-2">
+                                            <img src="../../assets/img/icons/like.png" alt="like" class="like mr-2">
+                                            <span class="text-gray-300 font-weight-normal align-bottom height extra-xxs">Me gusta</span>
+                                        </div>
+                                    </li>
+
+                            </ul>
+
+                        <!-- <div class="w-100 h-100 p-3">
+                            <span class="gray-400 display-3 font-weight-normal">{{ 'reviews.noitems'|trans }}</span>
+                        </div> -->
+
+                        </div>
+
+                        <div class="tab-pane" id="nav-third" role="tabpanel" aria-labelledby="nav-third-tab">
+
+                            <ul class="reviews-container pt-3">
+
+                                    <li class="py-3 listAnimationItem">
+                                        <header class="review-header">
+
+                                             <div style="background-image: url('../../assets/img/profile3.png')" class="profile rounded-img mr-2">
+                                            </div>
+
+                                            <span class="display-2 text-dark letter-spacing mr-4">Ricardo Pérez de Correa</span>
+                                            <span class="display-3 gray-700 font-weight-light mr-2">3</span>
+
+                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+
+                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
+                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
+                                              <img src="../../assets/img/icons/flag1.png" alt="report" class="icons mr-2">
+                                              <img src="../../assets/img/icons/share.png" alt="share" class="icons mr-2">
+
+                                        </header>
+                                        <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
+                                            Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección! Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección!
+                                        </p>
+                                        <div class="review-footer mt-2">
+                                            <img src="../../assets/img/icons/like.png" alt="like" class="like mr-2">
+                                            <span class="text-gray-300 font-weight-normal align-bottom height extra-xxs">Me gusta</span>
+                                        </div>
+                                    </li>
+
+                            </ul>
+
+                        <!-- <div class="w-100 h-100 p-3">
+                            <span class="gray-400 display-3 font-weight-normal">{{ 'reviews.noitems'|trans }}</span>
+                        </div> -->
+
+                        </div>
+                        <!-- <div class="tab-pane wrapper overflow-scroll" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <ul class="reviews-container">
+
+                            </ul>
+                        </div> -->
+
+
+
+
+
+                </section>
+            </section>
+
+          </div>
+      </article>
+  </div>
+  <!-- Flash MSGs --------------------------------------------------------------------->
+  <div id="flash-modal" class="modal-default modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content text-center">
+              <div class="modal-header text-center align-items-center">
+                  <img src="../../assets/img/icons/modal_error_icon.png" alt="error icon" class="height extra-lg mb-3">
+                  <h2 class="modal-title letter-spacing-xs text-center">
+                      <!-- {% block message %}{% endblock message %} -->
+                  </h2>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div id="flash-modal" class="modal-default modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content text-center">
+              <div class="modal-header text-center align-items-center">
+                  <img src="../../assets/img/icons/modal_success_icon.png" alt="success icon" class="height extra-lg mb-3">
+                  <h2 class="modal-title letter-spacing-xs text-center">
+                      <!-- {% block message %}{% endblock message %} -->
+                  </h2>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+  <script src="../../assets/js/vendor/jquery-3.2.1.min.js"></script>
+  <script src="../../assets/js/vendor/popper.min.js"></script>
+  <script src="../../assets/js/vendor/bootstrap.min.js"></script>
+  <script src="../../assets/js/animations.js"></script>
+  <script src="../../assets/js/menu.js"></script>
+
+
+</body>
+</html>
