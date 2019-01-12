@@ -10053,7 +10053,7 @@ html, body {
   display: block; }
 
 .secondary_menu .client_name.dot_list:before {
-  content: url("/img/icons/local_icon.png");
+  content: url("../../assets/img/icons/local_icon.png");
   margin-right: 10px;
   vertical-align: text-top; }
 
@@ -10757,9 +10757,6 @@ h5 ~ p {
   margin-right: 5px;
   font-size: 13px; }
 
-.is-profile-section.reviews .reviews-container .review-footer img {
-  height: 27px; }
-
 .is-profile-section.mywifi .card-columns {
   -webkit-column-count: 2; }
 
@@ -11323,9 +11320,6 @@ div[id^="modal-screens"] .local-name.position-4 {
 /* Analytics */
 .is-analytics-section .content_container .content_wrapper .content {
   min-height: 900px; }
-
-.is-analytics-section .content_wrapper .header > p {
-  max-width: 40%; }
 
 .is-analytics-section .content_wrapper .call-to-action .legend {
   max-width: 390px;

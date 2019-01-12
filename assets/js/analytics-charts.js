@@ -4,11 +4,11 @@
 
 
 //Define variable condition at views
-var age_chart_cont     = has_age_chart    ? document.getElementById('age-chart').getContext('2d') : null;
+var age_chart_cont          = has_age_chart    ? document.getElementById('age-chart').getContext('2d') : null;
 var gender_chart_cont       = has_gender_chart ? document.getElementById('gender-chart').getContext('2d') : null;
 var hour_today_chart_cont   = has_hour_today_chart ? document.getElementById('hour-today-chart').getContext('2d') : null;
 var hour_week_chart_cont    = has_hour_week_chart ? document.getElementById('hour-week-chart').getContext('2d') : null;
-var content_chart_cont = has_content_chart ? document.getElementById('content-chart').getContext('2d') : null;
+var content_chart_cont      = has_content_chart ? document.getElementById('content-chart').getContext('2d') : null;
 
 
 //Define gender_chart_labels and gender_chart_data at views
@@ -203,42 +203,3 @@ $(function(){
   });
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
