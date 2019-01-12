@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Netspot</title>
+
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+</head>
+
+<body>
+  <div class="main_container subsection-layout is-analytics-section" data-animation="">
+      <div class="navigation_container">
+          <div class="navigation_wrapper">
+
+            <img src="../../assets/img/logo.png" alt="Netspot Logo" class="brand-logo mb-4 menuItemsAnimation">
+
+            <div class="client-logo rounded-img mb-3 shadow-sm menuItemsAnimation" style="background-image: url('../assets/img/logo_picto_client.png');"></div>
+
+            <div class="dropdown local-selector mb-4 menuItemsAnimation">
+                <button class="btn dropdown-placeholder mb-3 bg-transparent border-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Con Tres Fogones
+                </button>
+                <div class="dropdown-menu dropdown-menu-center p-0 mt-3" aria-labelledby="dropdownMenuButton">
+                  <a href="" class="dropdown-item">Con Tres Fogones</a>
+                </div>
+            </div>
+
+            <nav class="navbar navbar-light">
+                <div class="navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav text-left">
+
+
+                    </div>
+                </div>
+            </nav>
+          </div>
+      </div>
+
+      <article class="content_container overflow-scroll">
+
+        <!-- Client Menu --------------------------------------------------------------------->
+        <div class="secondary_menu js_menu_container">
+
+            <!-- {% set notifications = notifications() %} -->
+
+            <div class="alert_box {% if notifications|length %}bg-red{% endif %} pointer js_submenu_trigger" href="#collapseAlertsMenu" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" id="alertsSecondaryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="far fa-bell text-white"></i>
+            </div>
+
+            <div class="client_name ellipsis dot_list sx_margin px-3 pointer js_submenu_trigger" href="#collapseClientMenu" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" id="clientSecondaryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Con Tres Fogones</div>
+
+
+            <ul  id="collapseAlertsMenu" class="secondary_menu_toggled bg-white alerts_menu_version collapse shadow_right js_submenu">
+                <li class="menu_item text-primary p-2 font-weight-bold">
+                    <header>Notificaciones</header>
+                </li>
+
+            <!-- {% if notifications|length %}
+                {% for key, notification in notifications %} -->
+                    <li class="menu_item flex-column">
+                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                            <h7 class="dot_list sx_margin">
+                                <span class="title-format">Nuevas reseñas en tu perfil!</span> <!--{{ notification.title }}-->
+                            </h7>
+                            <p class="text-format m-0">Tienes una nueva reseña en tu perfil, échale un vistazo para saber qué dicen de tu local</p> <!--{{ notification.content }}-->
+                        </a>
+                    </li>
+                    <li class="menu_item flex-column">
+                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                            <h7 class="dot_list sx_margin">
+                                <span class="title-format">Mejora tu actividad</span> <!--{{ notification.title }}-->
+                            </h7>
+                            <p class="text-format m-0">Mejora tus resultados interactuando con tus clientes de manera más cercana</p> <!--{{ notification.content }}-->
+                        </a>
+                    </li>
+                    <li class="menu_item flex-column">
+                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                            <h7 class="dot_list sx_margin">
+                                <span class="title-format">Nuevas visitas a tu perfil</span> <!--{{ notification.title }}-->
+                            </h7>
+                            <p class="text-format m-0">Tienes nuevas visitas en tu perfil Netspot, ¡descubre quién es!</p> <!--{{ notification.content }}-->
+                        </a>
+                    </li>
+                <!-- {% endfor %} -->
+
+            <!-- {% else %} -->
+                    <!-- <li class="menu_item flex-column">
+                        <span class="p-2 small text-gray-400 bg-white">{{ 'user_info.notifications.empty'|trans }}</span>
+                    </li> -->
+            <!-- {% endif %} -->
+            </ul>
+
+            <ul id="collapseClientMenu" class="secondary_menu_toggled bg-white client_menu_version collapse shadow_left js_submenu">
+                <li class="menu_item text-center bg-primary d-flex justify-content-center align-items-center flex-column text-white py-3 w-100">
+                    <div alt="Client Logo" class="client-logo mb-1 rounded-img" style="background-image: url('../assets/img/logo_picto_client.png');"></div>
+                    <h7 class="store-name ellipsis">Con Tres Fogones</h7> <!--{{ currentStore.name }} -->
+                    <span class="store-subtext ellipsis">Usuario: mercgarc1</span> <!-- {{ 'user_info.user.title'|trans }}: {{ app.user.username }} -->
+                </li>
+                <li class="menu_item  p-2  sx_marginborder-0">
+                    <a href="{{ url('logout') }}" class="dot_list itemlist-format">
+                        Cerrar Sesión
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Header ------------------------------------------------------------------>
+          <div class="content_wrapper">
+            <header class="header">
+                <h1>Analytics</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+            </header>
+
+            <section class="content p-0 mb-5">
+
+                    <nav class="mt-1">
+
+                      <div class="nav nav-tabs" role="tablist">
+                        <a class="nav-item nav-link display-4 position-relative py-4 active"
+                           href="analytics-general.html">
+                        <span>General</span>
+                        </a>
+                        <a class="nav-item nav-link display-4 position-relative py-4"
+                           href="analytics-app.html">
+                            <span>App</span>
+                        </a>
+                        <a class="nav-item nav-link display-4 position-relative py-4"
+                           href="analytics-usage.html">
+                            <span>Uso</span>
+                        </a>
+                        <a class="nav-item nav-link display-4 position-relative py-4"
+                           href="analytics-promos.html">
+                            <span>Promociones</span>
+                        </a>
+                      </div>
+                    </nav>
+
+                    <div class="tab-content">
+
+                      <div class="tab-pane grid-cont show active" role="tabpanel">
+
+                        <div class="container">
+
+                          <div class="row">
+                            <div class="col-8 col-content-wrapper">
+                              <div class="card align-items-center justify-content-center flex-column">
+                                <div class="card-header d-flex justify-content-end">
+                                  <br/>
+                                  <div class="dropdown js-dropdown-parent">
+                                    <button class="btn dropdown-toggle js-change-text" type="button" id="dropdownDate" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        HOY
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownDate">
+                                      <a class="dropdown-item" data-href="{{ url('analytics_general_near_your_local', {'sid':sid,'days':1}) }}" data-display-id="#ajax-display-1" href="#">Hoy</a>
+                                      <a class="dropdown-item" data-href="{{ url('analytics_general_near_your_local', {'sid':sid,'days':3}) }}" data-display-id="#ajax-display-1" href="#">Últimos tres días</a>
+                                      <a class="dropdown-item" data-href="{{ url('analytics_general_near_your_local', {'sid':sid,'days':7}) }}" data-display-id="#ajax-display-1" href="#">Última semana</a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card-body">
+                                  <span id="ajax-display-1" class="lead-1 d-block text-center js-counter">502657</span>
+                                  <span class="sub-2 d-block">Personas que han pasado por delante de tu local</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-4 col-content-wrapper">
+                              <div class="card">
+                                <div class="card-header">
+                                  <h4 class="title">Género</h4>
+                                  <span class="subtitle">Proporción de mujeres y honbres que visitan tu local</span>
+                                </div>
+                                <div class="card-body">
+                                  <canvas id="gender-chart"></canvas>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-6 col-content-wrapper">
+                              <div class="card card-with-header">
+                                <div class="card-header">
+                                  <h4 class="title">Usuarios</h4>
+                                  <span class="subtitle">Mapa de tus usuarios por zona</span>
+                                </div>
+                                <div class="card-body" style="width: 100%;">
+                                  <div id="heatmap" style="height: 300px; width: 100%; position:relative; float: left;"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-6 col-content-wrapper">
+                              <div class="card card-with-header">
+                                <div class="card-header">
+                                  <h4 class="title">Edad</h4>
+                                  <span class="subtitle">Edad media de tus usuarios</span>
+                                </div>
+                                <div class="card-body">
+                                  <canvas id="age-chart" class="bar-layout py-4">
+
+                                  </canvas>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row justify-content-center">
+                            <div class="col-10 justify-content-center col-content-wrapper">
+                              <div class="call-to-action-custom w-100">
+                                <div class="wrapper w-100">
+                                  <img src="../../assets/img/icons/unknown_profile.png" alt="customer icon" class="mr-4 height lg">
+                                  <p class="m-0 text-gray-800 letter-spacing-md">¿Quieres un análisis completo del perfil de tu cliente?</p>
+                                </div>
+                                <a href="https://www.netspotofficial.com/" class="btn btn-primary btn-lg">¡Lo quiero!</a>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <div class="row">
+
+                            <div class="col-6 col-content-wrapper">
+                              <div class="card">
+                                <div class="container card-body flex-column align-items-center w-100 px-4">
+                                  <ul class="row">
+                                    <li class="col-2 p-0"></li>
+                                    <li class="col-8 px-0 text-center flex-column">
+                                      <span class="lead-1 d-block letter-spacing-xs js-counter">3450</span>
+                                      <span class="sub-1 d-block text-uppercase">Clientes totales</span>
+                                    </li>
+                                    <li class="col-2 align-self-center p-0">
+                                      <i class="fas fa-caret-up text-green"></i>
+                                      <span class="data-number text-green">425</span>
+                                    </li>
+                                  </ul>
+                                  <ul class="row">
+                                    <li class="col-6 text-center border-right border-top">
+                                      <ul class="text-center p-0 letter-spacing-md pt-4 pb-3">
+                                        <li class="d-inline">
+                                          <span class="data-number mr-1 text-primary">1340</span>
+                                        </li>
+                                        <li class="d-inline">
+                                          <i class="fas fa-caret-up text-green ml-1"></i>
+                                          <span class="data-number text-green">125</span>
+                                        </li>
+                                      </ul>
+                                      <span class="lead-3 d-block">26%</span>
+                                      <span class="display-3 text-uppercase d-block text-gray-500 font-weight-normal letter-spacing-xs mb-1">clientes recurrentes</span>
+                                    </li>
+
+                                    <li class="col-6 text-center border-top">
+                                      <ul class="text-center p-0 letter-spacing-md pt-4 pb-3">
+                                        <li class="d-inline">
+                                          <span class="data-number mr-1 text-primary">3360</span>
+                                        </li>
+                                        <li class="d-inline">
+                                          <i class="fas fa-caret-down text-red ml-1"></i>
+                                          <span class="data-number text-red">65</span>
+                                        </li>
+                                      </ul>
+
+                                      <span class="lead-3 d-block">74%</span>
+                                      <span class="sub-3 d-block mb-1">clientes nuevos</span>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-3 col-content-wrapper">
+                              <div class="card card-with-header px-0 pb-0">
+                                <div class="card-header px-4">
+                                  <h4 class="title">Reseñas</h4>
+                                  <span class="subtitle">Valoración media de tus reseñas</span>
+                                </div>
+                                <div class="card-body w-100 px-4">
+                                  <ul class="p-0 display-4 font-weight-normal">
+                                    <li class="justify-content-between d-flex pt-3">
+                                              <span class="text-gray-700">
+                                                <img src="../../assets/img/icons/google.png" alt="google icon"
+                                                     class="mr-2 height xxs align-bottom">
+                                                <span>Google</span>
+                                              </span>
+                                              <span>
+                                                <i class="fa fa-star fa-xs text-yellow align-baseline mr-2" aria-hidden="true"></i>
+                                                3.8
+                                              </span>
+                                    </li>
+                                    <li class="justify-content-between d-flex py-5">
+                                              <span class="text-gray-700">
+                                                <img src="../../assets/img/icons/tripadvisor.png" alt="google icon"
+                                                     class="mr-1 height extra-xxs align-bottom">
+                                                <span class="disabled">TripAdvisor</span>
+                                              </span>
+                                              <span><i class="fa fa-star fa-xs text-yellow align-baseline mr-2"#}
+                                               {#aria-hidden="true"></i>4.2</span>
+                                    </li>
+                                    <li class="justify-content-between d-flex pb-3">
+                                              <span class="text-gray-700">
+                                                <img src="../../assets/img/icons/netspot_logo_picto.png" alt="google icon"
+                                                     class="mr-2 height xxs align-bottom">
+                                                <span>Netspot</span>
+                                              </span>
+                                      <span><i class="fa fa-star fa-xs text-yellow align-baseline mr-2"
+                                               aria-hidden="true"></i>4.7</span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="card-footer bg-primary justify-content-around d-flex w-100 py-4 text-white font-weight-normal h2 mb-0">
+                                  <span>Total</span>
+                                  <span><i class="fa fa-star fa-xs text-yellow align-baseline mr-2" aria-hidden="true"></i>
+                                    4.3
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-3 col-content-wrapper">
+                              <div class="card card-with-header">
+                                <div class="card-header">
+                                  <h4 class="title">AdBlock</h4>
+                                  <span class="subtitle">Anuncios bloqueados</span>
+                                </div>
+                                <div class="card-body d-flex align-items-center justify-content-center">
+                                  <div class="d-flex align-items-center justify-content-center flex-column">
+                                    <span class="lead-2 text-red-100 js-counter">0</span>
+                                    <span class="sub-3">anuncios bloqueados</span>
+                                  </div>
+                                </div>
+                                <div class="card-footer bg-transparent">
+
+                                      <a href="../security/security-home.html" class="btn btn-primary btn-standard px-4 py-1 display-4 font-weight-normal" role="button" aria-pressed="true">Activar adBlock</a>
+
+                                      <!-- <a href="{{ url('security_index', {'sid':sid}) }}" class="btn btn-primary btn-standard px-4 py-1 display-4 font-weight-normal" role="button" aria-pressed="true">{{ 'general.adblock.enable'|trans }}</a> -->
+
+                                </div>
+                              </div>
+                            </div>
+                          </div> <!-- row4 -->
+
+                          <div class="row">
+                            <div class="col-6 col-content-wrapper">
+                              <div class="card card-with-header">
+                                <div class="card-header">
+                                  <h4 class="title">Proporción en dispositivos</h4>
+                                  <span class="subtitle">¿Desde qué dispositivo se conectan tus clientes?</span>
+                                </div>
+                                <div class="card-body container">
+                                  <ul class="row px-3 py-5">
+                                    <li class="col-4 d-inline">
+                                      <img src="../../assets/img/icons/Desktop@3x.png" alt="desktop icon" class="mx-auto d-block height extra-lg">
+                                      <span class="lead-5 text-center  pt-3 d-block"> <span class="js-counter">22</span>%</span>
+                                    </li>
+                                    <li class="col-4 d-inline">
+                                      <img src="../../assets/img/icons/Ipad@3x.png" alt="tablet icon" class="mx-auto d-block height extra-lg">
+                                      <span class="lead-5 text-center  pt-3 d-block">
+                                        <span class="js-counter">41</span>%
+                                      </span>
+                                    </li>
+                                    <li class="col-4 d-inline">
+                                      <img src="../../assets/img/icons/Movil@3x.png" alt="mobile icon" class="mx-auto d-block height extra-lg">
+                                      <span class="lead-5 text-center pt-3  d-block"> <span class="js-counter">47</span>%</span>
+                                    </li>
+                                  </ul>
+                                  <div class="w-100 d-flex justify-content-center">
+                                    <a href="../dashboard/dashboard-home.html" role="button"
+                                       class="btn shadow_bottom border-0 text-primary btn-standard px-4 mb-3 display-3">Ver dispositivos conectados ahora</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-6 col-content-wrapper">
+                              <div class="card card-with-header">
+                                <div class="card-header">
+                                  <h4 class="title">Historial de Contenido</h4>
+                                  <span class="subtitle">Historial de las categorías de contenido donde se mete la gente</span>
+                                </div>
+                                <div class="card-body">
+                                  <canvas id="content-chart" class="py-4 pie-layout">
+                                  </canvas>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div><!-- container -->
+                      </div>
+                    </div>
+                  </section>
+
+          </div>
+      </article>
+  </div>
+  <!-- Flash MSGs --------------------------------------------------------------------->
+  <div id="flash-modal" class="modal-default modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content text-center">
+              <div class="modal-header text-center align-items-center">
+                  <img src="../../assets/img/icons/modal_error_icon.png" alt="error icon" class="height extra-lg mb-3">
+                  <h2 class="modal-title letter-spacing-xs text-center">
+                      <!-- {% block message %}{% endblock message %} -->
+                  </h2>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div id="flash-modal" class="modal-default modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content text-center">
+              <div class="modal-header text-center align-items-center">
+                  <img src="../../assets/img/icons/modal_success_icon.png" alt="success icon" class="height extra-lg mb-3">
+                  <h2 class="modal-title letter-spacing-xs text-center">
+                      <!-- {% block message %}{% endblock message %} -->
+                  </h2>
+              </div>
+          </div>
+      </div>
+  </div>
+<!-- Flash MSGs ----------------------------------------------------------------->
+
+<!-- Modal -------------------------------------------------------------------------->
+
+<div id="{% block modal_default_key %}modal-default{% endblock modal_default_key %}" class="modal fade {% block modal_default_classes %} {% endblock modal_default_classes %}" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content text-center">
+
+      <div class="modal-header text-center align-items-center">
+          <!-- {% block modal_header_icon %}
+
+        {% endblock modal_header_icon %} -->
+        <h2 class="modal-title letter-spacing-xs text-center">
+          <!-- {% block modal_default_header %}
+          {% endblock modal_default_header %} -->
+        </h2>
+
+      </div>
+
+      <div class="modal-body">
+
+          <p class="display-2 font-weight-light letter-spacing-md text-gray-700">
+            <!-- {% block modal_default_body %}{% endblock modal_default_body %} -->
+            </p>
+      </div>
+
+      <div class="modal-footer">
+        <!-- {% block modal_default_button %}
+        {% endblock modal_default_button %} -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="../../assets/js/vendor/jquery-3.2.1.min.js"></script>
+  <script src="../../assets/js/vendor/popper.min.js"></script>
+  <script src="../../assets/js/vendor/bootstrap.min.js"></script>
+  <script src="../../assets/js/animations.js"></script>
+  <script src="../../assets/js/menu.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+  <script src="../../assets/js/analytics-charts.js"></script>
+
+  <script type="text/javascript">
+
+    var has_age_chart         = true;
+    var has_gender_chart      = true;
+    var has_hour_today_chart  = false;
+    var has_hour_week_chart   = false;
+    var has_content_chart     = true;
+
+    var gender_chart_labels = ["{{ 'general.gender.male'|trans }}", "{{ 'general.gender.female'|trans }}"];
+    var gender_chart_data = [{{ analytics.genero.male }}, {{ analytics.genero.female }}];
+    var age_chart_labels = [{{ analytics.ages|keys|join(',')|raw }}];
+    var age_chart_data = [{{ analytics.ages|join(',') }}];
+    var content_chart_labels = [{% for contentKey,value in analytics.historial %}"{{ contentKey }}",{% endfor %}];
+    var content_chart_data = [{{ analytics.historial|join(',') }}];
+  </script>
+
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=visualization"></script>
+  <script type="text/javascript">
+      var madrid = new google.maps.LatLng(40.36, -3.75);
+      var map = new google.maps.Map(document.getElementById('heatmap'), {
+          center: madrid,
+          zoom: 13,
+          mapTypeId: 'roadmap',
+          streetViewControl: false,
+          mapTypeControl: false,
+          fullscreenControl: false
+      });
+
+      var heatmap = new google.maps.visualization.HeatmapLayer({data: []});
+      heatmap.setMap(map);
+      var heatmapData = [];
+
+      // utils
+      var bounds  = new google.maps.LatLngBounds();
+      var geocoder = new google.maps.Geocoder();
+
+      function addZipLatLng(zip, zipWeight) {
+          geocoder.geocode({'address': zip+' Spain'}, function(results, status) {
+              if (status === 'OK') {
+                  var zipLocation = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                  bounds.extend(zipLocation);
+                  heatmapData.push({location: zipLocation, weight: zipWeight});
+                  heatmap.setData(heatmapData);
+                  map.fitBounds(bounds); // auto-zoom
+                  map.panToBounds(bounds); // auto-center
+              } else {
+                  console.error('Geocode was not successful for the following reason: ' + status);
+              }
+          });
+      }
+
+      {% for zip,weight in analytics.usuariosZona %}
+      addZipLatLng('{{ zip }}', {{ weight }});
+      {% endfor %}
+  </script>
+
+</body>
+</html>
