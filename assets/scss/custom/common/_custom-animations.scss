@@ -1,67 +1,67 @@
-/* custom-animations.scss */
-
-/*
- * Navigation Sidebar
- */
-
-.menuItemsAnimation {
-  opacity: 0;
-}
-.navbar-light .navbar-nav .nav-link.disabled {//hack "Ventajas Premium"
-  opacity: 0;
-}
-.subsection_links:not(.show) > .nav-item{
-  opacity: 0;
-}
-
-
-/*
- * Header & Content Animation Prop.
- */
-
-.content_wrapper > header > *,
-.content_wrapper > .content {
-  opacity: 0;
-}
-
-
-/*
- * List Items Animation *****************************
- */
-
-.listAnimationCont .listAnimationItem {
-  opacity: 0;
-}
-
-.js-counter {
-  opacity: 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// /* custom-animations.scss */
+//
+// /*
+//  * Navigation Sidebar
+//  */
+//
+// .menuItemsAnimation {
+//   opacity: 0;
+// }
+// .navbar-light .navbar-nav .nav-link.disabled {//hack "Ventajas Premium"
+//   opacity: 0;
+// }
+// .subsection_links:not(.show) > .nav-item{
+//   opacity: 0;
+// }
+//
+//
+// /*
+//  * Header & Content Animation Prop.
+//  */
+//
+// .content_wrapper > header > *,
+// .content_wrapper > .content {
+//   opacity: 0;
+// }
+//
+//
+// /*
+//  * List Items Animation *****************************
+//  */
+//
+// .listAnimationCont .listAnimationItem {
+//   opacity: 0;
+// }
+//
+// .js-counter {
+//   opacity: 0;
+// }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//

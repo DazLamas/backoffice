@@ -9970,58 +9970,58 @@ html, body {
   margin-left: 45px; }
 
 .nav-item .icon_list.dashboard:before {
-  content: url("/img/icons/sidebar/black/dashboard.png"); }
+  content: url("../img/icons/sidebar/black/dashboard.png"); }
 
 .nav-item .icon_list.profile:before {
-  content: url("/img/icons/sidebar/black/profile.png"); }
+  content: url("../img/icons/sidebar/black/profile.png"); }
 
 .nav-item .icon_list.clients:before {
-  content: url("/img/icons/sidebar/black/customers.png"); }
+  content: url("../img/icons/sidebar/black/customers.png"); }
 
 .nav-item .icon_list.myapp:before {
-  content: url("/img/icons/sidebar/black/myapp.png"); }
+  content: url("../img/icons/sidebar/black/myapp.png"); }
 
 .nav-item .icon_list.analytics:before {
-  content: url("/img/icons/sidebar/black/analytics.png"); }
+  content: url("../img/icons/sidebar/black/analytics.png"); }
 
 .nav-item .icon_list.promotions:before {
-  content: url("/img/icons/sidebar/black/promos.png"); }
+  content: url("../img/icons/sidebar/black/promos.png"); }
 
 .nav-item .icon_list.security:before {
-  content: url("/img/icons/sidebar/black/security.png"); }
+  content: url("../img/icons/sidebar/black/security.png"); }
 
 .nav-item .icon_list.premium:before {
-  content: url("/img/icons/sidebar/black/premium.png"); }
+  content: url("../img/icons/sidebar/black/premium.png"); }
 
 .nav-item .icon_list.about:before {
-  content: url("/img/icons/sidebar/black/about_us.png"); }
+  content: url("../img/icons/sidebar/black/about_us.png"); }
 
 .nav-item.active .icon_list.dashboard:before {
-  content: url("/img/icons/sidebar/blue/dashboard.png"); }
+  content: url("../img/icons/sidebar/blue/dashboard.png"); }
 
 .nav-item.active .icon_list.profile:before {
-  content: url("/img/icons/sidebar/blue/profile.png"); }
+  content: url("../img/icons/sidebar/blue/profile.png"); }
 
 .nav-item.active .icon_list.clients:before {
-  content: url("/img/icons/sidebar/blue/customers.png"); }
+  content: url("../img/icons/sidebar/blue/customers.png"); }
 
 .nav-item.active .icon_list.myapp:before {
-  content: url("/img/icons/sidebar/blue/myapp.png"); }
+  content: url("../img/icons/sidebar/blue/myapp.png"); }
 
 .nav-item.active .icon_list.analytics:before {
-  content: url("/img/icons/sidebar/blue/analytics.png"); }
+  content: url("../img/icons/sidebar/blue/analytics.png"); }
 
 .nav-item.active .icon_list.promotions:before {
-  content: url("/img/icons/sidebar/blue/promos.png"); }
+  content: url("../img/icons/sidebar/blue/promos.png"); }
 
 .nav-item.active .icon_list.security:before {
-  content: url("/img/icons/sidebar/blue/security.png"); }
+  content: url("../img/icons/sidebar/blue/security.png"); }
 
 .nav-item.active .icon_list.premium:before {
-  content: url("/img/icons/sidebar/blue/premium.png"); }
+  content: url("../img/icons/sidebar/blue/premium.png"); }
 
 .nav-item.active .icon_list.about:before {
-  content: url("/img/icons/sidebar/blue/about_us.png"); }
+  content: url("../img/icons/sidebar/blue/about_us.png"); }
 
 .secondary_menu {
   width: 250px;
@@ -10149,35 +10149,6 @@ html, body {
 
 .secondary_menu .secondary_menu_toggled.alerts_menu_version .menu_item:hover:not(:first-child) .dot_list:before {
   background-color: #fff; }
-
-/* custom-animations.scss */
-/*
- * Navigation Sidebar
- */
-.menuItemsAnimation {
-  opacity: 0; }
-
-.navbar-light .navbar-nav .nav-link.disabled {
-  opacity: 0; }
-
-.subsection_links:not(.show) > .nav-item {
-  opacity: 0; }
-
-/*
- * Header & Content Animation Prop.
- */
-.content_wrapper > header > *,
-.content_wrapper > .content {
-  opacity: 0; }
-
-/*
- * List Items Animation *****************************
- */
-.listAnimationCont .listAnimationItem {
-  opacity: 0; }
-
-.js-counter {
-  opacity: 0; }
 
 /* type.scss*/
 h2, h3, h4, h5, h6,

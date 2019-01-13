@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Netspot</title>
+
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+</head>
+
+<body>
+  <div class="main_container subsection-layout is-security-section home" data-animation="{{ animation_data|default('">
+      <div class="navigation_container">
+          <div class="navigation_wrapper">
+
+            <img src="../../assets/img/logo.png" alt="Netspot Logo" class="brand-logo mb-4 menuItemsAnimation">
+
+            <div class="client-logo rounded-img mb-3 shadow-sm menuItemsAnimation" style="background-image: url('../assets/img/logo_picto_client.png');"></div>
+
+            <div class="dropdown local-selector mb-4 menuItemsAnimation">
+                <button class="btn dropdown-placeholder mb-3 bg-transparent border-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Con Tres Fogones
+                </button>
+                <div class="dropdown-menu dropdown-menu-center p-0 mt-3" aria-labelledby="dropdownMenuButton">
+                  <a href="" class="dropdown-item">Con Tres Fogones</a>
+                </div>
+            </div>
+
+            <nav class="navbar navbar-light">
+                <div class="navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav text-left">
+
+
+                    </div>
+                </div>
+            </nav>
+          </div>
+      </div>
+
+      <article class="content_container overflow-scroll">
+
+        <!-- Client Menu --------------------------------------------------------------------->
+        <div class="secondary_menu js_menu_container">
+
+            <!-- {% set notifications = notifications() %} -->
+
+            <div class="alert_box {% if notifications|length %}bg-red{% endif %} pointer js_submenu_trigger" href="#collapseAlertsMenu" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" id="alertsSecondaryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="far fa-bell text-white"></i>
+            </div>
+
+            <div class="client_name ellipsis dot_list sx_margin px-3 pointer js_submenu_trigger" href="#collapseClientMenu" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" id="clientSecondaryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Con Tres Fogones</div>
+
+
+            <ul  id="collapseAlertsMenu" class="secondary_menu_toggled bg-white alerts_menu_version collapse shadow_right js_submenu">
+                <li class="menu_item text-primary p-2 font-weight-bold">
+                    <header>Notificaciones</header>
+                </li>
+
+            <!-- {% if notifications|length %}
+                {% for key, notification in notifications %} -->
+                    <li class="menu_item flex-column">
+                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                            <h7 class="dot_list sx_margin">
+                                <span class="title-format">Nuevas reseñas en tu perfil!</span> <!--{{ notification.title }}-->
+                            </h7>
+                            <p class="text-format m-0">Tienes una nueva reseña en tu perfil, échale un vistazo para saber qué dicen de tu local</p> <!--{{ notification.content }}-->
+                        </a>
+                    </li>
+                    <li class="menu_item flex-column">
+                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                            <h7 class="dot_list sx_margin">
+                                <span class="title-format">Mejora tu actividad</span> <!--{{ notification.title }}-->
+                            </h7>
+                            <p class="text-format m-0">Mejora tus resultados interactuando con tus clientes de manera más cercana</p> <!--{{ notification.content }}-->
+                        </a>
+                    </li>
+                    <li class="menu_item flex-column">
+                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                            <h7 class="dot_list sx_margin">
+                                <span class="title-format">Nuevas visitas a tu perfil</span> <!--{{ notification.title }}-->
+                            </h7>
+                            <p class="text-format m-0">Tienes nuevas visitas en tu perfil Netspot, ¡descubre quién es!</p> <!--{{ notification.content }}-->
+                        </a>
+                    </li>
+                <!-- {% endfor %} -->
+
+            <!-- {% else %} -->
+                    <!-- <li class="menu_item flex-column">
+                        <span class="p-2 small text-gray-400 bg-white">{{ 'user_info.notifications.empty'|trans }}</span>
+                    </li> -->
+            <!-- {% endif %} -->
+            </ul>
+
+            <ul id="collapseClientMenu" class="secondary_menu_toggled bg-white client_menu_version collapse shadow_left js_submenu">
+                <li class="menu_item text-center bg-primary d-flex justify-content-center align-items-center flex-column text-white py-3 w-100">
+                    <div alt="Client Logo" class="client-logo mb-1 rounded-img" style="background-image: url('../assets/img/logo_picto_client.png');"></div>
+                    <h7 class="store-name ellipsis">Con Tres Fogones</h7> <!--{{ currentStore.name }} -->
+                    <span class="store-subtext ellipsis">Usuario: mercgarc1</span> <!-- {{ 'user_info.user.title'|trans }}: {{ app.user.username }} -->
+                </li>
+                <li class="menu_item  p-2  sx_marginborder-0">
+                    <a href="{{ url('logout" class="dot_list itemlist-format">
+                        Cerrar Sesión
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Header ---------------------------------------------------------------->
+          <div class="content_wrapper">
+            <header class="header">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb text-uppercase">
+                        <li class="breadcrumb-item"><a href="#">Anterior</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Actual</li>
+                    </ol>
+                </nav>
+
+                <h1>Seguridad</h1>
+                <p>Descripción: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+
+            </header>
+
+            <section class="content p-0">
+
+                <div class="wrapper-1 bg-white">
+                    <header class="mb-3">
+                        <h3>Grados de Seguridad</h3>
+                        <p>Estas son las opciones de seguridad que recomendamos, adaptable y personalizable dentro de tus ajustes</p>
+                    </header>
+
+                    <div class="card-deck">
+
+
+                        <div class="card active">
+
+                        <!-- <div class="card"> -->
+
+                            <div class="card-header bg-green-100">
+                                <img src="../../assets/img/icons/tick_blue_solid.png" alt="" class="height sm float-right">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="mb-4 mt-2">{{ 'index.security.basic.title'|trans }}</h4>
+                                <p class="display-4 letter-spacing-xs font-weight-normal mb-4">{{ 'index.security.basic.description'|trans }}</p>
+                                <ul class="pl-0 display-4 font-weight-medium">
+                                    <li class="pb-2">- {{ 'index.security.basic.feature1'|trans }}</li>
+                                    <li class="pb-2">- {{ 'index.security.basic.feature2'|trans }}</li>
+                                    <li class="pb-2">- {{ 'index.security.basic.feature3'|trans }}</li>
+                                    <li class="pb-2">- {{ 'index.security.basic.feature4'|trans }}</li>
+                                    <li class="pb-2">- {{ 'index.security.basic.feature5'|trans }}</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                {% if config.secure_plan.basic == 'enabled' %}
+                                    <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_update_security', {'sid':sid, 'plan':'basic', 'disable':1}) }}">
+                                        {{ 'index.security.disable'|trans }}
+                                    </button>
+                                {% else %}
+                                    <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_update_security', {'sid':sid, 'plan':'basic'}) }}">
+                                        {{ 'index.security.enable'|trans }}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    {% if config.secure_plan.normal == 'enabled' %}
+                        <div class="card active">
+                    {% else %}
+                        <div class="card">
+                    {% endif %}
+                            <div class="card-header bg-orange-200">
+                                <img src="../../assets/img/icons/tick_blue_solid.png" alt="" class="height sm float-right">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="mb-4 mt-2">{{ 'index.security.normal.title'|trans }}</h4>
+                                <p class="display-4 letter-spacing-xs font-weight-normal mb-4">{{ 'index.security.normal.description'|trans }}</p>
+                                <ul class="pl-0 display-4 font-weight-medium">
+                                    <li class="pb-2">- {{ 'index.security.normal.feature1'|trans }}</li>
+                                    <li class="pb-2">- {{ 'index.security.normal.feature2'|trans }}</li>
+                                    <li class="pb-2">- {{ 'index.security.normal.feature3'|trans }}</li>
+                                    <li class="pb-2">- {{ 'index.security.normal.feature4'|trans }}</li>
+                                    <li class="pb-2">- {{ 'index.security.normal.feature5'|trans }}</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                {% if config.secure_plan.normal == 'enabled' %}
+
+                                    <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_update_security', {'sid':sid, 'plan':'normal', 'disable':1}) }}">
+                                        {{ 'index.security.disable'|trans }}
+                                    </button>
+
+                                {% else %}
+                                    <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_update_security', {'sid':sid, 'plan':'normal'}) }}">
+                                        {{ 'index.security.enable'|trans }}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    {% if config.secure_plan.extra == 'enabled' %}
+                        <div class="card active">
+                    {% else %}
+                        <div class="card">
+                    {% endif %}
+                            <div class="card-header bg-red-100">
+                                <img src="../../assets/img/icons/tick_blue_solid.png" alt="" class="height sm float-right">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="mb-4 mt-2">Normal</h4>
+                                <p class="display-4 letter-spacing-xs font-weight-normal mb-4">Ofrece un nivel de seguridad determinado y mas o menos por encima te dice esto que es y cuánto protege</p>
+                                <ul class="pl-0 display-4 font-weight-medium">
+                                    <li class="pb-2">- Redes Sociales</li>
+                                    <li class="pb-2">- Contenido pornográfico</li>
+                                    <li class="pb-2">- Otro item aquí</li>
+                                    <li class="pb-2">- Más texto aquí</li>
+                                    <li class="pb-2">- Último item del listado</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+
+                                    <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_update_security', {'sid':sid, 'plan':'extra', 'disable':1}) }}">
+                                        Desactivar
+                                    </button>
+
+                                    <!-- <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_update_security', {'sid':sid, 'plan':'extra'}) }}">
+                                        {{ 'index.security.enable'|trans }}
+                                    </a> -->
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="w-100 text-center mt-5 pt-1">
+                        <a href="{{ url('security_filter" class="btn btn-rounded">{{ 'index.security.filter.link'|trans }}</a>
+                    </div>
+                </div>
+                <div class="wrapper-2 bg-white">
+                    <header>
+                        <h3>{{ 'index.adBlock.title'|trans }}</h3>
+                        <p>{{ 'index.adBlock.subtitle'|trans }}</p>
+                    </header>
+
+                {% if config.adblock == 'enabled' %}
+                    <div class="card active">
+                {% else %}
+                    <div class="card">
+                {% endif %}
+                        <div class="card-header bg-blue-200">
+                            <img src="../../assets/img/icons/tick_blue_solid.png" alt="" class="height sm float-right">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="mb-4 mt-2">Estricto</h4>
+                            <p class="display-4 letter-spacing-xs font-weight-normal mb-4">
+                                Ofrece un nivel de seguridad determinado y mas o menos por encima te dice esto que es y cuánto protege
+                            </p>
+                            <ul class="pl-0 display-4 font-weight-medium">
+                              <li class="pb-2">- Redes Sociales</li>
+                              <li class="pb-2">- Contenido pornográfico</li>
+                              <li class="pb-2">- Otro item aquí</li>
+                              <li class="pb-2">- Más texto aquí</li>
+                              <li class="pb-2">- Último item del listado</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            {% if config.adblock == 'enabled' %}
+                                <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_adblock_disable', {'sid':sid}) }}">
+                                    {{ 'index.adBlock.disable'|trans }}
+                                </button>
+                            {% else %}
+                                <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_adblock_enable', {'sid':sid}) }}">{{ 'index.adBlock.enable'|trans }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+          </div>
+      </article>
+  </div>
+  <!-- Flash MSGs --------------------------------------------------------------------->
+  <div id="flash-modal" class="modal-default modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content text-center">
+              <div class="modal-header text-center align-items-center">
+                  <img src="../../assets/img/icons/modal_error_icon.png" alt="error icon" class="height extra-lg mb-3">
+                  <h2 class="modal-title letter-spacing-xs text-center">
+                      <!-- {% block message %}{% endblock message %} -->
+                  </h2>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div id="flash-modal" class="modal-default modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content text-center">
+              <div class="modal-header text-center align-items-center">
+                  <img src="../../assets/img/icons/modal_success_icon.png" alt="success icon" class="height extra-lg mb-3">
+                  <h2 class="modal-title letter-spacing-xs text-center">
+                      <!-- {% block message %}{% endblock message %} -->
+                  </h2>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+<!-- Modal -------------------------------------------------------------------------->
+
+<div id="modal-default" class="modal fade modal-insert-url" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content text-center">
+
+      <div class="modal-header text-center align-items-center">
+          <img src="../../assets/img/icons/modal_error_icon.png" alt="error icon" class="height extra-lg mb-3">
+        <h2 class="modal-title letter-spacing-xs text-center">
+          ¿Estás seguro de que quieres desactivar la seguridad?
+        </h2>
+
+      </div>
+
+      <div class="modal-body">
+
+          <p class="display-2 font-weight-light letter-spacing-md text-gray-700">
+            Tu red Wi-Fi estará más desprotegida y el contenido para usuarios totalmente libre
+            </p>
+      </div>
+
+      <div class="modal-footer">
+        <a role="button" href="#" class="btn btn-outline-primary btn-standard">Desactivar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal ---------------------------------------------------------------->
+
+  <script src="../../assets/js/vendor/jquery-3.2.1.min.js"></script>
+  <script src="../../assets/js/vendor/popper.min.js"></script>
+  <script src="../../assets/js/vendor/bootstrap.min.js"></script>
+  <script src="../../assets/js/animations.js"></script>
+  <script src="../../assets/js/common.js"></script>
+  <script src="../../assets/js/menu.js"></script>
+
+</body>
+</html>
