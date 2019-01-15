@@ -9571,9 +9571,9 @@ a.text-black:hover, a.text-black:focus {
   height: 25px; }
 
 .table tbody td .os,
-.table tbody td .netspot,
+.table tbody td .nexus,
 .table tbody th .os,
-.table tbody th .netspot {
+.table tbody th .nexus {
   height: 30px; }
 
 .table tbody td img[src*="windows.png"],
