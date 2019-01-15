@@ -2,16 +2,15 @@
  * Set active / non-active items
  */
 
-var $toggle_class_items    = $('.toggle-class-js');
+const $toggle_class_items = $('.toggle-class-js');
 
 function toggleClass($element, classes) {
     $element.toggleClass(classes);
-}
+};
 
 $toggle_class_items.on( 'click', function () {
     toggleClass($(event.currentTarget), $(event.currentTarget).data('js-toggleclass'));
 });
-
 
 /*
  * Flash Messages
@@ -19,7 +18,7 @@ $toggle_class_items.on( 'click', function () {
 
 function toggleFlashMessage() {
 
-  var $flash_message = $('#flash-modal');
+  const $flash_message = $('#flash-modal');
 
   $flash_message.modal('toggle');
 
@@ -39,16 +38,3 @@ $modals_insert_url.on('show.bs.modal', function (event) {
     $(this).find('.btn')[0].href = event.relatedTarget.getAttribute('data-url');
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-

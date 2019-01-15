@@ -3,17 +3,17 @@
   .card{
     &:nth-child(1){
       .subsection-icon{
-        background: url('/img/icons/subsections/mylanding.png');
+        background: url('../img/icons/subsections/mylanding.png');
       }
     }
     &:nth-child(2){
       .subsection-icon{
-        background: url('/img/icons/subsections/reviews.png');
+        background: url('../img/icons/subsections/reviews.png');
       }
     }
     &:nth-child(3){
       .subsection-icon{
-        background: url('/img/icons/subsections/mywifi.png');
+        background: url('../img/icons/subsections/mywifi.png');
       }
     }
   }

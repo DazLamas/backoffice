@@ -32,9 +32,43 @@
             </div>
 
             <nav class="navbar navbar-light">
-                <div class="navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-collapse active" id="navbarNavAltMarkup">
                     <div class="navbar-nav text-left">
 
+                        <a class="nav-item nav-link" href="../dashboard/dashboard-home.html">
+                            <span class=" icon_list dashboard menuItemsAnimation">Dashboard</span>
+                        </a>
+
+                        <div class="nav-item nav-link with-submenu collapsed menuItemsAnimation">
+                            <a class=" icon_list profile" href="../profile/profile-home.html">
+                                <span>Perfil</span>
+                            </a>
+                            <i class="nav-arrow fas fa-caret-down" href="#collapseProfile" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample"></i>
+                        </div>
+
+                        <div id="collapseProfile" class="collapse subsection_links">
+
+                          <a class="nav-item nav-link" href="../profile/profile-landing.html">
+                              <span>Landing Page</span>
+                          </a>
+                          <a class="nav-item nav-link" href="../profile/profile-reviews.html">
+                              <span>Reseñas</span>
+                          </a>
+                          <a class="nav-item nav-link" href="../profile/myapp-profile.html">
+                              <span>Mi App</span>
+                          </a>
+                        </div>
+
+                        <a class="nav-item nav-link active" href="../analytics/analytics-general.html">
+                            <span class=" icon_list analytics menuItemsAnimation">Analytics</span>
+                        </a>
+
+
+                        <!-- <div class="divider"><hr class="w-100"></div> -->
+
+                        <a class="nav-item nav-link" href="../about/about.html">
+                            <span class=" icon_list about menuItemsAnimation">Sobre Nosotros</span>
+                        </a>
 
                     </div>
                 </div>

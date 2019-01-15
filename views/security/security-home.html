@@ -15,39 +15,74 @@
 
 <body>
   <div class="main_container subsection-layout is-security-section home" data-animation="{{ animation_data|default('">
-      <div class="navigation_container">
-          <div class="navigation_wrapper">
+    <div class="navigation_container">
+        <div class="navigation_wrapper">
 
-            <img src="../../assets/img/logo.png" alt="Netspot Logo" class="brand-logo mb-4 menuItemsAnimation">
+          <img src="../../assets/img/logo.png" alt="Netspot Logo" class="brand-logo mb-4 menuItemsAnimation">
 
-            <div class="client-logo rounded-img mb-3 shadow-sm menuItemsAnimation" style="background-image: url('../assets/img/logo_picto_client.png');"></div>
+          <div class="client-logo rounded-img mb-3 shadow-sm menuItemsAnimation" style="background-image: url('../../assets/img/logo_picto_client.png');"></div>
 
-            <div class="dropdown local-selector mb-4 menuItemsAnimation">
-                <button class="btn dropdown-placeholder mb-3 bg-transparent border-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Con Tres Fogones
-                </button>
-                <div class="dropdown-menu dropdown-menu-center p-0 mt-3" aria-labelledby="dropdownMenuButton">
-                  <a href="" class="dropdown-item">Con Tres Fogones</a>
-                </div>
-            </div>
+          <div class="local-selector mb-4 menuItemsAnimation">
 
-            <nav class="navbar navbar-light">
-                <div class="navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav text-left">
+                  Con Tres Fogones
 
-
-                    </div>
-                </div>
-            </nav>
           </div>
-      </div>
+
+          <nav class="navbar navbar-light">
+              <div class="navbar-collapse" id="navbarNavAltMarkup">
+                  <div class="navbar-nav text-left">
+
+                      <a class="nav-item nav-link" href="../dashboard/dashboard-home.html">
+                          <span class=" icon_list dashboard menuItemsAnimation">Dashboard</span>
+                      </a>
+
+                      <div class="nav-item nav-link with-submenu collapsed menuItemsAnimation">
+                          <a class=" icon_list profile" href="../profile/profile-home.html">
+                              <span>Perfil</span>
+                          </a>
+                          <i class="nav-arrow fas fa-caret-down" href="#collapseProfile" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample"></i>
+                      </div>
+
+                      <div id="collapseProfile" class="collapse subsection_links">
+
+                        <a class="nav-item nav-link" href="../profile/profile-landing.html">
+                            <span>Landing Page</span>
+                        </a>
+                        <a class="nav-item nav-link" href="../profile/profile-reviews.html">
+                            <span>Reseñas</span>
+                        </a>
+                        <a class="nav-item nav-link" href="../profile/myapp-profile.html">
+                            <span>Mi App</span>
+                        </a>
+                      </div>
+
+                      <a class="nav-item nav-link active" href="../security/security-home.html">
+                          <span class=" icon_list security menuItemsAnimation">Seguridad</span>
+                      </a>
+
+                      <a class="nav-item nav-link" href="../analytics/analytics-general.html">
+                          <span class=" icon_list analytics menuItemsAnimation">Analytics</span>
+                      </a>
+
+
+                      <!-- <div class="divider"><hr class="w-100"></div> -->
+
+                      <a class="nav-item nav-link" href="../about/about.html">
+                          <span class=" icon_list about menuItemsAnimation">Sobre Nosotros</span>
+                      </a>
+
+                  </div>
+              </div>
+          </nav>
+        </div>
+    </div>
 
       <article class="content_container overflow-scroll">
 
         <!-- Client Menu --------------------------------------------------------------------->
         <div class="secondary_menu js_menu_container">
 
-            <!-- {% set notifications = notifications() %} -->
+
 
             <div class="alert_box {% if notifications|length %}bg-red{% endif %} pointer js_submenu_trigger" href="#collapseAlertsMenu" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" id="alertsSecondaryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="far fa-bell text-white"></i>
@@ -61,30 +96,28 @@
                     <header>Notificaciones</header>
                 </li>
 
-            <!-- {% if notifications|length %}
-                {% for key, notification in notifications %} -->
                     <li class="menu_item flex-column">
                         <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
                             <h7 class="dot_list sx_margin">
-                                <span class="title-format">Nuevas reseñas en tu perfil!</span> <!--{{ notification.title }}-->
+                                <span class="title-format">Nuevas reseñas en tu perfil!</span>
                             </h7>
-                            <p class="text-format m-0">Tienes una nueva reseña en tu perfil, échale un vistazo para saber qué dicen de tu local</p> <!--{{ notification.content }}-->
+                            <p class="text-format m-0">Tienes una nueva reseña en tu perfil, échale un vistazo para saber qué dicen de tu local</p>
                         </a>
                     </li>
                     <li class="menu_item flex-column">
                         <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
                             <h7 class="dot_list sx_margin">
-                                <span class="title-format">Mejora tu actividad</span> <!--{{ notification.title }}-->
+                                <span class="title-format">Mejora tu actividad</span>
                             </h7>
-                            <p class="text-format m-0">Mejora tus resultados interactuando con tus clientes de manera más cercana</p> <!--{{ notification.content }}-->
+                            <p class="text-format m-0">Mejora tus resultados interactuando con tus clientes de manera más cercana</p>
                         </a>
                     </li>
                     <li class="menu_item flex-column">
                         <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
                             <h7 class="dot_list sx_margin">
-                                <span class="title-format">Nuevas visitas a tu perfil</span> <!--{{ notification.title }}-->
+                                <span class="title-format">Nuevas visitas a tu perfil</span>
                             </h7>
-                            <p class="text-format m-0">Tienes nuevas visitas en tu perfil Netspot, ¡descubre quién es!</p> <!--{{ notification.content }}-->
+                            <p class="text-format m-0">Tienes nuevas visitas en tu perfil Netspot, ¡descubre quién es!</p>
                         </a>
                     </li>
                 <!-- {% endfor %} -->
@@ -134,83 +167,62 @@
                     </header>
 
                     <div class="card-deck">
-
-
-                        <div class="card active">
-
-                        <!-- <div class="card"> -->
+                        <div class="card">
 
                             <div class="card-header bg-green-100">
                                 <img src="../../assets/img/icons/tick_blue_solid.png" alt="" class="height sm float-right">
                             </div>
                             <div class="card-body">
-                                <h4 class="mb-4 mt-2">{{ 'index.security.basic.title'|trans }}</h4>
-                                <p class="display-4 letter-spacing-xs font-weight-normal mb-4">{{ 'index.security.basic.description'|trans }}</p>
+                                <h4 class="mb-4 mt-2">Básico</h4>
+                                <p class="display-4 letter-spacing-xs font-weight-normal mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                 <ul class="pl-0 display-4 font-weight-medium">
-                                    <li class="pb-2">- {{ 'index.security.basic.feature1'|trans }}</li>
-                                    <li class="pb-2">- {{ 'index.security.basic.feature2'|trans }}</li>
-                                    <li class="pb-2">- {{ 'index.security.basic.feature3'|trans }}</li>
-                                    <li class="pb-2">- {{ 'index.security.basic.feature4'|trans }}</li>
-                                    <li class="pb-2">- {{ 'index.security.basic.feature5'|trans }}</li>
+                                    <li class="pb-2">- Lorem ipsum</li>
+                                    <li class="pb-2">- Lorem ipsum</li>
+                                    <li class="pb-2">- Lorem ipsum</li>
+                                    <li class="pb-2">- Lorem ipsum</li>
+                                    <li class="pb-2">- Lorem ipsum</li>
                                 </ul>
                             </div>
                             <div class="card-footer">
-                                {% if config.secure_plan.basic == 'enabled' %}
-                                    <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_update_security', {'sid':sid, 'plan':'basic', 'disable':1}) }}">
-                                        {{ 'index.security.disable'|trans }}
-                                    </button>
-                                {% else %}
-                                    <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_update_security', {'sid':sid, 'plan':'basic'}) }}">
-                                        {{ 'index.security.enable'|trans }}
-                                    </a>
-                                {% endif %}
+                              <!-- <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_update_security', {'sid':sid, 'plan':'basic', 'disable':1}) }}"></button> -->
+                              <a class="btn btn-primary btn-standard mb-3" href="">
+                                  Activar
+                              </a>
                             </div>
                         </div>
 
-                    {% if config.secure_plan.normal == 'enabled' %}
                         <div class="card active">
-                    {% else %}
-                        <div class="card">
-                    {% endif %}
                             <div class="card-header bg-orange-200">
                                 <img src="../../assets/img/icons/tick_blue_solid.png" alt="" class="height sm float-right">
                             </div>
                             <div class="card-body">
-                                <h4 class="mb-4 mt-2">{{ 'index.security.normal.title'|trans }}</h4>
-                                <p class="display-4 letter-spacing-xs font-weight-normal mb-4">{{ 'index.security.normal.description'|trans }}</p>
-                                <ul class="pl-0 display-4 font-weight-medium">
-                                    <li class="pb-2">- {{ 'index.security.normal.feature1'|trans }}</li>
-                                    <li class="pb-2">- {{ 'index.security.normal.feature2'|trans }}</li>
-                                    <li class="pb-2">- {{ 'index.security.normal.feature3'|trans }}</li>
-                                    <li class="pb-2">- {{ 'index.security.normal.feature4'|trans }}</li>
-                                    <li class="pb-2">- {{ 'index.security.normal.feature5'|trans }}</li>
-                                </ul>
+                                <h4 class="mb-4 mt-2">Normal</h4>
+                                <p class="display-4 letter-spacing-xs font-weight-normal mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                  <ul class="pl-0 display-4 font-weight-medium">
+                                      <li class="pb-2">- Lorem ipsum</li>
+                                      <li class="pb-2">- Lorem ipsum</li>
+                                      <li class="pb-2">- Lorem ipsum</li>
+                                      <li class="pb-2">- Lorem ipsum</li>
+                                      <li class="pb-2">- Lorem ipsum</li>
+                                  </ul>
                             </div>
                             <div class="card-footer">
-                                {% if config.secure_plan.normal == 'enabled' %}
-
-                                    <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_update_security', {'sid':sid, 'plan':'normal', 'disable':1}) }}">
-                                        {{ 'index.security.disable'|trans }}
-                                    </button>
-
-                                {% else %}
-                                    <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_update_security', {'sid':sid, 'plan':'normal'}) }}">
-                                        {{ 'index.security.enable'|trans }}
-                                    </a>
-                                {% endif %}
+                              <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="">
+                                  Desactivar
+                              </button>
+                              <!-- <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_update_security', {'sid':sid, 'plan':'normal'}) }}">
+                                  Activar
+                              </a>-->
                             </div>
                         </div>
 
-                    {% if config.secure_plan.extra == 'enabled' %}
-                        <div class="card active">
-                    {% else %}
                         <div class="card">
-                    {% endif %}
+
                             <div class="card-header bg-red-100">
                                 <img src="../../assets/img/icons/tick_blue_solid.png" alt="" class="height sm float-right">
                             </div>
                             <div class="card-body">
-                                <h4 class="mb-4 mt-2">Normal</h4>
+                                <h4 class="mb-4 mt-2">Estricto</h4>
                                 <p class="display-4 letter-spacing-xs font-weight-normal mb-4">Ofrece un nivel de seguridad determinado y mas o menos por encima te dice esto que es y cuánto protege</p>
                                 <ul class="pl-0 display-4 font-weight-medium">
                                     <li class="pb-2">- Redes Sociales</li>
@@ -222,8 +234,8 @@
                             </div>
                             <div class="card-footer">
 
-                                    <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_update_security', {'sid':sid, 'plan':'extra', 'disable':1}) }}">
-                                        Desactivar
+                                    <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3 toggle-class-js" js-toggleclass="active" data-url="forajax">
+                                        Activar
                                     </button>
 
                                     <!-- <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_update_security', {'sid':sid, 'plan':'extra'}) }}">
@@ -235,44 +247,36 @@
 
                     </div>
                     <div class="w-100 text-center mt-5 pt-1">
-                        <a href="{{ url('security_filter" class="btn btn-rounded">{{ 'index.security.filter.link'|trans }}</a>
+                        <a href="" class="btn btn-rounded">Filtrado de Seguridad</a>
                     </div>
                 </div>
                 <div class="wrapper-2 bg-white">
                     <header>
-                        <h3>{{ 'index.adBlock.title'|trans }}</h3>
-                        <p>{{ 'index.adBlock.subtitle'|trans }}</p>
+                        <h3>AdBlock</h3>
+                        <p>Bloquea todos los anuncios y pop-ups de internet.</p>
                     </header>
 
-                {% if config.adblock == 'enabled' %}
-                    <div class="card active">
-                {% else %}
                     <div class="card">
-                {% endif %}
                         <div class="card-header bg-blue-200">
                             <img src="../../assets/img/icons/tick_blue_solid.png" alt="" class="height sm float-right">
                         </div>
                         <div class="card-body">
-                            <h4 class="mb-4 mt-2">Estricto</h4>
+                            <h4 class="mb-4 mt-2">AdBlock</h4>
                             <p class="display-4 letter-spacing-xs font-weight-normal mb-4">
-                                Ofrece un nivel de seguridad determinado y mas o menos por encima te dice esto que es y cuánto protege
+                                Optimiza tu señal Wi-Fi por un 30% activando AdBlock, y no vulevas a preocuparte por cerrar anuncios no deseados.
                             </p>
                             <ul class="pl-0 display-4 font-weight-medium">
-                              <li class="pb-2">- Redes Sociales</li>
-                              <li class="pb-2">- Contenido pornográfico</li>
-                              <li class="pb-2">- Otro item aquí</li>
-                              <li class="pb-2">- Más texto aquí</li>
-                              <li class="pb-2">- Último item del listado</li>
+                              <li class="pb-2">- Más rápido</li>
+                              <li class="pb-2">- Sin anuncios</li>
+                              <li class="pb-2">- Sin virus</li>
+                              <li class="pb-2">- Sin distracciones</li>
                             </ul>
                         </div>
                         <div class="card-footer">
-                            {% if config.adblock == 'enabled' %}
-                                <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_adblock_disable', {'sid':sid}) }}">
-                                    {{ 'index.adBlock.disable'|trans }}
-                                </button>
-                            {% else %}
-                                <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_adblock_enable', {'sid':sid}) }}">{{ 'index.adBlock.enable'|trans }}</a>
-                            {% endif %}
+                          <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary btn-standard mb-3" data-url="{{ url('security_adblock_disable', {'sid':sid}) }}">
+                            Desactivar
+                          </button>
+                          <!-- <a class="btn btn-primary btn-standard mb-3" href="{{ url('security_adblock_enable', {'sid':sid}) }}">{{ 'index.adBlock.enable'|trans }}</a> -->
                         </div>
                     </div>
                 </div>
