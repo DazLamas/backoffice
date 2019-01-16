@@ -18,15 +18,15 @@ $toggle_class_items.on( 'click', function () {
 
 const flashMessage = {
 
-  element: $('#flash-modal'),
+  element: $(document.getElementById('flash-modal')),
 
   init: function(type, msg) {
-    this.element.find('.js-insert-text-here').text(msg);
-    this.element.find('.js-change-img')[0].src = `../../img/icons/modal_${type}_icon.png`;
+    document.getElementsByClassName('js-flash-modal-text')[0].innerText = msg;
+    document.getElementsByClassName('js-flash-modal-img')[0].src        = `../../img/icons/modal_${type}_icon.png`;
     this.show();
   },
 
-  show: function(type, msg) {
+  show: function() {
     this.element.modal('toggle');
     this.remove();
   },
