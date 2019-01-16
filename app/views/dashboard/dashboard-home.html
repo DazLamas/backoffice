@@ -141,8 +141,7 @@
                 <h1>Dashboard</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
 
-                <button type="button" class="btn btn-lg font-weight-medium btn-primary float-right" data-toggle="modal"
-                        data-target="#modal-push" data-href="">
+                <button type="button" class="btn btn-lg font-weight-medium btn-primary float-right js-flashmsg" data-href="" data-msg-id="push">
                     Enviar Notificación Push
                 </button>
 
@@ -423,22 +422,9 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content text-center">
               <div class="modal-header text-center align-items-center">
-                  <img src="../../img/icons/modal_error_icon.png" alt="error icon" class="height extra-lg mb-3">
-                  <h2 class="modal-title letter-spacing-xs text-center">
-                      <!-- {% block message %}{% endblock message %} -->
-                  </h2>
-              </div>
-          </div>
-      </div>
-  </div>
+                  <img src="#" alt="icon" class="height extra-lg mb-3 js-change-img">
+                  <h2 class="modal-title letter-spacing-xs text-center js-insert-text-here">
 
-  <div id="flash-modal" class="modal-default modal fade" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content text-center">
-              <div class="modal-header text-center align-items-center">
-                  <img src="../../img/icons/modal_success_icon.png" alt="success icon" class="height extra-lg mb-3">
-                  <h2 class="modal-title letter-spacing-xs text-center">
-                      <!-- {% block message %}{% endblock message %} -->
                   </h2>
               </div>
           </div>
@@ -447,7 +433,7 @@
 
 <!-- Modal -------------------------------------------------------------------------->
 
-<div id="{% block modal_default_key %}modal-default{% endblock modal_default_key %}" class="modal fade {% block modal_default_classes %} {% endblock modal_default_classes %}" tabindex="-1" role="dialog">
+<div id="modal-default" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content text-center">
 
@@ -482,6 +468,7 @@
   <script src="../../js/vendor/jquery-3.2.1.min.js"></script>
   <script src="../../js/vendor/popper.min.js"></script>
   <script src="../../js/vendor/bootstrap.min.js"></script>
+  <script src="../../js/common.js"></script>
   <script src="../../js/animations.js"></script>
   <script src="../../js/menu.js"></script>
   <script src="../../js/ajax-calls.js"></script>

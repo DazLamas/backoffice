@@ -16,9 +16,16 @@ $toggle_class_items.on( 'click', function () {
  * Flash Messages
  */
 
-function toggleFlashMessage() {
+const $flash_message = $('#flash-modal');
 
-  const $flash_message = $('#flash-modal');
+function customizeFlashMessage(type, msg) {
+  $flash_message.find('.js-insert-text-here').text(msg);
+  $flash_message.find('.js-change-img')[0].src = `../../img/icons/modal_${type}_icon.png`;
+};
+
+function toggleFlashMessage(type, msg) {
+
+  customizeFlashMessage(type, msg);
 
   $flash_message.modal('toggle');
 
@@ -26,6 +33,7 @@ function toggleFlashMessage() {
         $flash_message.modal('hide');
     }, 3500);
 };
+
 
 /*
  * Insert URL on modal

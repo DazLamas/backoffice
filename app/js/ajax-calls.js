@@ -50,15 +50,20 @@ $('body').on('submit', 'form[name=my_app_custom_message_form]', function (event)
 
 
 
-$('#modal-push').on('show.bs.modal', function (event) {
 
-    var $button = $(event.relatedTarget);
-    var href    = $button.data('href');
-    var $modal  = $(this);
+$('.js-flashmsg').on('click', function (event) {
 
-    $modal.find('#ajaxContainer').first().load(href, function() {
-        $modal.find('form[name=push_notification_form]').data('target', '#modal-push');
-    });
+    //This will be an AJAX call
+
+    // const url   = $(event.relatedTarget).data('href'); AJAX URL
+
+    const response = {
+      type: "success",
+      msg: "Mensaje enviado con éxito!!"
+    };
+
+    toggleFlashMessage(response.type, response.msg);
+
 });
 
 $('body').on('submit', 'form[name=push_notification_form]', function (event){
