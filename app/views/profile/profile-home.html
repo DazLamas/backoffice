@@ -5,42 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Nexus OG</title>
 
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <link rel="icon" type="image/png" href="img/favicon.png" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../assets/css/app.css" />
+    <link rel="stylesheet" href="../../css/app.css" />
 </head>
 
 <body>
-  <div class="main_container is-customers-home" data-animation="none">
-      <div class="navigation_container">
-          <div class="navigation_wrapper">
+  <div class="main_container is-profile-home" data-animation="none">
+    <div class="navigation_container">
+        <div class="navigation_wrapper">
 
-            <img src="../assets/img/logo.png" alt="Nexus Logo" class="brand-logo mb-4 menuItemsAnimation">
+          <img src="../../img/logo.png" alt="Nexus Logo" class="brand-logo mb-4 menuItemsAnimation">
 
-            <div class="client-logo rounded-img mb-3 shadow-sm menuItemsAnimation" style="background-image: url('../assets/img/logo_picto_client.png');"></div>
+          <div class="client-logo rounded-img mb-3 shadow-sm menuItemsAnimation" style="background-image: url('../../img/logo_picto_client.png');"></div>
 
-            <div class="dropdown local-selector mb-4 menuItemsAnimation">
-                <button class="btn dropdown-placeholder mb-3 bg-transparent border-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Indian Spices
-                </button>
-                <div class="dropdown-menu dropdown-menu-center p-0 mt-3" aria-labelledby="dropdownMenuButton">
-                  <a href="" class="dropdown-item">Indian Spices</a>
-                </div>
-            </div>
+          <div class="local-selector mb-4 menuItemsAnimation">
 
-            <nav class="navbar navbar-light">
-                <div class="navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav text-left">
+                  Indian Spices
 
-
-                    </div>
-                </div>
-            </nav>
           </div>
-      </div>
+
+          <nav class="navbar navbar-light">
+              <div class="navbar-collapse" id="navbarNavAltMarkup">
+                  <div class="navbar-nav text-left">
+
+                      <a class="nav-item nav-link" href="../dashboard/dashboard-home.html">
+                          <span class=" icon_list dashboard menuItemsAnimation">Dashboard</span>
+                      </a>
+
+                      <div class="nav-item nav-link with-submenu collapsed menuItemsAnimation active">
+                          <a class=" icon_list profile" href="../profile/profile-home.html">
+                              <span>Perfil</span>
+                          </a>
+                          <i class="nav-arrow fas fa-caret-down" href="#collapseProfile" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample"></i>
+                      </div>
+
+                      <div id="collapseProfile" class="collapse subsection_links">
+
+                        <a class="nav-item nav-link" href="../profile/profile-landing.html">
+                            <span>Landing Page</span>
+                        </a>
+                        <a class="nav-item nav-link" href="../profile/profile-reviews.html">
+                            <span>Reseñas</span>
+                        </a>
+                        <a class="nav-item nav-link" href="../profile/myapp-profile.html">
+                            <span>Mi App</span>
+                        </a>
+                      </div>
+
+                      <a class="nav-item nav-link" href="../analytics/analytics-general.html">
+                          <span class=" icon_list analytics menuItemsAnimation">Analytics</span>
+                      </a>
+
+
+                      <!-- <div class="divider"><hr class="w-100"></div> -->
+
+                      <a class="nav-item nav-link" href="../about/about.html">
+                          <span class=" icon_list about menuItemsAnimation">Sobre Nosotros</span>
+                      </a>
+
+                  </div>
+              </div>
+          </nav>
+        </div>
+    </div>
 
       <article class="content_container overflow-scroll">
 
@@ -98,7 +129,7 @@
 
             <ul id="collapseClientMenu" class="secondary_menu_toggled bg-white client_menu_version collapse shadow_left js_submenu">
                 <li class="menu_item text-center bg-primary d-flex justify-content-center align-items-center flex-column text-white py-3 w-100">
-                    <div alt="Client Logo" class="client-logo mb-1 rounded-img" style="background-image: url('../assets/img/logo_picto_client.png');"></div>
+                    <div alt="Client Logo" class="client-logo mb-1 rounded-img" style="background-image: url('../../../img/logo_picto_client.png');"></div>
                     <h7 class="store-name ellipsis">Indian Spices</h7> <!--{{ currentStore.name }} -->
                     <span class="store-subtext ellipsis">Usuario: mercgarc1</span> <!-- {{ 'user_info.user.title'|trans }}: {{ app.user.username }} -->
                 </li>
@@ -114,35 +145,37 @@
           <div class="content_wrapper">
             <header class="header">
 
-                <h1>Clientes</h1>
+                <h1>Perfil</h1>
                 <p>Desde tu Dashboard puedes ver información en tiempo real de cada usuario e interactuar con tus clientes</p>
 
             </header>
 
             <section class="content">
                 <div class="card-deck card_filter">
-                    <a class="card large" href="clients-history-1.html">
+                    <a class="card slim" href="profile-landing.html">
                         <div class="card-body">
                             <div class="subsection-icon"></div>
-                            <h2 class="card-title">Historial de clientes</h2>
-                            <p class="card-text">Establece la página web donde llegarán tus clientes al conectarse a tu red Wi-Fi</p>
+                            <h5 class="card-title">Landing Page</h5>
+                            <p class="card-text">Desde tu Dashboard puedes ver información en tiempo real.</p>
                         </div>
                     </a>
-                    <a class="card large" href="clients-database.html">
+                    <a class="card slim" href="profile-reviews.html">
                         <div class="card-body">
+                            <div class="circle_info">
+                                <div class="inner_text">2</div>
+                            </div>
                             <div class="subsection-icon"></div>
-                            <h2 class="card-title">Mis bases de Datos</h2>
-                            <p class="card-text">Establece la página web donde llegarán tus clientes al conectarse a tu red Wi-Fi</p>
+                            <h5 class="card-title">Mis Reseñas</h5>
+                            <p class="card-text">Desde tu Dashboard puedes ver información en tiempo real.</p>
                         </div>
                     </a>
-                    <div class="card large disabled-hover muted">
+                    <a class="card slim" href="myapp-profile.html">
                         <div class="card-body">
-                            <img src="../../assets/img/icons/star.svg" alt="highlight section" class="star_highlight">
                             <div class="subsection-icon"></div>
-                            <h2 class="card-title">Promos Avanzadas</h2>
-                            <span class="comming_soon my-3">Próximamente</span>
+                            <h5 class="card-title">Mi App</h5>
+                            <p class="card-text">Desde tu Dashboard puedes ver información en tiempo real.</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </section>
 
@@ -152,11 +185,11 @@
 
 <!-- Modal ----------------------------------------------------------------->
 
-  <script src="../../assets/js/vendor/jquery-3.2.1.min.js"></script>
-  <script src="../../assets/js/vendor/popper.min.js"></script>
-  <script src="../../assets/js/vendor/bootstrap.min.js"></script>
-  <script src="../../assets/js/animations.js"></script>
-  <script src="../../assets/js/menu.js"></script>
+  <script src="../../js/vendor/jquery-3.2.1.min.js"></script>
+  <script src="../../js/vendor/popper.min.js"></script>
+  <script src="../../js/vendor/bootstrap.min.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/menu.js"></script>
 
 </body>
 </html>
