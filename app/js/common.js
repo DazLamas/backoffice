@@ -16,23 +16,30 @@ $toggle_class_items.on( 'click', function () {
  * Flash Messages
  */
 
-const $flash_message = $('#flash-modal');
+const flashMessage = {
 
-function customizeFlashMessage(type, msg) {
-  $flash_message.find('.js-insert-text-here').text(msg);
-  $flash_message.find('.js-change-img')[0].src = `../../img/icons/modal_${type}_icon.png`;
-};
+  element: $('#flash-modal'),
 
-function toggleFlashMessage(type, msg) {
+  init: function(type, msg) {
+    this.element.find('.js-insert-text-here').text(msg);
+    this.element.find('.js-change-img')[0].src = `../../img/icons/modal_${type}_icon.png`;
+    this.show();
+  },
 
-  customizeFlashMessage(type, msg);
+  show: function(type, msg) {
+    this.element.modal('toggle');
+    this.remove();
+  },
 
-  $flash_message.modal('toggle');
-
+  remove: function() {
     setTimeout(function(){
-        $flash_message.modal('hide');
+        this.element.modal('hide');
     }, 3500);
+  }
+
 };
+
+
 
 
 /*

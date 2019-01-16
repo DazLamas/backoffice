@@ -62,7 +62,7 @@ $('.js-flashmsg').on('click', function (event) {
       msg: "Mensaje enviado con éxito!!"
     };
 
-    toggleFlashMessage(response.type, response.msg);
+    flashMessage.init(response.type, response.msg);
 
 });
 
