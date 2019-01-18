@@ -51,7 +51,7 @@ $('body').on('submit', 'form[name=my_app_custom_message_form]', function (event)
 
 
 
-$('.js-flashmsg').on('click', function (event) {
+$('.js-ajax-action').on('click', function (event) {
 
     //This will be an AJAX call
 
