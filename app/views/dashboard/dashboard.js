@@ -9,7 +9,7 @@ $('.js-ajax-form').on('submit', function (event) {
 
     const url     = $(event.relatedTarget).data('href'); //AJAX URL
     const data    = $(this).serialize();
-    const isEmpty = $(this).serialize() === !"message=";
+    const isEmpty = data === !"message=";
 
     const response = {
       type: isEmpty ? "success" : "error",
