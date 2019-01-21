@@ -14,13 +14,13 @@ const flashMessage = {
 
   show: function() {
     this.element.modal('toggle');
-    this.remove();
+    this.remove(this.element);
   },
 
-  remove: function() {
+  remove: function(flashMsg) {
     setTimeout(function(){
-        this.element.modal('hide');
-    }, 3500);
+        flashMsg.modal('hide');
+    }, 3500, flashMsg);
   }
 
 };
