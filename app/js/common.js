@@ -1,18 +1,4 @@
 /*
- * Set active / non-active items
- */
-
-const $toggle_class_items = $('.toggle-class-js');
-
-function toggleClass($element, classes) {
-    $element.toggleClass(classes);
-};
-
-$toggle_class_items.on( 'click', function () {
-    toggleClass($(event.currentTarget), $(event.currentTarget).data('js-toggleclass'));
-});
-
-/*
  * Flash Messages
  */
 
@@ -40,6 +26,19 @@ const flashMessage = {
 };
 
 
+/*
+ * Set active / non-active items
+ */
+
+const $toggle_class_items = $('.toggle-class-js');
+
+function toggleClass($element, classes) {
+    $element.toggleClass(classes);
+};
+
+$toggle_class_items.on( 'click', function () {
+    toggleClass($(event.currentTarget), $(event.currentTarget).data('js-toggleclass'));
+});
 
 
 /*

@@ -48,24 +48,6 @@ $('body').on('submit', 'form[name=my_app_custom_message_form]', function (event)
     return false;
 });
 
-
-
-
-$('.js-ajax-action').on('click', function (event) {
-
-    //This will be an AJAX call
-
-    // const url   = $(event.relatedTarget).data('href'); AJAX URL
-
-    const response = {
-      type: "success",
-      msg: "Mensaje enviado con éxito!!"
-    };
-
-    flashMessage.init(response.type, response.msg);
-
-});
-
 $('body').on('submit', 'form[name=push_notification_form]', function (event){
     var $form = $(this);
     var $modal = $($form.data('target'));

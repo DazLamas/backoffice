@@ -141,7 +141,7 @@
                 <h1>Dashboard</h1>
                 <p>Desde tu Dashboard puedes ver información en tiempo real de cada usuario e interactuar con tus clientes</p>
 
-                <button type="button" class="btn btn-lg font-weight-medium btn-primary float-right js-ajax-action" data-href="">
+                <button type="button" class="btn btn-lg font-weight-medium btn-primary float-right" data-href="" data-toggle="modal" data-target="#modal-push">
                     Enviar Notificación Push
                 </button>
 
@@ -432,35 +432,34 @@
   </div>
 
 <!-- Modal -------------------------------------------------------------------------->
+<div id="modal-push" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content px-4 py-4">
+            <div class="modal-header align-items-start px-0 mb-1">
+                <h2 class="modal-title letter-spacing-xs my-1">Notificación Push</h2>
+            </div>
+            <form name="dashboard_push_form" method="" action="" class="js-ajax-form">
+              <div class="modal-body px-0 pt-2">
+                  <p class="display-2 leter-spacing-xs font-weight-light text-gray-700">Escribe el mensaje para enviar en la notificación push</p>
+                  <div class="flex-column d-flex align-items-center">
+                      <div class="w-100">
+                          <textarea name="message" rows="5" cols="80" class="form-control mr-0"></textarea>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer justify-content-end">
+                  <div class="text-danger"></div>
+                  <input type="submit" class="btn btn-primary btn-standard" value="Enviar">
+              </div>
+            </form>
 
-<div id="modal-default" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content text-center">
 
-      <div class="modal-header text-center align-items-center">
-          <!-- {% block modal_header_icon %}
+            <!-- <div class="w-100 total-center py-8">
+                <i class="fas fa-spinner fa-pulse fa-4x"></i>
+            </div> -->
 
-        {% endblock modal_header_icon %} -->
-        <h2 class="modal-title letter-spacing-xs text-center">
-          <!-- {% block modal_default_header %}
-          {% endblock modal_default_header %} -->
-        </h2>
-
-      </div>
-
-      <div class="modal-body">
-
-          <p class="display-2 font-weight-light letter-spacing-md text-gray-700">
-            <!-- {% block modal_default_body %}{% endblock modal_default_body %} -->
-            </p>
-      </div>
-
-      <div class="modal-footer">
-        <!-- {% block modal_default_button %}
-        {% endblock modal_default_button %} -->
-      </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- Modal -------->
@@ -471,7 +470,7 @@
   <script src="../../js/common.js"></script>
   <script src="../../js/animations.js"></script>
   <script src="../../js/menu.js"></script>
-  <script src="../../js/ajax-calls.js"></script>
+  <script src="dashboard.js"></script>
 
 </body>
 </html>
