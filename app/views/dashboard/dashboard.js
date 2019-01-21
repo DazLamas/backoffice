@@ -17,7 +17,6 @@ $('.js-ajax-form').on('submit', function (event) {
     };
 
     $('#modal-push').modal('hide');
-ç
 
     setTimeout(function(){
         flashMessage.init(response.type, response.msg);
