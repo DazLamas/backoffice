@@ -11,11 +11,11 @@ $send_form_btn.on('submit', function (event) {
 
     // const url     = $(event.relatedTarget).data('href'); //AJAX URL
     const data    = $(this).serialize();
-    const isEmpty = !data === "message=";
+    const isEmpty = data === "message=";
 
     const response = {
-      type: isEmpty ? "success" : "error",
-      msg:  isEmpty ? "Mensaje enviado con éxito!!" : "Error al enviar el formulario",
+      type: isEmpty ? "error" : "success",
+      msg:  isEmpty ? "Error al enviar el formulario" : "Mensaje enviado con éxito!!",
     };
 
     $('#modal-push').modal('hide');
