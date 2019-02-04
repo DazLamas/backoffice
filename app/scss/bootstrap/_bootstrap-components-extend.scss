@@ -301,9 +301,13 @@
 }
 
 //Alerts. Flash messages
+//Changing flashMessage position and error styles classname
 .alert {
   position: fixed;
   z-index: 100;
-  bottom: 16px;
+  top: 16px;
   right: 16px;
+  &-error {
+    @extend .alert-danger
+  }
 };

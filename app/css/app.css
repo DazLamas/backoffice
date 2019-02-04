@@ -5458,15 +5458,15 @@ a.badge-black:hover, a.badge-black:focus {
 .alert-warning .alert-link {
   color: #61530a; }
 
-.alert-danger {
+.alert-danger, .alert-error {
   color: #882828;
   background-color: #fad5d5;
   border-color: #f9c5c5; }
 
-.alert-danger hr {
+.alert-danger hr, .alert-error hr {
   border-top-color: #f7aeae; }
 
-.alert-danger .alert-link {
+.alert-danger .alert-link, .alert-error .alert-link {
   color: #611c1c; }
 
 .alert-light {
@@ -10716,7 +10716,7 @@ a.text-black:hover, a.text-black:focus {
 .alert {
   position: fixed;
   z-index: 100;
-  bottom: 16px;
+  top: 16px;
   right: 16px; }
 
 /* custom.scss */

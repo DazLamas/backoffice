@@ -1,7 +1,6 @@
 /*
  * Flash Messages
  */
-
 const flashMessage = {
 
   element: document.getElementById('js-flash-msg'),
@@ -20,7 +19,7 @@ const flashMessage = {
   remove: function(flashMsg) {
     setTimeout(function(){
         flashMsg.classList.remove('show');
-    }, 3000, flashMsg);
+    }, 2500, flashMsg);
   }
 
 };
