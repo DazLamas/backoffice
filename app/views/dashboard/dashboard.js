@@ -29,11 +29,20 @@ $send_form_btn.on('submit', function (event) {
 /*
  * Dashboard Block User
  */
+
 const $block_user = $('.js-block-user');
+let $user_to_block;
+
+$('#modal-block').on('show.bs.modal', function (e) {
+  $user_to_block = $(event.target).closest('.js-item-to-delete');
+});
+
 //This will be an AJAX call:
 $block_user.on('click', function (event) {
 
     $('#modal-block').modal('hide');
+
+    $user_to_block.remove();
 
     setTimeout(function(){
         flashMessage.init('success', 'Usuario bloqueado con éxito');

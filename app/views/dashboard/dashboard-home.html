@@ -155,7 +155,7 @@
 
                     <table class="table">
                         <thead>
-                        <tr class="listAnimationItem">
+                        <tr class="listAnimationItem js-item-to-delete">
                             <th scope="col"></th>
                             <th scope="col">Nombre</th>
                             <th scope="col" class="text-center">País</th>
@@ -169,7 +169,7 @@
                         <tbody>
 
 
-                        <tr class="listAnimationItem">
+                        <tr class="listAnimationItem js-item-to-delete">
                             <th class="text-left">
                                 <div style="background-image: url('../../img/profile2.png')" class="rounded-img"></div>
                             </th>
@@ -187,7 +187,7 @@
                             </td>
                         </tr>
 
-                        <tr class="listAnimationItem">
+                        <tr class="listAnimationItem js-item-to-delete">
                             <th class="text-left">
                                 <div style="background-image: url('../../img/profile3.png')" class="rounded-img"></div>
                             </th>
@@ -206,7 +206,7 @@
                         </tr>
 
 
-                        <tr class="listAnimationItem">
+                        <tr class="listAnimationItem js-item-to-delete">
                             <th class="text-left">
                                 <div style="background-image: url('../../img/profile0.png')" class="rounded-img"></div>
                             </th>
@@ -225,7 +225,7 @@
                         </tr>
 
 
-                        <tr class="listAnimationItem">
+                        <tr class="listAnimationItem js-item-to-delete">
                             <th class="text-left">
                                 <div style="background-image: url('../../img/profile2.png')" class="rounded-img"></div>
                             </th>
@@ -260,7 +260,7 @@
 
                   <table class="table">
                       <thead>
-                      <tr class="listAnimationItem">
+                      <tr class="listAnimationItem js-item-to-delete">
                           <th scope="col"></th>
                           <th scope="col">Nombre</th>
                           <th scope="col" class="text-center">País</th>
@@ -274,7 +274,7 @@
                       <tbody>
 
 
-                      <tr class="listAnimationItem">
+                      <tr class="listAnimationItem js-item-to-delete">
                           <th class="text-left">
                               <div style="background-image: url('../../img/profile2.png')" class="rounded-img"></div>
                           </th>
@@ -292,7 +292,7 @@
                           </td>
                       </tr>
 
-                      <tr class="listAnimationItem">
+                      <tr class="listAnimationItem js-item-to-delete">
                           <th class="text-left">
                               <div style="background-image: url('../../img/profile0.png')" class="rounded-img"></div>
                           </th>
@@ -311,7 +311,7 @@
                       </tr>
 
 
-                      <tr class="listAnimationItem">
+                      <tr class="listAnimationItem js-item-to-delete">
                           <th class="text-left">
                               <div style="background-image: url('../../img/profile0.png')" class="rounded-img"></div>
                           </th>
@@ -330,7 +330,7 @@
                       </tr>
 
 
-                      <tr class="listAnimationItem">
+                      <tr class="listAnimationItem js-item-to-delete">
                           <th class="text-left">
                               <div style="background-image: url('../../img/profile2.png')" class="rounded-img"></div>
                           </th>
@@ -348,7 +348,7 @@
                           </td>
                       </tr>
 
-                      <tr class="listAnimationItem">
+                      <tr class="listAnimationItem js-item-to-delete">
                           <th class="text-left">
                               <div style="background-image: url('../../img/profile2.png')" class="rounded-img"></div>
                           </th>
@@ -366,7 +366,7 @@
                           </td>
                       </tr>
 
-                      <tr class="listAnimationItem">
+                      <tr class="listAnimationItem js-item-to-delete">
                           <th class="text-left">
                               <div style="background-image: url('../../img/profile2.png')" class="rounded-img"></div>
                           </th>
@@ -384,7 +384,7 @@
                           </td>
                       </tr>
 
-                      <tr class="listAnimationItem">
+                      <tr class="listAnimationItem js-item-to-delete">
                           <th class="text-left">
                               <div style="background-image: url('../../img/profile2.png')" class="rounded-img"></div>
                           </th>
@@ -418,18 +418,7 @@
   </div>
 
   <!-- Flash MSGs --------------------------------------------------------------------->
-  <div id="flash-modal" class="modal-default modal fade" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content text-center">
-              <div class="modal-header text-center align-items-center">
-                  <img src="#" alt="icon" class="height extra-lg mb-3 js-flash-modal-img">
-                  <h2 class="modal-title letter-spacing-xs text-center js-flash-modal-text">
-
-                  </h2>
-              </div>
-          </div>
-      </div>
-  </div>
+  <div id="js-flash-msg" class="alert fade" role="alert"></div>
 
 <!-- Modal -------------------------------------------------------------------------->
 <div id="modal-push" class="modal fade" tabindex="-1" role="dialog">

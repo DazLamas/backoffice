@@ -299,3 +299,11 @@
     -o-transform: translate(-50%, 20px) !important;
     transform: translate(-50%, 20px) !important;
 }
+
+//Alerts. Flash messages
+.alert {
+  position: fixed;
+  z-index: 100;
+  bottom: 16px;
+  right: 16px;
+};

@@ -4,23 +4,23 @@
 
 const flashMessage = {
 
-  element: $(document.getElementById('flash-modal')),
+  element: document.getElementById('js-flash-msg'),
 
   init: function(type, msg) {
-    document.getElementsByClassName('js-flash-modal-text')[0].innerText = msg;
-    document.getElementsByClassName('js-flash-modal-img')[0].src        = `../../img/icons/modal_${type}_icon.png`;
+    this.element.innerText = msg;
+    this.element.classList.add(`alert-${type}`);
     this.show();
   },
 
   show: function() {
-    this.element.modal('toggle');
+    this.element.classList.add('show');
     this.remove(this.element);
   },
 
   remove: function(flashMsg) {
     setTimeout(function(){
-        flashMsg.modal('hide');
-    }, 3500, flashMsg);
+        flashMsg.classList.remove('show');
+    }, 3000, flashMsg);
   }
 
 };
