@@ -3,13 +3,18 @@ var sass = require('gulp-sass');
 
 // Compile sass files
 gulp.task('compileStyles', function(){
-  return gulp.src('assets/scss/app.scss')
+  return gulp.src('app/scss/app.scss')
     .pipe(sass())
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('assets/css'))
+    .pipe(gulp.dest('app/css'))
 });
 
 // Watch changes on sass files
 gulp.task('watch', function(){
-  gulp.watch('assets/scss/**/*.scss', ['compileStyles']);
+  gulp.watch('app/scss/**/*.scss', ['compileStyles']);
+});
+
+gulp.task('watch', function() {
+  gulp.watch('app/scss/**/*.scss', gulp.series('compileStyles'));
+  gulp.watch('app/views/**/*.scss', gulp.series('compileStyles'));
 });

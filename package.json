@@ -13,11 +13,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-sass": "^4.0.0"
+    "gulp-sass": "^4.0.2"
   },
   "dependencies": {
-    "bootstrap": ">=4.1.2"
+    "bootstrap": ">=4.1.2",
+    "natives": "^1.1.6"
   }
 }
