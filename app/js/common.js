@@ -3,11 +3,19 @@
  */
 const flashMessage = {
 
-  element: document.getElementById('js-flash-msg'),
+  element : document.getElementById('js-flash-msg'),
+  message : undefined,
+  type    : undefined,
 
   init: function(type, msg) {
-    this.element.innerText = msg;
-    this.element.classList.add(`alert-${type}`);
+    this.msg = msg;
+    this.type = type;
+    this.create();
+  },
+
+  create: function() {
+    this.element.innerText = this.msg;
+    this.element.classList.add(`alert-${this.type}`);
     this.show();
   },
 
@@ -19,6 +27,7 @@ const flashMessage = {
   remove: function(flashMsg) {
     setTimeout(function(){
         flashMsg.classList.remove('show');
+        flashMsg.classList.remove(`alert-${flashMsg.type}`);
     }, 2500, flashMsg);
   }
 
