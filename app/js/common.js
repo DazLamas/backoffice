@@ -8,27 +8,27 @@ const flashMessage = {
   type    : undefined,
 
   init: function(type, msg) {
-    this.msg = msg;
-    this.type = type;
+    this.message = msg;
+    this.type    = type;
     this.create();
   },
 
   create: function() {
-    this.element.innerText = this.msg;
+    this.element.innerText = this.message;
     this.element.classList.add(`alert-${this.type}`);
     this.show();
   },
 
   show: function() {
     this.element.classList.add('show');
-    this.remove(this.element);
+    this.remove(this);
   },
 
-  remove: function(flashMsg) {
+  remove: function(thisObject) {
     setTimeout(function(){
-        flashMsg.classList.remove('show');
-        flashMsg.classList.remove(`alert-${flashMsg.type}`);
-    }, 2500, flashMsg);
+        thisObject.element.classList.remove('show');
+        thisObject.element.classList.remove(`alert-${thisObject.type}`);
+    }, 2500, thisObject);
   }
 
 };
