@@ -11867,7 +11867,7 @@ div[id^="modal-screens"] .local-name.position-4 {
  */
 .is-myapp-section.my-profile .content_container .content_wrapper .content {
   min-height: initial;
-  height: auto; }
+  height: 900px; }
 
 .is-myapp-section.my-profile .content_container .content_wrapper .column {
   display: flex;
