@@ -1,5 +1,12 @@
-### Dashboard
+# Backoffice · Nexus OG
 
-Backoffice Layout.
+*Demo project based on a real backoffice developed for Netspot*
 
-Demo project with login, lists, charts, modals, about us page, forms...
+**Technologies:**
+- Boostrap
+- ChartJS
+- Grid Layout
+- Gulp
+- SASS
+
+*Check it: https://dazlamas.github.io/dashboard/*
