@@ -89,7 +89,7 @@
                 </li>
 
                     <li class="menu_item flex-column">
-                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal"> 
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Nuevas reseñas en tu perfil!</span>
                             </h7>
@@ -97,7 +97,7 @@
                         </a>
                     </li>
                     <li class="menu_item flex-column">
-                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal"> 
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Mejora tu actividad</span>
                             </h7>
@@ -105,7 +105,7 @@
                         </a>
                     </li>
                     <li class="menu_item flex-column">
-                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal"> 
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Nuevas visitas a tu perfil</span>
                             </h7>
@@ -128,7 +128,7 @@
                     <span class="store-subtext ellipsis">Usuario: mercgarc1</span>
                 </li>
                 <li class="menu_item  p-2  sx_marginborder-0">
-                    <a href="{{ url('logout') }}" class="dot_list itemlist-format">
+                    <a href="" class="dot_list itemlist-format" data-toggle="modal" data-target="#demoModal">
                         Cerrar Sesión
                     </a>
                 </li>
@@ -148,7 +148,7 @@
                 <div class="card card-img rounded-0 bg-dark text-white mb-4">
                     <img class="card-img" src="../../img/madrid_half.jpg" alt="Madrid view">
                     <div class="card-img-overlay d-flex flex-column">
-                        <a href="https://www.nexusofficial.com/" class="btn btn-custom align-self-end">Visítanos</a>
+                        <a href="" class="btn btn-custom align-self-end" data-toggle="modal" data-target="#demoModal">Visítanos</a>
                         <img src="../../img/nexus_letters_white.png" alt="nexus logo" class="height extra-lg align-self-center">
                     </div>
                 </div>
@@ -275,6 +275,24 @@
 
           </div>
       </article>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="demoModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header px-0 mb-1 align-items-center text-center">
+          <img src="../../img/icons/modal_info_icon.png" alt="icon" class="height extra-lg mb-3">
+          <h5 class="modal-title letter-spacing-xs my-1">Nexus OG Demo</h5>
+        </div>
+        <div class="modal-body px-0 pt-2 align-items-center text-center">
+          <p class="display-2 leter-spacing-xs font-weight-light text-gray-700">Esta opción está desactiva en la demo :)</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <div class="text-white"></div>
+          <button type="button" data-dismiss="modal" class="btn btn-outline-primary btn-standard">Vale</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="../../js/vendor/jquery-3.2.1.min.js"></script>

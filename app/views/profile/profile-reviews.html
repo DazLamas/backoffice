@@ -93,7 +93,7 @@
             <!-- {% if notifications|length %}
                 {% for key, notification in notifications %} -->
                     <li class="menu_item flex-column">
-                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal"> 
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Nuevas reseñas en tu perfil!</span> <!--{{ notification.title }}-->
                             </h7>
@@ -101,7 +101,7 @@
                         </a>
                     </li>
                     <li class="menu_item flex-column">
-                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal"> 
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Mejora tu actividad</span> <!--{{ notification.title }}-->
                             </h7>
@@ -109,7 +109,7 @@
                         </a>
                     </li>
                     <li class="menu_item flex-column">
-                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal"> 
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Nuevas visitas a tu perfil</span> <!--{{ notification.title }}-->
                             </h7>
@@ -151,9 +151,9 @@
 
                 <h1>Reseñas</h1>
                 <p>En tu perfil puedes ver toda la información en tiempo real de cada usuario e interactuar con tus clientes</p>
-                <a href="https://www.nexusofficial.com/" class="btn btn-lg font-weight-medium btn-primary float-right">
+                <button href="" class="btn btn-lg font-weight-medium btn-primary float-right"  data-toggle="modal" data-target="#demoModal">
                     Mejorar mis reseñas
-                </a>
+                </button>
             </header>
 
             <section class="content bg-white">
@@ -204,8 +204,8 @@
 
                                               <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
                                               <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
-                                              <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2">
-                                              <img src="../../img/icons/share.png" alt="share" class="icons mr-2">
+                                              <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
+                                              <img src="../../img/icons/share.png" alt="share" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
 
                                         </header>
                                         <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
@@ -213,7 +213,7 @@
                                         </p>
                                         <div class="review-footer mt-2">
                                             <img src="../../img/icons/like.png" alt="like" class="like mr-2 height extra-xxs">
-                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial">Me gusta</span>
+                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial pointer"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
                                         </div>
                                     </li>
 
@@ -232,8 +232,8 @@
 
                                               <i class="fa fa-star fa-xs text-gray-200" aria-hidden="true"></i>
                                               <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
-                                              <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2">
-                                              <img src="../../img/icons/share.png" alt="share" class="icons mr-2">
+                                              <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
+                                              <img src="../../img/icons/share.png" alt="share" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
 
                                         </header>
                                         <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
@@ -241,7 +241,7 @@
                                         </p>
                                         <div class="review-footer mt-2">
                                             <img src="../../img/icons/like.png" alt="like" class="like mr-2 height extra-xxs">
-                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial">Me gusta</span>
+                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial pointer"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
                                         </div>
                                     </li>
 
@@ -260,8 +260,8 @@
 
                                               <i class="fa fa-star fa-xs text-gray-200" aria-hidden="true"></i>
                                               <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
-                                              <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2">
-                                              <img src="../../img/icons/share.png" alt="share" class="icons mr-2">
+                                              <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
+                                              <img src="../../img/icons/share.png" alt="share" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
 
                                         </header>
                                         <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
@@ -269,7 +269,7 @@
                                         </p>
                                         <div class="review-footer mt-2">
                                             <img src="../../img/icons/like.png" alt="like" class="like mr-2 height extra-xxs">
-                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial">Me gusta</span>
+                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial pointer"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
                                         </div>
                                     </li>
 
@@ -300,8 +300,8 @@
 
                                               <i class="fa fa-star fa-xs text-gray-200" aria-hidden="true"></i>
                                               <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
-                                              <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2">
-                                              <img src="../../img/icons/share.png" alt="share" class="icons mr-2">
+                                              <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
+                                              <img src="../../img/icons/share.png" alt="share" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
 
                                         </header>
                                         <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
@@ -309,7 +309,7 @@
                                         </p>
                                         <div class="review-footer mt-2">
                                             <img src="../../img/icons/like.png" alt="like" class="like mr-2 height extra-xxs">
-                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial">Me gusta</span>
+                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial pointer"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
                                         </div>
                                     </li>
 
@@ -328,8 +328,8 @@
 
                                               <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
                                               <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
-                                              <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2">
-                                              <img src="../../img/icons/share.png" alt="share" class="icons mr-2">
+                                              <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
+                                              <img src="../../img/icons/share.png" alt="share" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
 
                                         </header>
                                         <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
@@ -337,7 +337,7 @@
                                         </p>
                                         <div class="review-footer mt-2">
                                             <img src="../../img/icons/like.png" alt="like" class="like mr-2 height extra-xxs">
-                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial">Me gusta</span>
+                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial pointer"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
                                         </div>
                                     </li>
 
@@ -356,8 +356,8 @@
 
                                               <i class="fa fa-star fa-xs text-gray-200" aria-hidden="true"></i>
                                               <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
-                                              <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2">
-                                              <img src="../../img/icons/share.png" alt="share" class="icons mr-2">
+                                              <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
+                                              <img src="../../img/icons/share.png" alt="share" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
 
                                         </header>
                                         <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
@@ -365,7 +365,7 @@
                                         </p>
                                         <div class="review-footer mt-2">
                                             <img src="../../img/icons/like.png" alt="like" class="like mr-2 height extra-xxs">
-                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial">Me gusta</span>
+                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial pointer"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
                                         </div>
                                     </li>
                             </ul>
@@ -418,6 +418,23 @@
       </div>
   </div>
 
+  <div class="modal fade" tabindex="-1" role="dialog" id="demoModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header px-0 mb-1 align-items-center text-center">
+          <img src="../../img/icons/modal_info_icon.png" alt="icon" class="height extra-lg mb-3">
+          <h5 class="modal-title letter-spacing-xs my-1">Nexus OG Demo</h5>
+        </div>
+        <div class="modal-body px-0 pt-2 align-items-center text-center">
+          <p class="display-2 leter-spacing-xs font-weight-light text-gray-700">Esta opción está desactiva en la demo :)</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <div class="text-white"></div>
+          <button type="button" data-dismiss="modal" class="btn btn-outline-primary btn-standard">Vale</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <script src="../../js/vendor/jquery-3.2.1.min.js"></script>

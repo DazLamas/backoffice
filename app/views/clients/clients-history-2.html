@@ -59,7 +59,7 @@
             <!-- {% if notifications|length %}
                 {% for key, notification in notifications %} -->
                     <li class="menu_item flex-column">
-                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal"> 
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Nuevas reseñas en tu perfil!</span> <!--{{ notification.title }}-->
                             </h7>
@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li class="menu_item flex-column">
-                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal"> 
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Mejora tu actividad</span> <!--{{ notification.title }}-->
                             </h7>
@@ -75,7 +75,7 @@
                         </a>
                     </li>
                     <li class="menu_item flex-column">
-                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal"> 
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Nuevas visitas a tu perfil</span> <!--{{ notification.title }}-->
                             </h7>
@@ -98,7 +98,7 @@
                     <span class="store-subtext ellipsis">Usuario: mercgarc1</span> <!-- {{ 'user_info.user.title'|trans }}: {{ app.user.username }} -->
                 </li>
                 <li class="menu_item  p-2  sx_marginborder-0">
-                    <a href="{{ url('logout') }}" class="dot_list itemlist-format">
+                    <a href="" class="dot_list itemlist-format" data-toggle="modal" data-target="#demoModal">
                         Cerrar Sesión
                     </a>
                 </li>

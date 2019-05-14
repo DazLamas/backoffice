@@ -93,7 +93,7 @@
             <!-- {% if notifications|length %}
                 {% for key, notification in notifications %} -->
                     <li class="menu_item flex-column">
-                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal">
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Nuevas reseñas en tu perfil!</span> <!--{{ notification.title }}-->
                             </h7>
@@ -101,7 +101,7 @@
                         </a>
                     </li>
                     <li class="menu_item flex-column">
-                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal">
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Mejora tu actividad</span> <!--{{ notification.title }}-->
                             </h7>
@@ -109,7 +109,7 @@
                         </a>
                     </li>
                     <li class="menu_item flex-column">
-                        <a href="{{ url('notifications_read', {'sid':sid, 'notification': key, 'action': notification.action}) }}" class="p-2">
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal">
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Nuevas visitas a tu perfil</span> <!--{{ notification.title }}-->
                             </h7>
@@ -132,7 +132,7 @@
                     <span class="store-subtext ellipsis">Usuario: mercgarc1</span> <!-- {{ 'user_info.user.title'|trans }}: {{ app.user.username }} -->
                 </li>
                 <li class="menu_item  p-2  sx_marginborder-0">
-                    <a href="{{ url('logout') }}" class="dot_list itemlist-format">
+                    <a href="" class="dot_list itemlist-format" data-toggle="modal" data-target="#demoModal">
                         Cerrar Sesión
                     </a>
                 </li>
@@ -247,7 +247,7 @@
                                   <img src="../../img/icons/unknown_profile.png" alt="customer icon" class="mr-4 height lg">
                                   <p class="m-0 text-gray-800 letter-spacing-md">¿Quieres un análisis completo del perfil de tu cliente?</p>
                                 </div>
-                                <a href="https://www.nexusofficial.com/" class="btn btn-primary btn-lg">¡Lo quiero!</a>
+                                <a href="" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#demoModal">¡Lo quiero!</a>
                               </div>
 
                             </div>
@@ -364,11 +364,8 @@
                                   </div>
                                 </div>
                                 <div class="card-footer bg-transparent">
-
-                                      <a href="../security/security-home.html" class="btn btn-primary btn-standard px-4 py-1 display-4 font-weight-normal" role="button" aria-pressed="true">Activar adBlock</a>
-
-                                      <!-- <a href="{{ url('security_index', {'sid':sid}) }}" class="btn btn-primary btn-standard px-4 py-1 display-4 font-weight-normal" role="button" aria-pressed="true">{{ 'general.adblock.enable'|trans }}</a> -->
-
+                                <a href="#" class="btn btn-primary btn-standard px-3 py-1 display-4 font-weight-normal" data-toggle="modal" data-target="#demoModal">Activar adBlock</a>
+                                <!-- <a href="{{ url('security_index', {'sid':sid}) }}" class="btn btn-primary btn-standard px-4 py-1 display-4 font-weight-normal" role="button" aria-pressed="true">{{ 'general.adblock.enable'|trans }}</a> -->
                                 </div>
                               </div>
                             </div>
@@ -554,6 +551,24 @@
   </script>-->
 
   <script src="analytics-charts.js"></script>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="demoModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header px-0 mb-1 align-items-center text-center">
+          <img src="../../img/icons/modal_info_icon.png" alt="icon" class="height extra-lg mb-3">
+          <h5 class="modal-title letter-spacing-xs my-1">Nexus OG Demo</h5>
+        </div>
+        <div class="modal-body px-0 pt-2 align-items-center text-center">
+          <p class="display-2 leter-spacing-xs font-weight-light text-gray-700">Esta opción está desactiva en la demo :)</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <div class="text-white"></div>
+          <button type="button" data-dismiss="modal" class="btn btn-outline-primary btn-standard">Vale</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
