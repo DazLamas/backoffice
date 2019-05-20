@@ -11774,6 +11774,12 @@ h5 ~ p {
   margin-right: 5px;
   font-size: 13px; }
 
+.is-profile-section.reviews .reviews-container .like__icon, .is-profile-section.reviews .reviews-container .like__text {
+  color: #b7b7b7; }
+
+.is-profile-section.reviews .reviews-container .like__icon:hover, .is-profile-section.reviews .reviews-container .like__text:hover {
+  color: #717171; }
+
 .is-profile-section.mywifi .card-columns {
   -webkit-column-count: 2; }
 

@@ -188,6 +188,15 @@
         margin-right: 5px;
         font-size: 13px;
       }
+      .like {
+        &__icon,
+        &__text {
+          color: $gray-300;
+          &:hover {
+            color: $gray-600;
+          }
+        }
+      }
     }
   }
 
