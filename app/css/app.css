@@ -11742,9 +11742,25 @@ h5 ~ p {
 .is-profile-section.reviews .reviews-container .review-header .icons {
   height: 16px; }
 
-.is-profile-section.reviews .reviews-container .review-header .fa-star {
+.is-profile-section.reviews .reviews-container .review-header .stars-wrapper {
+  display: flex;
+  flex-direction: row-reverse; }
+
+.is-profile-section.reviews .reviews-container .review-header .stars-wrapper .fa-star {
   height: 11px;
-  margin-right: 0.5px; }
+  color: #D8d8d8; }
+
+.is-profile-section.reviews .reviews-container .review-header .stars-wrapper .fa-star.checked {
+  color: #F5CD00; }
+
+.is-profile-section.reviews .reviews-container .review-header .stars-wrapper:hover .fa-star {
+  color: #D8d8d8; }
+
+.is-profile-section.reviews .reviews-container .review-header .stars-wrapper:hover .fa-star:hover {
+  color: #F5CD00; }
+
+.is-profile-section.reviews .reviews-container .review-header .stars-wrapper:hover .fa-star:hover ~ .fa-star {
+  color: #F5CD00; }
 
 .is-profile-section.reviews .reviews-container li:not(:last-child) {
   border-bottom: 0.5px solid #D8d8d8; }

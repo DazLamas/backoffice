@@ -151,9 +151,27 @@
         .icons {
           height: 16px;
         }
-        .fa-star {
-          height: 11px;
-          margin-right: 0.5px;
+        .stars-wrapper {
+          display:flex;
+          flex-direction: row-reverse;
+          .fa-star {
+            height: 11px;
+            color: $gray-200;
+            &.checked {
+              color: $yellow;
+            }
+          }
+          &:hover {//Over container
+            .fa-star {
+              color: $gray-200;
+              &:hover {
+                color: $yellow;
+                ~ .fa-star {
+                  color: $yellow;//Fill siblings
+                }
+              }
+            }
+          }
         }
       }
 

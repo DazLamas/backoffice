@@ -93,7 +93,7 @@
             <!-- {% if notifications|length %}
                 {% for key, notification in notifications %} -->
                     <li class="menu_item flex-column">
-                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal"> 
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal">
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Nuevas reseñas en tu perfil!</span> <!--{{ notification.title }}-->
                             </h7>
@@ -101,7 +101,7 @@
                         </a>
                     </li>
                     <li class="menu_item flex-column">
-                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal"> 
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal">
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Mejora tu actividad</span> <!--{{ notification.title }}-->
                             </h7>
@@ -109,7 +109,7 @@
                         </a>
                     </li>
                     <li class="menu_item flex-column">
-                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal"> 
+                        <a href=" " class="p-2" data-toggle="modal" data-target="#demoModal">
                             <h7 class="dot_list sx_margin">
                                 <span class="title-format">Nuevas visitas a tu perfil</span> <!--{{ notification.title }}-->
                             </h7>
@@ -168,17 +168,17 @@
 
                     <nav class="pr-4 mt-1">
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active text-almost-black display-4 position-relative" id="nav-first-tab" data-toggle="tab" href="#nav-first" role="tab" aria-controls="nav-first" aria-selected="true">
+                            <a class="nav-item nav-link active text-almost-black display-4 position-relative" id="nav-first-tab" data-toggle="tab" href="#nav-first" role="tab" aria-controls="nav-first" aria-checked="true">
                                 <img src="../../img/icons/google.png" alt="google icon" class="height xxs mr-2">
                                 <span>Google</span>
                             </a>
-                            <a class="muted disabled nav-item nav-link text-almost-black display-4 position-relative" id="nav-second-tab" data-toggle="tab" href="#nav-second" role="tab" aria-controls="nav-second" aria-selected="false">
+                            <a class="muted disabled nav-item nav-link text-almost-black display-4 position-relative" id="nav-second-tab" data-toggle="tab" href="#nav-second" role="tab" aria-controls="nav-second" aria-checked="false">
                                 <img src="../../img/icons/tripadvisor.png" alt="google icon" class="height extra-xxs mr-2">
                                 <span class="text-gray-500">
                                     TripAdvisor
                               </span>
                             </a>
-                            <a class="nav-item nav-link text-almost-black display-4 position-relative" id="nav-third-tab" data-toggle="tab" href="#nav-third" role="tab" aria-controls="nav-third" aria-selected="false">
+                            <a class="nav-item nav-link text-almost-black display-4 position-relative" id="nav-third-tab" data-toggle="tab" href="#nav-third" role="tab" aria-controls="nav-third" aria-checked="false">
                                 <img src="../../img/icons/nexus_logo_picto.png" alt="nexus icon" class="height xxs mr-2">
                                 Nexus</a>
                         </div>
@@ -198,22 +198,24 @@
                                             <span class="display-2 text-dark letter-spacing mr-4">Ricardo Pérez de Correa</span>
                                             <span class="display-3 gray-700 font-weight-light mr-2">4</span>
 
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                            <span class="stars-wrapper mr-3 mr-3">
+                                                <i class="fa fa-star pointer fa-xs" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                            </span>
 
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
-                                              <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
-                                              <img src="../../img/icons/share.png" alt="share" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
+                                            <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
+                                            <img src="../../img/icons/share.png" alt="share" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
 
                                         </header>
                                         <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
                                             Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección! Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección!
                                         </p>
-                                        <div class="review-footer mt-2">
-                                            <img src="../../img/icons/like.png" alt="like" class="like mr-2 height extra-xxs">
-                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial pointer"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
+                                        <div class="review-footer mt-2 pointer">
+                                            <i class="far fa-thumbs-up mr-1"></i>
+                                            <span class="text-gray-300 font-weight-normal align-bottom"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
                                         </div>
                                     </li>
 
@@ -226,12 +228,14 @@
                                             <span class="display-2 text-dark letter-spacing mr-4">Ricardo Pérez de Correa</span>
                                             <span class="display-3 gray-700 font-weight-light mr-2">3</span>
 
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                              <span class="stars-wrapper mr-3">
+                                                <i class="fa fa-star pointer fa-xs" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
 
-                                              <i class="fa fa-star fa-xs text-gray-200" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                              </span>
                                               <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
                                               <img src="../../img/icons/share.png" alt="share" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
 
@@ -239,9 +243,9 @@
                                         <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
                                             Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección! Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección!
                                         </p>
-                                        <div class="review-footer mt-2">
-                                            <img src="../../img/icons/like.png" alt="like" class="like mr-2 height extra-xxs">
-                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial pointer"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
+                                        <div class="review-footer mt-2 pointer">
+                                            <i class="far fa-thumbs-up mr-1"></i>
+                                            <span class="text-gray-300 font-weight-normal align-bottom"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
                                         </div>
                                     </li>
 
@@ -254,12 +258,14 @@
                                             <span class="display-2 text-dark letter-spacing mr-4">Ricardo Pérez de Correa</span>
                                             <span class="display-3 gray-700 font-weight-light mr-2">3</span>
 
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                              <span class="stars-wrapper mr-3">
+                                                <i class="fa fa-star pointer fa-xs" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
 
-                                              <i class="fa fa-star fa-xs text-gray-200" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                              </span>
                                               <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
                                               <img src="../../img/icons/share.png" alt="share" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
 
@@ -267,9 +273,9 @@
                                         <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
                                             Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección! Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección!
                                         </p>
-                                        <div class="review-footer mt-2">
-                                            <img src="../../img/icons/like.png" alt="like" class="like mr-2 height extra-xxs">
-                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial pointer"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
+                                        <div class="review-footer mt-2 pointer">
+                                            <i class="far fa-thumbs-up mr-1"></i>
+                                            <span class="text-gray-300 font-weight-normal align-bottom"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
                                         </div>
                                     </li>
 
@@ -294,12 +300,14 @@
                                             <span class="display-2 text-dark letter-spacing mr-4">Ricardo Pérez de Correa</span>
                                             <span class="display-3 gray-700 font-weight-light mr-2">3</span>
 
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                              <span class="stars-wrapper mr-3">
+                                                <i class="fa fa-star pointer fa-xs" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
 
-                                              <i class="fa fa-star fa-xs text-gray-200" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                              </span>
                                               <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
                                               <img src="../../img/icons/share.png" alt="share" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
 
@@ -307,9 +315,9 @@
                                         <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
                                             Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección! Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección!
                                         </p>
-                                        <div class="review-footer mt-2">
-                                            <img src="../../img/icons/like.png" alt="like" class="like mr-2 height extra-xxs">
-                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial pointer"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
+                                        <div class="review-footer mt-2 pointer">
+                                            <i class="far fa-thumbs-up mr-1"></i>
+                                            <span class="text-gray-300 font-weight-normal align-bottom"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
                                         </div>
                                     </li>
 
@@ -322,12 +330,14 @@
                                             <span class="display-2 text-dark letter-spacing mr-4">Ricardo Pérez de Correa</span>
                                             <span class="display-3 gray-700 font-weight-light mr-2">4</span>
 
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                              <span class="stars-wrapper mr-3">
+                                                <i class="fa fa-star pointer fa-xs" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
 
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                              </span>
                                               <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
                                               <img src="../../img/icons/share.png" alt="share" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
 
@@ -335,9 +345,9 @@
                                         <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
                                             Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección! Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección!
                                         </p>
-                                        <div class="review-footer mt-2">
-                                            <img src="../../img/icons/like.png" alt="like" class="like mr-2 height extra-xxs">
-                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial pointer"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
+                                        <div class="review-footer mt-2 pointer">
+                                            <i class="far fa-thumbs-up mr-1"></i>
+                                            <span class="text-gray-300 font-weight-normal align-bottom"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
                                         </div>
                                     </li>
 
@@ -350,12 +360,14 @@
                                             <span class="display-2 text-dark letter-spacing mr-4">Ricardo Pérez de Correa</span>
                                             <span class="display-3 gray-700 font-weight-light mr-2">3</span>
 
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-yellow" aria-hidden="true"></i>
+                                              <span class="stars-wrapper mr-3">
+                                                <i class="fa fa-star pointer fa-xs" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
 
-                                              <i class="fa fa-star fa-xs text-gray-200" aria-hidden="true"></i>
-                                              <i class="fa fa-star fa-xs text-gray-200 mr-3" aria-hidden="true"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                                <i class="fa fa-star pointer fa-xs checked" aria-hidden="true" data-toggle="modal" data-target="#demoModal"></i>
+                                              </span>
                                               <img src="../../img/icons/flag1.png" alt="report" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
                                               <img src="../../img/icons/share.png" alt="share" class="icons mr-2 pointer"  data-toggle="modal" data-target="#demoModal">
 
@@ -363,9 +375,9 @@
                                         <p class="display-3 font-weight-normal py-1 mb-0 line-height-s">
                                             Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección! Espectacular servicio y qué gozada conectarse al Wi-Fi con esa facilidad. ¡Buena elección!
                                         </p>
-                                        <div class="review-footer mt-2">
-                                            <img src="../../img/icons/like.png" alt="like" class="like mr-2 height extra-xxs">
-                                            <span class="text-gray-300 font-weight-normal align-bottom line-height-initial pointer"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
+                                        <div class="review-footer mt-2 pointer">
+                                            <i class="far fa-thumbs-up mr-1"></i>
+                                            <span class="text-gray-300 font-weight-normal align-bottom"  data-toggle="modal" data-target="#demoModal">Me gusta</span>
                                         </div>
                                     </li>
                             </ul>
@@ -426,7 +438,7 @@
           <h5 class="modal-title letter-spacing-xs my-1">Nexus OG Demo</h5>
         </div>
         <div class="modal-body px-0 pt-2 align-items-center text-center">
-          <p class="display-2 leter-spacing-xs font-weight-light text-gray-700">Esta opción está desactiva en la demo :)</p>
+          <p class="display-2 leter-spacing-xs font-weight-light text-gray-700">Esta opción está desactivada en la demo :)</p>
         </div>
         <div class="modal-footer justify-content-center">
           <div class="text-white"></div>
