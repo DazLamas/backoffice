@@ -3,16 +3,11 @@
 *Demo project based on a real backoffice developed for Netspot*
 
 **Technologies:**
+- Gulp
+- SASS
+- GIT
 - Boostrap
 - ChartJS
 - Grid Layout
-- Gulp
-- SASS
 
-**Performance:**
-- Icons as Fonts
-- Responsive Image Loading
-- Images compression
-- CSS & JS compression with Gulp
-
-*Check it: https://dazlamas.github.io/dashboard/*
+*Check it: https://dazlamas.github.io/backoffice/*
