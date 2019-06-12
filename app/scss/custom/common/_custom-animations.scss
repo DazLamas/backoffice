@@ -1,9 +1,9 @@
-// /* custom-animations.scss */
-//
-// /*
-//  * Navigation Sidebar
-//  */
-//
+/* custom-animations.scss */
+
+/*
+ * Navigation Sidebar
+ */
+
 // .menuItemsAnimation {
 //   opacity: 0;
 // }
@@ -13,26 +13,34 @@
 // .subsection_links:not(.show) > .nav-item{
 //   opacity: 0;
 // }
-//
-//
-// /*
-//  * Header & Content Animation Prop.
-//  */
-//
+
+
+/*
+ * Header & Content Animation Prop.
+ */
+
 // .content_wrapper > header > *,
 // .content_wrapper > .content {
 //   opacity: 0;
 // }
-//
-//
-// /*
-//  * List Items Animation *****************************
-//  */
-//
+
+
+/*
+ * List Items Animation *****************************
+ */
+
 // .listAnimationCont .listAnimationItem {
 //   opacity: 0;
 // }
-//
-// .js-counter {
-//   opacity: 0;
-// }
+
+/*
+ * Counter *****************************
+ */
+.js-counter {
+  opacity: 0;
+}
+
+.js-counter-container {//Note: in tables, witdth fixed for container and text-align
+  width: 76px !important;
+  text-align: right;
+}

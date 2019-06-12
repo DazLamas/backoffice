@@ -11177,6 +11177,26 @@ html, body {
 .secondary_menu .secondary_menu_toggled.alerts_menu_version .menu_item:hover:not(:first-child) .dot_list:before {
   background-color: #fff; }
 
+/* custom-animations.scss */
+/*
+ * Navigation Sidebar
+ */
+/*
+ * Header & Content Animation Prop.
+ */
+/*
+ * List Items Animation *****************************
+ */
+/*
+ * Counter *****************************
+ */
+.js-counter {
+  opacity: 0; }
+
+.js-counter-container {
+  width: 76px !important;
+  text-align: right; }
+
 /* type.scss*/
 h2, h3, h4, h5, h6,
 .h2, .h3, .h4, .h5, .h6 {
