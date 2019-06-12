@@ -2,9 +2,9 @@
  * Update text with inputs value
  */
 
-var $input;
-var $text_displayer;
-
+let $input;
+let $text_displayer;
+const $value_watched = $('.js-watch-value');
 
 function updateText(input_text, $text_displayer){
 
@@ -12,15 +12,13 @@ function updateText(input_text, $text_displayer){
 
 }
 
-$('.js-watch-value').bind('input', function(event){
+//Events Listeners:
+$value_watched.bind('input', function(event){
 
   $input              = $(this);
   $text_displayer     = $(".js-update-text").filter("." + $input.data('js-related'));
 
   updateText($input.val(), $text_displayer);
-
-
-
 
 });
 
@@ -29,28 +27,12 @@ $('.js-watch-value').bind('input', function(event){
 /*
  * Update background image
  */
-var input_file = $('.js-watch-value-file')[0];
-
-input_file.addEventListener('change', readURL, true);
+const input_file      = $('.js-watch-value-file')[0];
+const image_container = $('.js-set-image');
 
 function readURL(event){
+  image_container.css('background-image', 'url(' + URL.createObjectURL(event.target.files[0]) + ')');
+};
 
-  var getImagePath = URL.createObjectURL(event.target.files[0]);
-
-  $('.js-set-image').css('background-image', 'url(' + getImagePath + ')');
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Events Listeners:
+input_file.addEventListener('change', readURL, true);
