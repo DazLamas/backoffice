@@ -12,4 +12,4 @@
 
 *Check it: https://dazlamas.github.io/backoffice/*
 
-![Screenshot](ex1.png)
+![Screenshot](app/img/screenshots/ex1.png)
