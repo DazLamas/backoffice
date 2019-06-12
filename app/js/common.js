@@ -53,10 +53,7 @@ $toggle_class_items.on( 'click', function () {
  * Insert URL on modal
  */
 
-var $modals_insert_url = $('.modal-insert-url');
-
+const $modals_insert_url = $('.modal-insert-url');
 $modals_insert_url.on('show.bs.modal', function (event) {
-
     $(this).find('.btn')[0].href = event.relatedTarget.getAttribute('data-url');
-
 });
