@@ -3,11 +3,12 @@
 *Demo project based on a real project for Softspring*
 
 **Technologies:**
-- Gulp
-- SASS
-- GIT
-- Boostrap
 - ChartJS
+- Javascript & AJAX
+- PHP & Twig
+- SASS & GULP
+- Boostrap
+- Git & Bitbucket
 - Grid Layout
 
 *Check it: https://dazlamas.github.io/backoffice/*
