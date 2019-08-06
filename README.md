@@ -1,6 +1,6 @@
 # Backoffice · Nexus OG
 
-*Demo project based on a real project for Netspot*
+*Demo project based on a real project for Softspring*
 
 **Technologies:**
 - Gulp
